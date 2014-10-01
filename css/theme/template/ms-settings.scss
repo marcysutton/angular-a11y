@@ -5,14 +5,14 @@
 $backgroundColor: #000;
 
 // Primary/body text
-$mainFont: 'Aleo Regular', sans-serif;
-$italicFont: 'Aleo Italic', sans-serif;
-$sansSerifFont: 'Lato', sans-serif;
+$mainFont: 'RobotoDraft', sans-serif;
+$secondaryFont: 'Lato', sans-serif;
 $codeFont: Menlo, monospace;
 $mainFontSize: 36px;
 $darkColor: #000;
 $transparentBlack: rgba(0, 0, 0, 0.85);
-$mainColor: #eee;
+$mainColor: #212121;
+$headingColor: #3f51b5;
 $secondaryColor: #999;
 $tertiaryColor: #ccc;
 $mutedColor: #999;
@@ -21,8 +21,7 @@ $alertColor: #ff0000;
 
 // Headings
 $headingMargin: 0 0 20px 0;
-$headingFont: 'Aleo Bold', Impact, sans-serif;
-$headingColor: #eee;
+$headingFont: $mainFont, sans-serif; //'Aleo Bold', Impact, sans-serif;
 $headingLineHeight: 1em;
 $headingLetterSpacing: 0.02em;
 $headingTextTransform: none;
@@ -32,9 +31,14 @@ $paragraphFontSize: 1.5em;
 $paragraphLineHeight: 1.25em;
 
 // Links and actions
-$linkColor: #cff110;
-$linkColorHover: #fff;
+$linkColor: #0277bb;
+$linkColorHover: #01476f;
 $altLinkColor: #55491F;
+$buttonColor: #4285f4;
+$buttonTextColor: $white;
+
+$separatorColor: transparentize(#000000, 0.88);
+$separatorHeight: 5px;
 
 // Text selection
 $selectionBackgroundColor: #97948f;

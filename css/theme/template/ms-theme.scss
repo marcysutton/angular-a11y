@@ -16,6 +16,8 @@
  *********************************************/
 .reveal {
   .slides {
+    z-index: 12;
+
     &>section {
       &>.accessibilityWrapper,
       &>section>.accessibilityWrapper {
@@ -67,10 +69,13 @@
     }
   }
   .letter-icon {
-    // display: inline-block;
     font-size: 150%;
-    // vertical-align: middle;
   }
+}
+.reveal video,
+.reveal iframe {
+  max-width: 100% !important;
+  max-height: 100% !important;
 }
 .strike {
   text-decoration: line-through;
@@ -95,12 +100,11 @@
  *********************************************/
 
 body {
-  background: black url("backgrounds/space.jpg") repeat center top;
+  // background: black url("backgrounds/space.jpg") repeat center top;
+  // background-size: cover;
 }
 
 .reveal {
-  background-color: rgba(0, 0, 0, 0.65);
-	font-family: $mainFont;
 	font-size: $mainFontSize;
 	font-weight: 200;
 	color: $mainColor;
@@ -111,9 +115,9 @@ body {
     code {
       background-color: black;
       color: $tertiaryColor;
-      font-size: 1.45em;
+      font-size: 1.75em;
       line-height: 1.45em;
-      max-height: 500px;
+      max-height: 540px;
     }
   }
   .full-screen-code {
@@ -138,19 +142,16 @@ body {
   footer {
     bottom: 0px;
     left: 0;
-    font-family: "Lato", sans-serif;
-    font-style: italic;
     font-size: 45%;
-    line-height: 1.25em;
+    height: auto;
     position: fixed;
-    padding-bottom: 0.25em;
+    padding-bottom: 30px;
     text-align: left;
     width: 100%;
     z-index: 11;
 
     .copyright {
       display: inline-block;
-      color: $tertiaryColor;
       padding: 5px 15px;
       vertical-align: middle;
     }
@@ -189,14 +190,12 @@ body {
   h1, h2, h3, h4, h5, h6 {
     color: $headingColor;
   	font-family: $headingFont;
-  	line-height: $headingLineHeight;
   	letter-spacing: $headingLetterSpacing;
     margin: $headingMargin;
   	text-transform: $headingTextTransform;
-  	text-shadow: $headingTextShadow;
   }
   p, small, ul, ol, div.large-tag, figcaption, blockquote, dd, dt {
-    text-shadow: $paragraphTextShadow;
+    // text-shadow: $paragraphTextShadow;
   }
   h1, h2.h1-style, h3.h1-style {
     font-size: 3.25em;
@@ -212,7 +211,8 @@ body {
   p.h3-style {
     font-size: 1.75em;
   }
-  h4, h3.h4-style,
+  h4, h2.h4-style,
+  h3.h4-style,
   p.h4-style {
     font-size: 1.45em;
     font-weight: bold;
@@ -233,8 +233,8 @@ body {
     text-transform: none;
   }
   em {
-    font-family: $italicFont;
-    font-style: normal;
+    // font-family: $;
+    // font-style: normal;
   }
   blockquote {
     background-color: transparent;
@@ -264,8 +264,8 @@ body {
     text-align: center;
   }
   .top-negative-header {
-    position: absolute; 
-    top: -2em; 
+    position: absolute;
+    top: -2em;
     width: 100%;
   }
   section {
@@ -311,7 +311,6 @@ body {
       figcaption {
         color: $tertiaryColor;
         font-size: 0.65em;
-        line-height: 1em;
         margin: 0;
         padding: 0.2em 0 0.75em;
         text-align: center;
@@ -326,10 +325,8 @@ body {
     }
   }
   .big-italic {
-    font-family: $italicFont;
     font-size: 1.5em;
     font-weight: normal;
-    line-height: 1.25em;
     text-transform: none;
 
     &.smaller {
@@ -344,7 +341,12 @@ body {
     display: block;
     font-size: 300%;
   }
+  .large-tag-wrap {
+    background-color: $darkColor;
+    padding: 1em;
+  }
   .large-tag {
+    color: $tertiaryColor;
     font-family: $codeFont;
     font-size: 2.5em;
     margin-top: 0.5em;
@@ -354,7 +356,7 @@ body {
   }
   ul {
     font-size: $paragraphFontSize;
-    line-height: $paragraphLineHeight;
+    line-height: 1.25;
     list-style: none;
     margin: 0.5em 0;
     text-align: center;
@@ -523,10 +525,11 @@ body {
  *********************************************/
 
 .reveal .progress {
-	background: rgba(0,0,0,0.2);
+	background: transparentize($headingColor, 0.5);
+  height: 10px;
 }
 	.reveal .progress span {
-		background: $linkColor;
+		background: $headingColor;
 
 		-webkit-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
 		   -moz-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
@@ -557,7 +560,7 @@ body {
 }
 .reveal .wideCol {
   vertical-align: top;
-  width: 58%;
+  width: 60%;
 
   &.twoThirdsCol {
     float: left;
@@ -565,7 +568,7 @@ body {
 }
 .reveal .skinnyCol {
   vertical-align: top;
-  width: 40%;
+  width: 38%;
 
   &.twoThirdsCol {
     float: left;
@@ -594,17 +597,19 @@ body {
  *********************************************/
 .reveal {
   .definition {
-    font-size: 0.85em;
     margin: 1em auto 0;
-    padding-bottom: 1em;  
+    padding-bottom: 1em;
   }
-  $separator_width: 3px;
   .separator {
-    background-color: $linkColor;
-    box-shadow: 1px 1px 1px #000;
-    height: $separator_width;
-    line-height: $separator_width;
+    background-color: $separatorColor;
+    height: $separatorHeight;
+    line-height: $separatorHeight;
     margin: 1em auto 0;
+  }
+  .inset-width-wider {
+    margin: 1em auto 0;
+    position: relative;
+    width: 75%;
   }
   .inset-width {
     margin: 1em auto 0;
@@ -656,11 +661,12 @@ body {
     width: 120px;
     text-shadow: $paragraphTextShadow;
     transition: border-color 0.25s;
-    
+
     &:before {
       background: transparent url(../../img/hamburger.svg) no-repeat;
       background-size: 100%;
       content: '';
+      color: $mainColor;
       display: block;
       bottom: 0.5em;
       left: 0.5em;
@@ -682,7 +688,7 @@ body {
     -o-transition: 1s;
     -webkit-transition: 1s;
     transition: 1s;
-    
+
     &.active {
       max-height: 500px;
     }
@@ -724,19 +730,19 @@ body {
     top: 0;
     width: 100%;
   }
-
   .themed-button {
-    background-color: $linkColor;
-    border-radius: 10px;
+    background-color: $buttonColor;
+    border-radius: 3px;
     border-width: 0;
-    color: $backgroundColor;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    color: $buttonTextColor;
     cursor: pointer;
     display: inline-block;
     font-family: $mainFont;
     font-size: 1em;
     padding: 0.25em 0.5em;
     margin: 1em;
-    
+
     -moz-transition: 0.5s;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -764,12 +770,12 @@ body {
   }
   .inline-icon-block {
     .text {
-      display:inline-block; 
+      display:inline-block;
       vertical-align:middle;
     }
     .icon {
       display:inline-block;
-      margin-left: 10px;  
+      margin-left: 10px;
       vertical-align:middle;
     }
   }
@@ -801,7 +807,7 @@ body {
       display: none;
     }
     button {
-      background: black url(../../img/sparkle-party.jpg) no-repeat; 
+      background: black url(../../img/sparkle-party.jpg) no-repeat;
       background-size: cover;
       border: 0;
       border-radius: none;
@@ -811,7 +817,7 @@ body {
       height: 100%;
       width: 100%;
       position: absolute;
-      z-index: 1; 
+      z-index: 1;
     }
     object {
       height: 100%;
@@ -865,4 +871,19 @@ body {
       width: 100%;
     }
   }
+}
+x-gif {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+x-gif #frames {
+  height: 100%;
+  width: 100%;
+}
+x-gif img {
+  height: 100vh;
+  width: 100vw;
 }
