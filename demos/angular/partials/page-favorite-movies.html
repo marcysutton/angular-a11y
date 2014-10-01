@@ -1,0 +1,9 @@
+<section class="favorite-movies" tabIndex="-1">
+	<h1>My Favorite Movies</h1>
+	<sortable-list ui-sortable="sortableOptions" ng-model="movieList">
+		<item ng-repeat="movie in movieList" ng-arrow="update()">
+			<span class="movieName">{{ movie }}</span>
+			<span class="offscreen">{{ $index + 1 }} of {{ movieList.length }}</span>
+		</item>
+	</sortable-list>
+</section>

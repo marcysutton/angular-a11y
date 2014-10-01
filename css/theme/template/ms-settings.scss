@@ -1,0 +1,47 @@
+// Base settings for all themes that can optionally be
+// overridden by the super-theme
+
+// Background of the presentation
+$backgroundColor: #000;
+
+// Primary/body text
+$mainFont: 'Aleo Regular', sans-serif;
+$italicFont: 'Aleo Italic', sans-serif;
+$sansSerifFont: 'Lato', sans-serif;
+$codeFont: Menlo, monospace;
+$mainFontSize: 36px;
+$darkColor: #000;
+$transparentBlack: rgba(0, 0, 0, 0.85);
+$mainColor: #eee;
+$secondaryColor: #999;
+$tertiaryColor: #ccc;
+$mutedColor: #999;
+$white: #fff;
+$alertColor: #ff0000;
+
+// Headings
+$headingMargin: 0 0 20px 0;
+$headingFont: 'Aleo Bold', Impact, sans-serif;
+$headingColor: #eee;
+$headingLineHeight: 1em;
+$headingLetterSpacing: 0.02em;
+$headingTextTransform: none;
+$headingTextShadow: 2px 2px 6px #000;
+$paragraphTextShadow: 1px 3px 3px #000;
+$paragraphFontSize: 1.5em;
+$paragraphLineHeight: 1.25em;
+
+// Links and actions
+$linkColor: #cff110;
+$linkColorHover: #fff;
+$altLinkColor: #55491F;
+
+// Text selection
+$selectionBackgroundColor: #97948f;
+$selectionColor: $white;
+
+// Generates the presentation background, can be overridden
+// to return a background image or gradient
+@mixin bodyBackground() {
+	background: $backgroundColor;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AngularJS Demo</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="a11yApp" ng-controller="a11yController">
+	<header>
+		<h1>AngularJS Demo</h1>
+		<user-input>
+			<input aria-label="Filter" placeholder="Filter" type="text" id="filter" ng-model="query" autofocus>
+		</user-input>
+	</header>
+	<main>
+		<section id="search-results">
+			<ul result-list aria-live="polite" aria-relevant="{{relevant}}">
+				<li ng-repeat="result in filtered = (dataModel | filter:query | orderBy:'name')">
+					<h2>{{result.name}}</h2>
+					<p>{{result.bio}}</p>
+				</li>
+			</ul>
+		</section>
+	</main>
+	<script src="js/lib/angular.js"></script>
+	<script src="js/filter-list.js"></script>
+</body>
+</html>

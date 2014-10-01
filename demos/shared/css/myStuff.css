@@ -1,0 +1,154 @@
+@import 'reset.css';
+
+body {
+	color: #333;
+	font-family: 'Aleo-Regular', Courier, Times, serif;
+	font-size: 16px;
+	padding-top: 2em;
+}
+.offscreen {
+	display: block;
+	left: -500000px;
+	position: absolute;
+}
+.mini-app {
+	box-sizing: border-box;
+	max-width: 700px;
+	margin: 0 auto;
+	padding: 0.75em;
+	text-align: center;
+}
+.mini-app h1, .mini-app img {
+	margin: 0.5em 0;
+}
+.mini-app ul {
+	text-align: left;
+}
+a {
+	color: #666;
+}
+a:hover, a:focus {
+	background-color: #000;
+	color: #fff;
+}
+a.active {
+	background-color: #cff110;
+	color: #000;
+}
+h1 {
+	font-size: 3em;
+}
+h2 {
+	font-size: 2em;
+}
+h3 {
+	font-size: 1.75em;
+}
+h4 {
+	font-size: 1.5em;
+}
+ul, ol, sortable-list {
+	display: block;
+	list-style-position: inside;
+	margin: 0.75em 0;
+}
+ol li, sortable-list item {
+	background-color: #666;
+	color: #fff;
+	counter-increment: numList;
+	cursor: move;
+	display: list-item;
+	list-style-type: none;
+	margin-bottom: 0.75em;
+	padding: 1em;
+	position: relative;
+}
+ol li span, sortable-list item span {
+	display: inline-block;
+	width: 85%;
+	vertical-align: middle;
+}
+ol li:before, sortable-list item:before {
+	content: counter(numList);
+	display: inline-block;
+	font-size: 140%;
+	margin-right: 0.5em;
+	vertical-align: middle;
+}
+ol li:after, sortable-list item:after {
+	content: '\2261';
+	display: inline-block;
+	font-size: 1.5em;
+	line-height: 0.5em;
+	vertical-align: middle;
+}
+ol li:hover, ol li:focus, 
+sortable-list item:hover, 
+sortable-list item:focus {
+	background-color: #cff110;
+	color: #000;
+}
+p, li, sortable-list item {
+	font-size: 1.25em;
+}
+li {
+	padding: 0.5em 0;
+}
+
+input.item {
+	box-sizing: border-box;
+	display: block;
+	font-size: 1em;
+	font-family: 'Aleo-Regular', Courier, Times, serif;
+	padding: 0.5em 1em;
+	width: 100%;
+}
+.selectable-list {
+	list-style: none;
+}
+.selectable-list li {
+	/*border-bottom: 1px solid #999;
+	margin-bottom: 1em;
+	padding-bottom: 1em;*/
+}
+.selectable-list li span {
+	display: inline-block;
+	min-width: 12em;
+}
+.selectable-list li input[type="radio"] {
+	border: 0px;
+	display: inline-block;
+	margin-right: 0.5em;
+}
+nav {
+	display: inline-block;
+	margin-right: 1em;
+	padding: 1em;
+	width: 15%;
+	vertical-align: top;
+}
+main {
+	display: inline-block;
+	padding: 1em;
+	vertical-align: top;
+}
+.ember-view {
+	outline: none;
+}
+.alt {
+	display: inline-block;
+	outline: none;
+	padding: 1em;
+}
+.alt.highlighted {
+  -webkit-animation: target-fade 2s 1;
+  -moz-animation: target-fade 2s 1;
+}
+@-webkit-keyframes target-fade {
+  0% { background-color: rgba(237, 201, 77, 1); }
+  100% { background-color: rgba(237, 201, 77, 0); }
+}
+@-moz-keyframes target-fade {
+  0% { background-color: rgba(237, 201, 77, 1); }
+  100% { background-color: rgba(237, 201, 77, 0); }
+}

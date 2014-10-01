@@ -1,0 +1,37 @@
+/* fonts */
+
+.jqcloud {
+  font-size: 0.65em;
+  text-shadow: 1px 3px 3px #000;
+  text-transform: lowercase;
+}
+
+.jqcloud a {
+  font-size: inherit;
+  text-decoration: none;
+}
+
+.jqcloud span.w10 { font-size: 550%; line-height: 100%; }
+.jqcloud span.w9 { font-size: 500%; line-height: 100%; }
+.jqcloud span.w8 { font-size: 450%; line-height: 100%; }
+.jqcloud span.w7 { font-size: 400%; line-height: 100%; }
+.jqcloud span.w6 { font-size: 350%; line-height: 100%; }
+.jqcloud span.w5 { font-size: 300%; line-height: 100%; }
+.jqcloud span.w4 { font-size: 250%; line-height: 100%; }
+.jqcloud span.w3 { font-size: 200%; line-height: 100%; }
+.jqcloud span.w2 { font-size: 150%; line-height: 100%; }
+.jqcloud span.w1 { font-size: 100%; line-height: 100%; }
+
+/* colors */
+
+.jqcloud { color: #fff; }
+.jqcloud a { color: inherit; }
+
+/* layout */
+
+.jqcloud {
+  overflow: hidden;
+  position: relative;
+}
+
+.jqcloud span { padding: 0; }

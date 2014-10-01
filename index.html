@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>JavaScript for Everybody: Accessibility of JavaScript MVCs</title>
+
+		<meta name="description" content="JavaScript for Everybody: Accessibility of JavaScript MVCs at JSConf EU">
+		<meta name="author" content="Marcy Sutton">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/marcysutton.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/jqcloud.css">
+
+		<script src="lib/js/jquery-1.11.1.min.js"></script>
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<h1 class="offscreen">JavaScript for Everybody, Presented at JSConf EU 2014 by Marcy Sutton</h1>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2 class="h3-style">Welcome to our Homepage</h2>
+					<iframe width="960" height="720" src="//www.youtube-nocookie.com/embed/vIWJpXvQmHQ?rel=0" frameborder="0" allowfullscreen></iframe>
+					<aside class="notes">
+						Pause video halfway through to explain mouse vs. screen reader interaction
+					</aside>
+				</section>
+
+				<section>
+					<h2 class="h1-style" style="margin-bottom: 0.25em;">What is Accessibility?</h2>
+					<p class="big-italic">Everyone can perceive, understand, navigate, and interact with the Web, and  they can contribute to the Web.</p>
+					<aside class="notes">
+					<p><a href="http://www.w3.org/WAI/intro/accessibility.php" target="_blank" title="Link opens in a new window">W3C definition</a></p>
+					<p>Millions of people have disabilities that affect their use of the Web.</p>
+					<p>Web accessibility also benefits people without disabilities.</p>
+					<p>Refer to slide #2 about the kinds of apps we build.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2 class="offscreen">Stats</h2>
+					<div class="inset-width">
+						<h3 style="margin-bottom: 1em;"><span class="big-stat">285 million</span> visually impaired worldwide</h3>
+						<div class="inset-width">
+							<div class="separator"></div>
+						</div>
+						<h3 style="margin-top: 0.5em;"><span class="big-stat">360 million</span> with disabling hearing loss</h3>
+					</div>
+					<aside class="notes">
+						WHO: blindness http://www.who.int/mediacentre/factsheets/fs282/en/
+						285 million visually impaired worldwide: 39 million are blind, 246 have low vision
+
+						WHO: deafness http://www.who.int/mediacentre/factsheets/fs300/en/
+						360 million is 5% of the world's population
+					</aside>
+				</section>
+
+				<section>
+					<h2><span class="big-stat">80 million</span> Europeans with disabilities</h2>
+					<aside class="notes">
+						Source: <a href="http://www.edf-feph.org/Page_Generale.asp?DocID=12534">European Disability Forum</a>
+					</aside>
+				</section>
+
+				<section>
+					<h2><span class="big-stat">15%</span> of the European population</h2>
+					<aside class="notes">
+						Source: <a href="http://www.edf-feph.org/Page_Generale.asp?DocID=12534">European Disability Forum</a>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Accessibility is about</h2>
+					<h3 class="h1-style" style="font-size: 14rem;">PEOPLE.</h3>
+				</section>
+
+				<section>
+					<h2 class="h1-style">JavaScript for Everybody</h2>
+					<h3 class="h2-style">Accessibility of JavaScript MVCs</h3>
+					<p>
+						<small>Created by <a href="http://marcysutton.com">Marcy Sutton</a> / <a href="http://twitter.com/marcysutton">@marcysutton</a></small>
+					</p>
+				</section>
+
+				<section>
+		    	<h2 class="h3-style align-left"><em>We build apps.</em></h2>
+					<div class="separator"></div>
+			    <div id="wordCloud" style="min-width: 1024px; width: 1440px; min-height: 600px; height: 601px;" class="jqcloud">
+			    	<span class="w6" style="position: absolute; left: 400px; top: 450px;">Banking</span>
+			    	<span class="w7" style="position: absolute; left: 355px; top: 35px;">Education</span>
+			    	<span class="w3" style="position: absolute; left: 20px; top: 100px;">Project <br>Tracking</span>
+			    	<span class="w5" style="position: absolute; left: 435px; top: 237px;">Payments</span>
+			    	<span class="w6" style="position: absolute; left: 0; top: 300px;">Travel</span>
+			    	<span class="w5" style="position: absolute; left: 1000px; top: 340px;">Fitness Tracking</span>
+			    	<span class="w3" style="position: absolute; left: 1100px; top: 170px;">Drinking</span></div>
+				</section>
+
+				<section>
+					<h2 class="h3-style">Best framework?</h2>
+					<a href="http://todomvc.com/" target="_blank" title="TodoMVC opens in a new window"><img src="img/todo-mvc.png" alt="TodoMVC" style="max-height: 740px;"></a>
+				</section>
+
+				<section>
+					<h2 class="h1-style">
+						<span>Model</span><br>
+						<span>View</span><br>
+						<span>Controller</span><br>
+						<span>Router</span><br>
+						<span style="margin-top: 0.25em; display: inline-block;">*</span><br>
+						<span style="display: block; margin-top: -.25em;">WHATEVER</span>
+					</h2>
+				</section>
+
+				<section>
+					<h2 style="text-transform: uppercase;">Are your apps accessible?</h2>
+					<h3>It could depend on:</h3>
+					<div class="separator inset-width"></div>
+					<ul>
+						<li>The framework*</li>
+						<li>Screen reader</li>
+						<li>Browser</li>
+						<li>Your code*</li>
+					</ul>
+					<div><em>* Things you can control, to varying degrees</em></div>
+					<aside class="notes">
+						You can submit PRs to frameworks, refine your code, even petition browsers. Can't do as much about screen readers.
+					</aside>
+				</section>
+
+				<section>
+					<h2 style="margin-bottom:0.5em;">Accessibility <br>in single-page apps</h2>
+					<div class="separator inset-width"></div>
+					<ul>
+						<li>Enable the keyboard</li>
+						<li>Manage <a href="http://www.w3.org/TR/wai-aria/" target="_blank" title="ARIA documentation opens in a new window">ARIA</a> attributes</li>
+						<li>Write meaningful HTML</li>
+						<li>*Gracefully degrade</li>
+					</ul>
+					<aside class="notes">
+					*Graceful degradation is worth mentioning but it is outside the scope of this talk.
+					</aside>
+				</section>
+				
+				<section>
+					<div class="inset-width">
+						<h2 class="h1-style left-align" style="padding-left: 1em;">
+							<strong>A</strong>ccessible <br>
+							<strong>R</strong>ich <br>
+							<strong>I</strong>nternet <br>
+							<strong>A</strong>pplications
+						</h2>
+					</div>
+					<div class="inset-width">
+						<div class="separator"></div>
+					</div>
+					<p style="margin: 0.5em 0;" class="big-italic">Expands HTML's semantic vocabulary<p>
+				</section>
+
+        <section>
+        	<div class="inset-width">
+			    	<p class="h4-style top-negative-header">ARIA Core Components <span class="offscreen">1 of 3</span></p>
+						<div class="separator"></div>
+	     			<h2 class="h1-style" style="margin: 0.25em 0;">State</h2>
+     			</div>
+     			<p><em>The current condition of this particular thing</em></p>
+     			<div class="inset-width">
+	     			<div style="margin: 1.75em 0;">
+	         		<pre><code class="html">   &lt;input aria-disabled="true" type="text"&gt;</code></pre>
+         		</div>
+         		<pre><code class="html">   &lt;i aria-hidden="true"&gt;&lt;/i&gt;</code></pre>
+       		</div>
+     		</section>
+
+     		<section>
+     			<div class="inset-width">
+			    	<p class="h4-style top-negative-header">ARIA Core Components <span class="offscreen">2 of 3</span></p>
+						<div class="separator"></div>
+	     			<h2 class="h1-style" style="margin: 0.25em 0;">Property</h2>
+     			</div>
+     			<p><em>The nature of the current object</em></p>
+     			<div class="inset-width">
+	     			<div style="margin: 1.75em 0;">
+	          	<pre><code class="html">   &lt;input aria-required="true" type="text"&gt;</code></pre>
+          	</div>
+          	<pre><code class="html">   &lt;input aria-label="Unsubscribe" type="checkbox"&gt;</code></pre>
+        	</div>
+				</section>
+
+				<section>
+					<div class="inset-width">
+			    	<p class="h4-style top-negative-header">ARIA Core Components <span class="offscreen">3 of 3</span></p>
+						<div class="separator"></div>
+	     			<h2 class="h1-style" style="margin: 0.25em 0;">Role</h2>
+     			</div>
+     			<p><em>What does this thing do?</em></p>
+     			<div class="inset-width">
+	     			<div style="margin: 1.75em 0;">
+		          <pre><code class="html">   &lt;form role="search"&gt;</code></pre>
+	          </div>
+	          <pre><code class="html">   &lt;div role="img" style="background-image...</code></pre>
+          </div>
+        </section>
+
+				<section>
+					<h2>Using Roles</h2>
+					<div class="separator inset-width"></div>
+					<ul>
+						<li>They're element types</li>
+						<li>They're landmarks</li>
+		     		<li>Start with native HTML tags</li>
+						<li>Read the <a href="http://www.w3.org/TR/wai-aria/" target="_blank" title="Link opens in a new window">documentation</a></li>
+						<li>Don't overdo it</li>
+					</ul>
+					<aside class="notes">
+						Simplest abstraction possible
+					</aside>
+				</section>
+
+				<section>
+					<h2>Application Role</h2>
+					<p class="big-italic">Disables a screen reader&rsquo;s &ldquo;virtual cursor&rdquo;</p>
+					<div class="definition inset-width">
+						<pre><code class="html">
+    &lt;dance-detector role="application"&gt;&lt;/dance-detector&gt;
+						</code></pre>
+					</div>
+
+					<aside class="notes">
+					<p><a href="http://www.marcozehe.de/2012/02/06/if-you-use-the-wai-aria-role-application-please-do-so-wisely/" target="_blank" title="Link opens in a new window">Marco Zehe's post about using Application Mode</a></p>
+					<p>Virtual Cursor/Browse mode:<br>
+					 Several keys are captured by the assistive technology and are not processed by the browser. These allow navigation by headings, lists, links, tables, form elements and others. Usually, these are done via single letters. The visual focus may or may not follow the virtual cursor onto focusable items, depending on the assistive technology in use and its settings</p>
+					 <p>Forms mode/focus mode:<br>
+					 All keys are passed through to the browser. The challenge is that you may be creating widgets that require you to force the user into direct interaction with the browser. You know that your widget can best be used via the keyboard if the user is not in virtual mode. It is under your control whether the user is being thrown into focus mode once your widget gains keyboard focus.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Document or Application?</h2>
+					<pre><code class="html">
+   &lt;sparkle-party&gt;
+     &lt;h2&gt;Do you like to dance?&lt;/h2&gt;
+     &lt;button class="lets-dance"&gt;I wore my party pants&lt;/button&gt;
+
+     &lt;disco-ball&gt;
+       &lt;canvas&gt;&lt;/canvas&gt;
+       &lt;p aria-live="polite" class="disco-transcript"&gt;&lt;/p&gt;
+     &lt;/disco-ball&gt;
+   &lt;/sparkle-party&gt;
+					</code></pre>
+					<aside class="notes">
+						Client-side apps often blur the lines between application and document. Because accessibility works best with a document structure, it's best to selectively use the application role on a per-widget basis. Care must also be taken for the correct roles, states and properties for non-native elements or interactions.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Don't Do This</h2>
+					<div class="inset-width">
+						<pre><code class="html">
+	    &lt;body role="application"&gt;
+						</code></pre>
+					</div>
+					<img src="img/body-roll.gif" style="min-height: 400px;" alt="Body roll away from your responsibilities">
+					<aside class="notes">
+	 Only want to use role="application" if the content you're providing consists of only interactive controls, and of those, mostly advanced widgets, that emulate a real desktop application.
+					</aside>
+				</section>
+
+				<section>
+					<h2 class="h1-style">Enabling the keyboard</h2>
+					<aside class="notes">
+					Challenge the concept of "interactive". It doesn't have to be visually interactive. Appeal to all the senses. PERCEIVABLE and OPERABLE. And robust. And understandable.
+					</aside>
+				</section>
+
+				<section>
+					<h2>What Not To Do</h2>
+					<div class="inset-width">
+						<div class="hamburger-menu">
+							<div class="hamburger-button" title="Div requires clicking, does not operate as button"></div>
+							<ul aria-disabled="true">
+								<li><a href="javascript: return false;" tabIndex="-1">Lettuce</a></li>
+								<li><a href="javascript: return false;" tabIndex="-1">Tomato</a></li>
+								<li><a href="javascript: return false;" tabIndex="-1">E. coli</a></li>
+							</ul>
+						</div>
+						<pre><code contenteditable class="html">
+   &lt;div class="hamburger-button"&gt;&lt;/div&gt;
+						</code></pre>
+					</div>
+					<aside class="notes">
+						Hamburger button is a div with no tabIndex, role or keypress event
+					</aside>
+				</section>
+
+				<section>
+					<h2>What To Do</h2>
+					<div class="hamburger-menu">
+						<button class="hamburger-button" title="Button is accessible" aria-label="Menu"></button>
+						<ul aria-disabled="true">
+							<li><a href="javascript: return false;" tabIndex="-1">Lettuce</a></li>
+							<li><a href="javascript: return false;" tabIndex="-1">Tomato</a></li>
+							<li><a href="javascript: return false;" tabIndex="-1">E. coli</a></li>
+						</ul>
+					</div>
+					<pre><code class="html">
+   &lt;button aria-label="Menu"&gt;&lt;button&gt;
+					</code></pre>
+					<pre><code class="html">
+   &lt;div role="button" tabIndex="0" aria-label="Menu"&gt;&lt;/div&gt;
+					</code></pre>
+				</section>
+
+				<section data-click-background="img/dancing-dog.gif">
+					<div class="text-background">
+						<h2>Close, but no keypress.</h2>
+						<pre><code class="html">
+  	&lt;div ng-click="oneTwoThree(go);" tabIndex="0"&gt;
+  	     DANCE!
+  	&lt;/div&gt;
+						</code></pre>
+						<div class="themed-button image-show" tabIndex="0" title="Div requires clicking to activate" aria-label="This element is purposefully inaccessible, but clicking shows an image of a dog dancing">DANCE!</div>
+						<div>
+							<button class="reset disabled" aria-label="Reset dog dancing image">Reset</button>
+						</div>
+					</div>
+				</section>
+
+					<div class="inset-width text-background">
+						<h2>Everybody dance!</h2>
+						<pre><code class="html">
+  &lt;div role="button" tabIndex="0"
+    ng-click="oneTwoThree(go)"
+    ng-keypress="oneTwoThree(go)"&gt;
+    DANCE!
+  &lt;/div&gt;
+						</code></pre>
+						<button class="themed-button image-show" aria-label="Show image of ostrich and man dancing together while he is holding an egg">DANCE!</button>
+						<div>
+							<button class="reset disabled" aria-label="Reset ostrich dancing image">Reset</button>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Keyboard Accessibility</h2>
+					<h3>One Simple Trick!</h3>
+					<div class="inset-width">
+					<pre><code class="css">
+  [tabIndex="0"] {
+    color: $linkColor;
+
+    &:focus, &:hover {
+      color: $linkActiveColor;
+      outline: default;
+    }
+  }
+					</code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h2>Dance Break</h2>
+					<img src="img/flamingo-dancing.gif" alt="Flamingo dance break" style="min-width: 700px;">
+				</section>
+
+				<section>
+					<h2>Make your framework do the heavy lifting <span class="offscreen">1 of 3</span></h2>
+					<pre><code class="html">
+  // AngularUI Bootstrap
+  &lt;accordion-group
+  	is-open="status.open"
+  	is-disabled="status.isDisabled"&gt;
+  &lt;/accordion-group&gt;
+
+
+					</code></pre>
+				</section>
+
+				<section data-transition="none">
+					<h2>Make your framework do the heavy lifting <span class="offscreen">2 of 3</span></h2>
+					<pre><code class="html">
+  // AngularUI Bootstrap
+  &lt;accordion-group
+  	aria-expanded="status.open"
+  	is-open="status.open"
+  	aria-disabled="status.isDisabled"
+  	is-disabled="status.isDisabled"&gt;
+  &lt;/accordion-group&gt;
+					</code></pre>
+					<aside class="notes">
+	 Angular properties alongside aria properties get verbose.
+					</aside>
+				</section>
+
+				<section data-transition="none">
+					<h2>Make your framework do the heavy lifting <span class="offscreen">3 of 3</span></h2>
+					<h3 class="offscreen">Example where ARIA attributes are the default</h3>
+					<pre><code class="html">
+  // AngularUI Bootstrap
+  &lt;accordion-group
+  	ng-expanded="status.open"
+  	ng-disabled="status.isDisabled"&gt;
+  &lt;/accordion-group&gt;
+
+
+					</code></pre>
+				</section>
+
+          </code></pre>
+        </section>
+
+				<section>
+					<h2 class="h3-style">Angular.js Material Design</h2>
+					<a href="https://material.angularjs.org/#/material.components.radioButton/readme/overview" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material-RadioButtons.png" class="plain" alt="Angular Material Radio Buttons" style="max-height: 700px;"></a>
+					<aside class="notes">
+						Here's how I practice what I preach
+					</aside>
+				</section>
+
+				<section>
+					<h2>Angular Material Radio Buttons</h2>
+					<div class="twoThirdsCol skinnyCol">
+						<img src="img/radio-buttons.png" alt="Radio Button screenshot: radio-group selected via keyboard">
+					</div>
+					<div class="twoThirdsCol wideCol">
+					<pre><code class="html">
+&lt;material-radio-group ng-model="data.group"&gt;
+  &lt;material-radio-button value="1"&gt;
+    Label 1
+  &lt;/material-radio-button&gt;
+  &lt;material-radio-button value="2"&gt;
+    Label 2
+  &lt;/material-radio-button&gt;
+&lt;/material-radio-group&gt;
+					</code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h2 class="h3-style">Angular Material Radio Buttons (cont'd)</h2>
+					<pre><code class="javascript" style="max-height: 615px;">
+function materialRadioGroupDirective() {
+  RadioGroupController.prototype = createRadioGroupControllerProto();
+  return {
+    restrict: 'E',
+    controller: RadioGroupController,
+    require: ['materialRadioGroup', '?ngModel'],
+    link: link
+  };
+
+  function link(scope, element, attr, ctrls) {
+    element.attr({
+      'role': 'radiogroup',
+      'tabIndex': '0'
+    })
+    .on('keydown', keydownListener);
+
+    function keydownListener(ev) {
+      if (ev.which === Constant.KEY_CODE.LEFT_ARROW) {
+        ev.preventDefault();
+        rgCtrl.selectPrevious(element);
+      }
+      else if (ev.which === Constant.KEY_CODE.RIGHT_ARROW) {
+        ev.preventDefault();
+        rgCtrl.selectNext(element);
+      }
+    }
+  }
+}
+function materialRadioButtonDirective($expectAria) {
+  return {
+    restrict: 'E',
+    require: '^materialRadioGroup',
+    link: link
+  };
+  function link(scope, element, attr, rgCtrl) {
+    var lastChecked;
+    attr.$observe('value', render);
+
+    element.attr('role', 'radio');
+    $expectAria(element, 'aria-label', element.text());
+
+    function render() {
+      var checked = (rgCtrl.getViewValue() === attr.value);
+      if (checked === lastChecked) { return; }
+      lastChecked = checked;
+      element.attr('aria-checked', checked);
+    }
+  }
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2 class="h1-style">Make it sparkle.</h2>
+					<h3>Thanks, JSConf EU!</h3>
+					<p><a href="http://twitter.com/marcysutton" target="_blank" title="Link opens in a new window">@marcysutton</a></p></section>
+				</section>
+			</div>
+
+			<footer>
+        <div class="copyright">Accessibility of JavaScript MVCs<br>
+          <a href="http://twitter.com/marcysutton" target="_blank" title="Link opens in a new window">@marcysutton</a> <span aria-hidden="true">/</span> <a href="http://marcysutton.com" target="_blank" title="Link opens in a new window">MarcySutton.com</a></div>
+      </footer>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+		    // when the presentation is scaled to fit different resolutions. Can be
+		    // specified using percentage units.
+		    width: 1440,
+		    height: 900,
+
+		    // Factor of the display size that should remain empty around the content
+		    margin: 0.1,
+
+		    // Bounds for smallest/largest possible scale to apply to content
+		    minScale: 0.2,
+		    maxScale: 1.0,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/accessibility-helpers/accessibility-helpers.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'lib/js/slides.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+	</body>
+</html>

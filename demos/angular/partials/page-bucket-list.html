@@ -1,0 +1,9 @@
+<section class="bucket-list" tabIndex="-1">
+	<h1>Bucket List</h1>
+	<ul>
+		<li ng-repeat="item in items track by $index">{{ item.title }}</li>
+	</ul>
+	<form id="bucket-list-form" ng-submit="addItem()">
+		<input class="item" aria-label="Add to bucket list" placeholder="Add to bucket list" ng-model="newItem">
+	</form>
+</section>

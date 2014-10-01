@@ -1,0 +1,32 @@
+html, body {
+	font-family: Menlo, Courier, monospace;
+	font-size: 16px;
+	line-height: 1.25em;
+	margin: 0;
+	padding: 0;
+}
+header, main {
+	margin: 1em;
+}
+h1 {
+	font-size: 2em;
+}
+h2 {
+	font-size: 1.5em;
+}
+input[type=text] {
+	background-color: rgb(250, 250, 250);
+	border: 1px solid #999;
+	border-radius: 5px;
+	padding: 0.5em 1em;
+}
+ul {
+	border-top: 1px solid #999;
+	list-style: none;
+	padding: 0;
+}
+	ul li {
+		border-bottom: 1px solid #999;
+		margin: 0 0 2em;
+		padding-bottom: .5em;
+	}
