@@ -45,7 +45,7 @@
     padding: 5px 10px;
     position: fixed;
     white-space: nowrap;
-    text-shadow: $paragraphTextShadow;
+    // text-shadow: $paragraphTextShadow;
   }
   ul#table-of-contents {
     display: block;
@@ -115,7 +115,7 @@ body {
     code {
       background-color: black;
       color: $tertiaryColor;
-      font-size: 1.75em;
+      font-size: 2em;
       line-height: 1.45em;
       max-height: 540px;
     }
@@ -440,7 +440,7 @@ body {
   	background: rgba(255,255,255,0.12);
   	border: 4px solid $mainColor;
 
-  	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  	// box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 
   	-webkit-transition: all .2s linear;
   	   -moz-transition: all .2s linear;
@@ -768,6 +768,22 @@ body {
       display: none;
     }
   }
+  .img-mosaic {
+    line-height: 0;
+
+    -webkit-column-count: 2;
+    -webkit-column-gap:   0px;
+    -moz-column-count:    2;
+    -moz-column-gap:      0px;
+    column-count:         2;
+    column-gap:           0px;
+
+    img {
+      /* Just in case there are inline attributes */
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
   .inline-icon-block {
     .text {
       display:inline-block;
@@ -887,3 +903,35 @@ x-gif img {
   height: 100vh;
   width: 100vw;
 }
+/* fonts */
+
+.jqcloud {
+  font-size: 0.65em;
+  /*text-shadow: 1px 3px 3px #000;*/
+  text-transform: lowercase;
+}
+
+.jqcloud a {
+  font-size: inherit;
+  text-decoration: none;
+}
+
+.jqcloud span.w10 { font-size: 550%; line-height: 100%; }
+.jqcloud span.w9 { font-size: 500%; line-height: 100%; }
+.jqcloud span.w8 { font-size: 450%; line-height: 100%; }
+.jqcloud span.w7 { font-size: 400%; line-height: 100%; }
+.jqcloud span.w6 { font-size: 350%; line-height: 100%; }
+.jqcloud span.w5 { font-size: 300%; line-height: 100%; }
+.jqcloud span.w4 { font-size: 250%; line-height: 100%; }
+.jqcloud span.w3 { font-size: 200%; line-height: 100%; }
+.jqcloud span.w2 { font-size: 150%; line-height: 100%; }
+.jqcloud span.w1 { font-size: 100%; line-height: 100%; }
+
+/* layout */
+
+.jqcloud {
+  overflow: hidden;
+  position: relative;
+}
+
+.jqcloud span { padding: 0; }
