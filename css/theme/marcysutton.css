@@ -162,6 +162,7 @@
   color: #3f51b5;
   font-family: "RobotoDraft", sans-serif, sans-serif;
   letter-spacing: 0.02em;
+  line-height: 1.15;
   margin: 0 0 20px 0;
   text-transform: none; }
 .reveal h1, .reveal h2.h1-style, .reveal h3.h1-style {
@@ -368,39 +369,45 @@
 .reveal .controls {
   bottom: 30px; }
 
+.reveal .controls div.enabled {
+  opacity: 0.4; }
+
+.reveal .controls div.enabled:hover {
+  opacity: 1; }
+
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
-  border-right-color: #0277bb; }
+  border-right-color: #3f51b5; }
 
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
-  border-left-color: #0277bb; }
+  border-left-color: #3f51b5; }
 
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
-  border-bottom-color: #0277bb; }
+  border-bottom-color: #3f51b5; }
 
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
-  border-top-color: #0277bb; }
+  border-top-color: #3f51b5; }
 
 .reveal .controls div.navigate-left.enabled:hover {
-  border-right-color: #01476f; }
+  border-right-color: #3f51b5; }
 
 .reveal .controls div.navigate-right.enabled:hover {
-  border-left-color: #01476f; }
+  border-left-color: #3f51b5; }
 
 .reveal .controls div.navigate-up.enabled:hover {
-  border-bottom-color: #01476f; }
+  border-bottom-color: #3f51b5; }
 
 .reveal .controls div.navigate-down.enabled:hover {
-  border-top-color: #01476f; }
+  border-top-color: #3f51b5; }
 
 /*********************************************
  * PROGRESS BAR
  *********************************************/
 .reveal .progress {
-  background: rgba(63, 81, 181, 0.5);
+  background: rgba(63, 81, 181, 0.3);
   height: 10px; }
 
 .reveal .progress span {
@@ -701,8 +708,7 @@ x-gif img {
 /* fonts */
 .jqcloud {
   font-size: 0.65em;
-  /*text-shadow: 1px 3px 3px #000;*/
-  text-transform: lowercase; }
+  /*text-shadow: 1px 3px 3px #000;*/ }
 
 .jqcloud a {
   font-size: inherit;

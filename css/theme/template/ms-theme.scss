@@ -191,6 +191,7 @@ body {
     color: $headingColor;
   	font-family: $headingFont;
   	letter-spacing: $headingLetterSpacing;
+    line-height: 1.15;
     margin: $headingMargin;
   	text-transform: $headingTextTransform;
   }
@@ -483,40 +484,46 @@ body {
 .reveal .controls {
   bottom: 30px;
 }
+.reveal .controls div.enabled {
+  opacity: 0.4;
+}
+.reveal .controls div.enabled:hover {
+  opacity: 1;
+}
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
-	border-right-color: $linkColor;
+	border-right-color: $controlsColor;
 }
 
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
-	border-left-color: $linkColor;
+	border-left-color: $controlsColor;
 }
 
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
-	border-bottom-color: $linkColor;
+	border-bottom-color: $controlsColor;
 }
 
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
-	border-top-color: $linkColor;
+	border-top-color: $controlsColor;
 }
 
 .reveal .controls div.navigate-left.enabled:hover {
-	border-right-color: $linkColorHover;
+	border-right-color: $controlsColorHover;
 }
 
 .reveal .controls div.navigate-right.enabled:hover {
-	border-left-color: $linkColorHover;
+	border-left-color: $controlsColorHover;
 }
 
 .reveal .controls div.navigate-up.enabled:hover {
-	border-bottom-color: $linkColorHover;
+	border-bottom-color: $controlsColorHover;
 }
 
 .reveal .controls div.navigate-down.enabled:hover {
-	border-top-color: $linkColorHover;
+	border-top-color: $controlsColorHover;
 }
 
 
@@ -525,7 +532,7 @@ body {
  *********************************************/
 
 .reveal .progress {
-	background: transparentize($headingColor, 0.5);
+	background: transparentize($headingColor, 0.70);
   height: 10px;
 }
 	.reveal .progress span {
@@ -908,7 +915,7 @@ x-gif img {
 .jqcloud {
   font-size: 0.65em;
   /*text-shadow: 1px 3px 3px #000;*/
-  text-transform: lowercase;
+  // text-transform: lowercase;
 }
 
 .jqcloud a {

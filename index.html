@@ -17,7 +17,7 @@
 		<link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="/css/theme/material.css">
+		<link rel="stylesheet" href="css/theme/material.css">
 		<link rel="stylesheet" href="css/theme/marcysutton.css">
 
 		<!-- For syntax highlighting -->
@@ -90,14 +90,14 @@
 
 				<section>
 					<div id="wordCloud" style="min-width: 1024px; width: 1440px; min-height: 600px; height: 601px;" class="jqcloud">
-			    	<span class="w7" style="position: absolute; left: 340px; top: 0;">Web apps</span>
+			    	<span class="w7" style="position: absolute; left: 340px; top: 0;">web apps</span>
 			    	<span class="w4" style="position: absolute; left: 50px; top: 100px;">Glass</span>
-			    	<span class="w6" style="position: absolute; left: 580px; top: 180px;">Home<br>media</span>
-			    	<span class="w4" style="position: absolute; left: 0; top: 250px;">Appliances</span>
-			    	<span class="w4" style="position: absolute; left: 1026px; top: 220px;">Fitness Tracking</span>
-			    	<span class="w3" style="position: absolute; left: 1020px; top: 100px;">Time travel</span>
-			    	<span class="w7" style="position: absolute; left: 0px; top: 430px;">Mobile OS</span>
-			    	<span class="w5" style="position: absolute; right: 0px; top: 490px;">Environmental</span>
+			    	<span class="w6" style="position: absolute; left: 580px; top: 180px;">home<br>media</span>
+			    	<span class="w4" style="position: absolute; left: 0; top: 250px;">appliances</span>
+			    	<span class="w4" style="position: absolute; left: 1026px; top: 220px;">fitness tracking</span>
+			    	<span class="w3" style="position: absolute; left: 1020px; top: 100px;">time travel</span>
+			    	<span class="w7" style="position: absolute; left: 0px; top: 470px;">mobile OS</span>
+			    	<span class="w5" style="position: absolute; right: 0px; top: 490px;">environmental</span>
 			    </div>
 				</section>
 
@@ -170,12 +170,12 @@
 				</section>
 
 				<section>
-					<h2 style="margin-bottom:0.5em;">#a11y in single-page apps</h2>
+					<h2 style="margin-bottom:0.5em;">A11Y in <br>Client-Rendered Apps</h2>
 					<ul>
+						<li>Write meaningful HTML</li>
             <li>Manage <a href="http://www.w3.org/TR/wai-aria/" target="_blank" title="ARIA documentation opens in a new window">ARIA</a> attributes</li>
 						<li>Enable the keyboard</li>
             <li>Handle focus</li>
-						<li>Write meaningful HTML</li>
             <li>Alert the user</li>
 					</ul>
 					<aside class="notes">
@@ -185,17 +185,31 @@
 					</aside>
 				</section>
 
-        <section>
-          <h2>ARIA <br>Core Components</h2>
-          <ul>
-						<li>Roles</li>
-						<li>States</li>
-						<li>Properties</li>
-          </ul>
-        </section>
+				<section>
+					<h2>Meaningful HTML</h2>
+					<img src="img/gmail-shortcuts.png" style="width: 70%" alt="Gmail's inaccessible keyboard shortcuts">
+					<br>
+					<img src="img/gmail-source.png" style="width: 100%" alt="Gmail rendered source in Element Inspector">
+				</section>
 
 				<section>
-					<h2>Using Roles</h2>
+					<h2>Managing ARIA Attributes</h2>
+					<pre><code class="javascript" style="max-height: 750px;">
+ // ngAria - ngModel directive
+ function getRadioReaction() {
+   if (needsTabIndex) {
+     needsTabIndex = false;
+     return function ngAriaRadioReaction(newVal) {
+       var boolVal = newVal === attr.value;
+       elem.attr('aria-checked', boolVal);
+       elem.attr('tabindex', 0 - !boolVal);
+     };
+   ...
+					</code></pre>
+				</section>
+
+        <section>
+          <h2>Know your roles</h2>
 					<ul>
 						<li>They're element types</li>
 						<li>They're landmarks</li>
@@ -245,7 +259,7 @@
 					<pre><code class="html">
   &lt;material-button role="button" 
     tabIndex="0" 
-    ng-click="woohoo()"&gt;
+    ng-click="woohooNeedsHelp()"&gt;
   &lt;/material-button&gt;
           </code></pre>
         </section>
@@ -267,130 +281,76 @@
 					</div>
 				</section>
 
-        <section>
-          <h2>Make your framework do the heavy lifting <span class="offscreen">1 of 3</span></h2>
-          <pre><code class="html">
-  // AngularUI Bootstrap
-  &lt;accordion-group
-    is-open="status.open"
-    is-disabled="status.isDisabled"&gt;
-  &lt;/accordion-group&gt;
-
-
-          </code></pre>
-        </section>
-
-        <section data-transition="none">
-          <h2>Make your framework do the heavy lifting <span class="offscreen">2 of 3</span></h2>
-          <pre><code class="html">
-  // AngularUI Bootstrap
-  &lt;accordion-group
-    aria-expanded="true"
-    is-open="status.open"
-    aria-disabled="false"
-    is-disabled="status.isDisabled"&gt;
-  &lt;/accordion-group&gt;
-          </code></pre>
-          <aside class="notes">
-   Angular properties alongside aria properties get verbose.
-          </aside>
-        </section>
-
-        <section data-transition="none">
-          <h2>Make your framework do the heavy lifting <span class="offscreen">3 of 3</span></h2>
-          <h3 class="offscreen">Example where ARIA attributes are the default</h3>
-          <pre><code class="html">
-  // AngularUI Bootstrap
-  &lt;accordion-group
-    ng-expanded="status.open"
-    ng-disabled="status.isDisabled"&gt;
-  &lt;/accordion-group&gt;
-
-
-          </code></pre>
-        </section>
-
 				<section>
-					<h2 class="h3-style">Angular.js Material Design</h2>
-					<a href="https://material.angularjs.org/#/material.components.radioButton/readme/overview" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material-RadioButtons.png" class="plain" alt="Angular Material Radio Buttons" style="max-height: 700px;"></a>
+					<h2>Angular.js Material Design</h2>
+					<a href="https://material.angularjs.org/#/material.components.radioButton/readme/overview" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material-Checkbox.png" class="plain" alt="Angular Material Checkbox" style="max-height: 700px;"></a>
 					<aside class="notes">
 						Here's how I practice what I preach
 					</aside>
 				</section>
 
 				<section>
-					<h2>Angular Material Radio Buttons</h2>
-					<div class="twoThirdsCol skinnyCol">
-						<img src="img/radio-buttons.png" alt="Radio Button screenshot: radio-group selected via keyboard">
-					</div>
-					<div class="twoThirdsCol wideCol">
-					<pre><code class="html">
-&lt;material-radio-group ng-model="data.group"&gt;
-  &lt;material-radio-button value="1"&gt;
-    Label 1
-  &lt;/material-radio-button&gt;
-  &lt;material-radio-button value="2"&gt;
-    Label 2
-  &lt;/material-radio-button&gt;
-&lt;/material-radio-group&gt;
-					</code></pre>
-					</div>
-				</section>
-
-				<section>
-					<h2 class="h3-style">Angular Material Radio Buttons (cont'd)</h2>
+					<h2>Material Checkbox (1/2)</h2>
 					<pre><code class="javascript" style="max-height: 640px;">
-function materialRadioGroupDirective() {
-  element.attr({
-    'role': 'radiogroup',
-    'tabIndex': '0'
-  })
-  .on('keydown', keydownListener);
+ // material.components.checkbox
+ function MaterialCheckboxDirective($materialAria, ...) {
+   tAttrs.tabIndex = 0;
+   tElement.attr('role', 'checkbox');
 
-  function keydownListener(ev) {
-    if (ev.which === Constant.KEY_CODE.LEFT_ARROW) {
-      rgCtrl.selectPrevious(element);
-    }
-    else if (ev.which === Constant.KEY_CODE.RIGHT_ARROW) {
-      rgCtrl.selectNext(element);
-    }
-  }
-}
-function materialRadioButtonDirective($expectAria) {
-  element.attr('role', 'radio');
-  $expectAria(element, 'aria-label', element.text());
-
-  var lastChecked;
-  attr.observe('value', render);
-  function render() {
-    var checked = (rgCtrl.getViewValue() === attr.value);
-    if(checked === lastChecked){ return; }
-    lastChecked = checked;
-    element.attr('aria-checked', checked);
-  }
-}
+   return function postLink(...) {
+     $materialAria.expect(element, 'aria-label');
+    
+     function keypressListener(ev) {
+      if (element[0].hasAttribute('disabled')) return;
+     ...
 					</code></pre>
 				</section>
 
 				<section>
-					<h2>Something about Angular's shortcomings</h2>
+					<h2>Material Checkbox (2/2)</h2>
+					<pre><code class="javascript" style="max-height: 640px;">
+ // material.services.aria 
+ function expect(element, attrName, defaultValue) {
+   var node = element[0];
+   if (!node.hasAttribute(attrName)) {
+     var hasDefault = angular.isDefined(defaultValue) && defaultValue.length;
+     if (!hasDefault) {
+       $log.warn(messageTemplate, attrName, getTagString(node));
+       $log.warn(node);
+     } else {
+       element.attr(attrName, defaultValue.trim());
+     }
+   }
+ }
+					</code></pre>
 				</section>
 
 				<section>
-					<h2>Advocate by doing</h2>
+					<h2>About that <em>&lsquo;disabled&rsquo;</em> bit</h2>
+					<img src="img/material-checkbox-disabled.png" alt="Disabled checkbox missing ARIA attribute" style="width: 100%;">
+					<pre><code class="html" style="width: 100%;">
+ // chrome://accessibility/
+ AXCheckBox AXRoleDescription='check box' 
+   AXEnabled='1' AXFocused='0' AXRequired='0' 
+   AXTitle='Checkbox (Disabled)' AXValue='0' 
+   AXDescription='Disabled checkbox'
+					</code></pre>
 				</section>
 
-       <!--  <section>
-          <h2>Slides</h2>
-          <p class="big-italic"><a href="http://tiny.cc/mvc-a11y" target="_blank" title="Link opens in a new window">http://tiny.cc/mvc-a11y</a></p>
-          <div class="separator inset-width" style="margin-bottom: 1em;"></div> 
-          <h2>Resources</h2>
-          <ul>
-            <li><a href="http://substantial.com/blog/2014/07/22/how-i-audit-a-website-for-accessibility/" target="_blank" title="Link opens in a new window">Auditing a Website for Accessibility</a></li>
-            <li><a href="https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en" target="_blank" title="Link opens in a new window">Chrome Accessibility Dev Tools</a></li>
-            <li><a href="http://a11yproject.com/" target="_blank" title="Link opens in a new window">A11y Project</a></li>
-          </ul>
-        </section>-->
+				<section>
+					<h2>What if Web Components <br>could help?</h2>
+					<pre><code class="html">
+  &lt;material-checkbox disabled extends="input" 
+    aria-label="Subscribe"&gt;
+    Subscribe
+  &lt;/material-checkbox&gt;
+					</code></pre>
+				</section>
+					
+				<section>
+					<h2 class="h1-style">A11Y + the modern web =<br>
+					opportunities for innovation.</h2>
+				</section>
 
         <section>
           <h2 style="margin-top: 0.5em;">Thank you!</h2>
