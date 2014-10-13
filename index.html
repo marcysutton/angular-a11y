@@ -84,7 +84,7 @@
 				<section>
 					<h2 class="h1-style">Google Accessibility</h2>
 					<p>
-						<small>Created by <a href="http://marcysutton.com">Marcy Sutton</a> / <a href="http://twitter.com/marcysutton">@marcysutton</a></small>
+						<small><a href="http://marcysutton.com" target="_blank" title="Link opens in a new window">Marcy Sutton</a> / <a href="http://twitter.com/marcysutton" target="_blank" title="Link opens in a new window">@marcysutton</a></small>
 					</p>
 				</section>
 
@@ -109,7 +109,7 @@
 				</section>
 
 				<section>
-					<h2>Messaging A11Y</h2>
+					<h2>Messaging #A11Y</h2>
 					<ul>
 						<li class="fragment">The legal way</li>
 						<li class="fragment">The eat your vegetables way</li>
@@ -150,6 +150,10 @@
 				<section>
 					<img src="img/happy-little-tree.jpg" alt="Bob Ross happy little tree" style="min-height: 480px;">
 				</section>
+				
+				<section>
+					<h2 class="h1-style">Web Components &amp; Accessibility</h2>
+				</section>
 
 				<section>
 				<div class="full-screen-code">
@@ -170,7 +174,7 @@
 				</section>
 
 				<section>
-					<h2 style="margin-bottom:0.5em;">A11Y in <br>Client-Rendered Apps</h2>
+					<h2 style="margin-bottom:0.5em;">Accessibility in <br>Client-Rendered Apps</h2>
 					<ul>
 						<li>Write meaningful HTML</li>
             <li>Manage <a href="http://www.w3.org/TR/wai-aria/" target="_blank" title="ARIA documentation opens in a new window">ARIA</a> attributes</li>
@@ -283,34 +287,47 @@
 
 				<section>
 					<h2>Angular.js Material Design</h2>
-					<a href="https://material.angularjs.org/#/material.components.radioButton/readme/overview" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material-Checkbox.png" class="plain" alt="Angular Material Checkbox" style="max-height: 700px;"></a>
+					<a href="https://material.angularjs.org/#/material.components.radioButton/readme/overview" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material-Checkbox.png" alt="Angular Material Checkbox" style="max-height: 700px;"></a>
 					<aside class="notes">
 						Here's how I practice what I preach
 					</aside>
 				</section>
 
 				<section>
+					<h2>My Accessibility Impact</h2>
+					<img src="img/Angular-marcy-commits.png" alt="Marcy's Angular Material Commits">
+				</section>
+
+				<section>
+					<blockquote>&ldquo;If there are more people like you, it won’t take long until devs are actually aware about accessibility being a thing&rdquo;
+					<small>-Angular Material colleague</small></blockquote>
+				</section>
+
+				<section>
 					<h2>Material Checkbox (1/2)</h2>
-					<pre><code class="javascript" style="max-height: 640px;">
+					<div class="full-screen-code">
+						<pre><code class="javascript" style="max-height: 640px;">
  // material.components.checkbox
  function MaterialCheckboxDirective($materialAria, ...) {
    tAttrs.tabIndex = 0;
    tElement.attr('role', 'checkbox');
 
    return function postLink(...) {
-     $materialAria.expect(element, 'aria-label');
+     $materialAria.expectAttribute(element, 'aria-label');
     
      function keypressListener(ev) {
       if (element[0].hasAttribute('disabled')) return;
      ...
-					</code></pre>
+						</code></pre>
+					</div>
 				</section>
 
 				<section>
 					<h2>Material Checkbox (2/2)</h2>
-					<pre><code class="javascript" style="max-height: 640px;">
+					<div class="full-screen-code">
+						<pre><code class="javascript" style="max-height: 640px;">
  // material.services.aria 
- function expect(element, attrName, defaultValue) {
+ function expectAttribute(element, attrName, defaultValue) {
    var node = element[0];
    if (!node.hasAttribute(attrName)) {
      var hasDefault = angular.isDefined(defaultValue) && defaultValue.length;
@@ -322,13 +339,14 @@
      }
    }
  }
-					</code></pre>
+						</code></pre>
+					</div>
 				</section>
 
 				<section>
-					<h2>About that <em>&lsquo;disabled&rsquo;</em> bit</h2>
+					<h2>About that <em>disabled</em> attribute</h2>
 					<img src="img/material-checkbox-disabled.png" alt="Disabled checkbox missing ARIA attribute" style="width: 100%;">
-					<pre><code class="html" style="width: 100%;">
+					<pre style="width: 95%;"><code class="html" style="width: 100%;">
  // chrome://accessibility/
  AXCheckBox AXRoleDescription='check box' 
    AXEnabled='1' AXFocused='0' AXRequired='0' 

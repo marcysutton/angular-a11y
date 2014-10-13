@@ -239,11 +239,16 @@ body {
   }
   blockquote {
     background-color: transparent;
-    font-style: italic;
-    line-height: 100%;
+    box-shadow: none;
+    font-style: normal;
+    line-height: 1.25;
     font-size: 2em;
     text-align: left;
-
+    
+    small {
+      font-style: italic;
+      margin-top: 0.5em;
+    }
     &.large {
       font-size: 3em;
       margin-bottom: 0.75em;
@@ -439,7 +444,7 @@ body {
   section img {
   	margin: 15px 0px;
   	background: rgba(255,255,255,0.12);
-  	border: 4px solid $mainColor;
+  	border: 4px solid $separatorColor;
 
   	// box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 
