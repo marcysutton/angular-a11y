@@ -100,6 +100,10 @@
   font-size: 36px;
   font-weight: 200;
   color: #212121; }
+  .reveal iframe {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75); }
+  .reveal code {
+    font-size: 110%; }
   .reveal pre {
     background-color: black; }
     .reveal pre code {
@@ -165,6 +169,8 @@
   letter-spacing: 0.02em;
   margin: 0 0 20px 0;
   text-transform: none; }
+.reveal p, .reveal small, .reveal ul, .reveal ol, .reveal div.large-tag, .reveal figcaption, .reveal blockquote, .reveal dd, .reveal dt {
+  line-height: 1.5; }
 .reveal h1, .reveal h2.h1-style, .reveal h3.h1-style {
   font-size: 3.25em; }
 .reveal h2,
@@ -179,8 +185,7 @@
 .reveal h4, .reveal h2.h4-style,
 .reveal h3.h4-style,
 .reveal p.h4-style {
-  font-size: 1.45em;
-  font-weight: bold; }
+  font-size: 1.45em; }
 .reveal h2 strong,
 .reveal h3 strong {
   color: #0277bb; }
@@ -461,8 +466,12 @@
  * Slide Styles
  *********************************************/
 .reveal .definition {
-  margin: 1em auto 0;
-  padding-bottom: 1em; }
+  margin: 0 auto; }
+  .reveal .definition p {
+    font-size: 0.85em;
+    margin-bottom: 0; }
+  .reveal .definition pre code {
+    font-size: 1.5em; }
 .reveal .separator {
   background-color: rgba(0, 0, 0, 0.12);
   height: 5px;
@@ -673,19 +682,61 @@
     text-align: center;
     width: 100%; }
 
-x-gif {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0; }
+/* fonts */
+.jqcloud {
+  font-size: 0.65em;
+  /*text-shadow: 1px 3px 3px #000;*/ }
 
-x-gif #frames {
-  height: 100%;
-  width: 100%; }
+.jqcloud a {
+  font-size: inherit;
+  text-decoration: none; }
 
-x-gif img {
-  height: 100vh;
-  width: 100vw; }
+.jqcloud span.w10 {
+  font-size: 550%;
+  line-height: 100%; }
+
+.jqcloud span.w9 {
+  font-size: 500%;
+  line-height: 100%; }
+
+.jqcloud span.w8 {
+  font-size: 450%;
+  line-height: 100%; }
+
+.jqcloud span.w7 {
+  font-size: 400%;
+  line-height: 100%; }
+
+.jqcloud span.w6 {
+  font-size: 350%;
+  line-height: 100%; }
+
+.jqcloud span.w5 {
+  font-size: 300%;
+  line-height: 100%; }
+
+.jqcloud span.w4 {
+  font-size: 250%;
+  line-height: 100%; }
+
+.jqcloud span.w3 {
+  font-size: 200%;
+  line-height: 100%; }
+
+.jqcloud span.w2 {
+  font-size: 150%;
+  line-height: 100%; }
+
+.jqcloud span.w1 {
+  font-size: 100%;
+  line-height: 100%; }
+
+/* layout */
+.jqcloud {
+  overflow: hidden;
+  position: relative; }
+
+.jqcloud span {
+  padding: 0; }
 
 /*# sourceMappingURL=marcysutton.css.map */

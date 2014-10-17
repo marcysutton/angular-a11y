@@ -22,7 +22,6 @@
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-		<link rel="stylesheet" href="lib/css/jqcloud.css">
 
 		<script src="lib/js/jquery-1.11.1.min.js"></script>
 
@@ -48,11 +47,13 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h2 class="h3-style">Virgin America</h2>
-					<iframe width="1280" height="720" src="//www.youtube.com/embed/BWerpGoKNAQ" frameborder="0" allowfullscreen></iframe>
-					<aside class="notes">
-						Pause video halfway through to explain mouse vs. screen reader interaction
-					</aside>
+					<h2>Hello</h2>
+					<img src="img/human-robot-communication.jpg" title="Human-to-robot communication at the CSUN 2014 Conference" alt="Human-to-robot communication at the CSUN 2014 Conference">
+				</section>
+
+				<section>
+					<h2 class="h1-style">Angular Accessibility</h2>
+					<p>Marcy Sutton, Seattle, USA<br>Web Developer, Angular Material Contributor</p>
 				</section>
 
 				<section>
@@ -67,56 +68,13 @@
 				</section>
 
 				<section>
-					<h2><span class="big-stat">80 million</span> Europeans with disabilities</h2>
-					<aside class="notes">
-						Source: <a href="http://www.edf-feph.org/Page_Generale.asp?DocID=12534">European Disability Forum</a>
-					</aside>
-				</section>
-
-				<section>
-					<h2><span class="big-stat">15%</span> of the European population</h2>
-					<aside class="notes">
-						Source: <a href="http://www.edf-feph.org/Page_Generale.asp?DocID=12534">European Disability Forum</a>
-					</aside>
-				</section>
-
-				<section>
-					<h2>Accessibility is about</h2>
-					<h3 class="h1-style" style="font-size: 14rem;">PEOPLE.</h3>
-				</section>
-
-				<section>
-					<h2 class="h1-style">Angular Accessibility</h2>
-					<p>
-						<small>Created by <a href="http://marcysutton.com">Marcy Sutton</a> / <a href="http://twitter.com/marcysutton">@marcysutton</a></small>
-					</p>
-				</section>
-
-				<section>
-					<h2 style="text-transform: uppercase;">Are your apps accessible?</h2>
-					<h3>It could depend on:</h3>
-					<!-- <div class="separator inset-width"></div> -->
+					<h2 style="margin-bottom:0.5em;">#A11Y in Angular Apps</h2>
 					<ul>
-						<li>The framework*</li>
-						<li>Screen reader</li>
-						<li>Browser</li>
-						<li>Your code*</li>
-					</ul>
-					<div><em>* Things you can control, to varying degrees</em></div>
-					<aside class="notes">
-						You can submit PRs to frameworks, refine your code, even petition browsers. Can't do as much about screen readers.
-					</aside>
-				</section>
-
-				<section>
-					<h2 style="margin-bottom:0.5em;">#a11y in single-page apps</h2>
-					<!-- <div class="separator inset-width"></div> -->
-					<ul>
-            <li>Manage <a href="http://www.w3.org/TR/wai-aria/" target="_blank" title="ARIA documentation opens in a new window">ARIA</a> attributes</li>
+            <li>Write meaningful HTML</li>
 						<li>Enable the keyboard</li>
-            <li>Handle focus</li>
-						<li>Write meaningful HTML</li>
+						<li>Handle focus</li>
             <li>Alert the user</li>
+            <li>Coverage with tests</li>
 					</ul>
 					<aside class="notes">
           Handling focus: tabIndex, replacing part of the DOM causes focus mgmt probz
@@ -124,70 +82,49 @@
 					*Graceful degradation is worth mentioning but it is outside the scope of this talk.
 					</aside>
 				</section>
+				
+				<section>
+					<h2 class="h4-style">Step 1 to writing meaningful HTML</h2>
+					<h2>Use Semantic Elements</h2>
+					<pre><code class="html">
+	&lt;material-button tabIndex="-1"&gt;
+	  &lt;button&gt;Flat Button&lt;/button&gt;
+	&lt;/material-button&gt;
+					</code></pre>
+				</section>
 
 				<section>
-					<div class="inset-width">
-						<h2 class="h1-style left-align" style="padding-left: 1em;">
-							<strong>A</strong>ccessible <br>
-							<strong>R</strong>ich <br>
-							<strong>I</strong>nternet <br>
-							<strong>A</strong>pplications
-						</h2>
-					</div>
-					<div class="inset-width">
-						<!-- <div class="separator"></div> -->
-					</div>
-					<p style="margin: 0.5em 0;" class="big-italic">Expands HTML's semantic vocabulary<p>
+					<h2 class="h4-style">Step 2 to writing meaningful HTML</h2>
+					<h3 class="h1-style">Use ARIA</h3>
+					<p class="big-italic" style="margin: 0.5em 0;">Expands HTML's semantic vocabulary</p>
 				</section>
 
         <section>
-          <h2 class="h4-style">ARIA Core Components<span class="offscreen"> 1 of 3</span></h2>
-          <div class="inset-width-wider">
-            <!-- <div class="separator"></div> -->
-          </div>
-          <div class="definition">
-            <h3 class="h1-style">Roles</h3>
-            <p class="big-italic">What does this thing do?</p>
+          <!-- <h2 class="h3-style">ARIA Core Components</h2> -->
+          <div class="definition inset-width">
+            <h3 class="h4-style">Roles</h3>
+            <p>What does this thing do?</p>
             <pre><code class="html">
-      &lt;div role="img" style="background-image..."&gt;&lt;/div&gt;
+    &lt;div role="img" style="background-image..."&gt;
             </code></pre>
           </div>
-        </section>
-
-        <section>
-          <h2 class="h4-style">ARIA Core Components<span class="offscreen"> 2 of 3</span></h2>
-          <div class="inset-width-wider">
-            <!-- <div class="separator"></div> -->
-          </div>
-          <div class="definition">
-            <h3 class="h1-style">States</h3>
-            <p class="big-italic">The current condition of this particular thing</p>
+          <div class="definition inset-width">
+            <h3 class="h4-style">States</h3>
+            <p>The current condition of this particular thing</p>
             <pre><code class="html">
-    &lt;material-input aria-disabled="true"&gt;&lt;/material-input&gt;
+    &lt;material-input aria-disabled="true"&gt;
             </code></pre>
           </div>
-          <aside class="notes">
-          Explain redundancy: an aria-disabled attribute versus a regular disabled attribute: the latter only works on certain elements. For custom components, this extends the vocabulary. Try keying off of the ARIA attribute or make the framework inject ARIA keying off 'disabled'
-          </aside>
-        </section>
-
-        <section>
-          <h2 class="h4-style">ARIA Core Components<span class="offscreen"> 3 of 3</span></h2>
-          <div class="inset-width-wider">
-            <!-- <div class="separator"></div> -->
-          </div>
-          <div class="definition">
-            <h3 class="h1-style">Properties</h3>
-            <p class="big-italic">The nature of the current object</p>
+          <div class="definition inset-width">
+            <h3 class="h4-style">Properties</h3>
             <pre><code class="html">
-     &lt;doner-kebab aria-label="Lunch courtesy AngelinaMagnum"&gt;
+  &lt;material-radio-button aria-label="Unsubscribe"&gt;
             </code></pre>
           </div>
      		</section>
 
 				<section>
 					<h2>Using Roles</h2>
-					<!-- <div class="separator inset-width"></div> -->
 					<ul>
 						<li>They're element types</li>
 						<li>They're landmarks</li>
@@ -203,180 +140,71 @@
 				<section>
 					<h2>Application Role</h2>
 					<p class="big-italic">Disables a screen reader&rsquo;s &ldquo;virtual cursor&rdquo;</p>
-					<div class="definition">
+					<div class="definition inset-width">
 						<pre><code class="html">
-       &lt;sparkle-party role="application"&gt;&lt;/sparkle-party&gt;
+      &lt;body role="application"&gt;&lt;/body&gt;
 						</code></pre>
 					</div>
-
-					<aside class="notes">
-					<p><a href="http://www.marcozehe.de/2012/02/06/if-you-use-the-wai-aria-role-application-please-do-so-wisely/" target="_blank" title="Link opens in a new window">Marco Zehe's post about using Application Mode</a></p>
-					<p>Virtual Cursor/Browse mode:<br>
-					 Several keys are captured by the assistive technology and are not processed by the browser. These allow navigation by headings, lists, links, tables, form elements and others. Usually, these are done via single letters. The visual focus may or may not follow the virtual cursor onto focusable items, depending on the assistive technology in use and its settings</p>
-					 <p>Forms mode/focus mode:<br>
-					 All keys are passed through to the browser. The challenge is that you may be creating widgets that require you to force the user into direct interaction with the browser. You know that your widget can best be used via the keyboard if the user is not in virtual mode. It is under your control whether the user is being thrown into focus mode once your widget gains keyboard focus.</p>
-					</aside>
 				</section>
-
-        <section>
-          <h2>Don't Do This</h2>
-          <div class="inset-width">
-            <pre><code class="html">
-         &lt;body role="application"&gt;
-            </code></pre>
-          </div>
-          <img src="img/body-roll.gif" style="min-height: 400px;" alt="Body roll away from your responsibilities">
-          <aside class="notes">
-   Only want to use role="application" if the content you're providing consists of only interactive controls, and of those, mostly advanced widgets, that emulate a real desktop application.
-          </aside>
-        </section>
-
+				
 				<section>
-					<h2>Document or Application?</h2>
+					<h2>Enabling the keyboard</h2>
 					<pre><code class="html">
-  &lt;sparkle-party&gt;
-    &lt;h2&gt;Do you like to dance?&lt;/h2&gt;
-    &lt;button class="lets-dance"&gt;I wore my party pants&lt;/button&gt;
+  &lt;div ng-click="sorryKeyboards()"&gt;&lt;/div&gt; // Non :(
+          </code></pre>
 
-    &lt;disco-ball&gt;
-      &lt;canvas&gt;&lt;/canvas&gt;
-      &lt;p aria-live="polite" class="disco-transcript"&gt;&lt;/p&gt;
-    &lt;/disco-ball&gt;
-  &lt;/sparkle-party&gt;
-					</code></pre>
-					<aside class="notes">
-						Client-side apps often blur the lines between application and document. Because accessibility works best with a document structure, it's best to selectively use the application role on a per-widget basis. Care must also be taken for the correct roles, states and properties for non-native elements or interactions.
-					</aside>
-				</section>
+					<pre><code class="html">
+  &lt;button ng-click="woohoo()"&gt;&lt;/button&gt;  // Oui! :)
+          </code></pre>
 
-				<section>
-					<h2 class="h1-style">Enabling the keyboard</h2>
+					<pre><code class="html">
+  &lt;material-button role="button" tabIndex="0"
+    ng-click="woohoo()" 
+    ng-keypress="woohoo()"&gt;
+  &lt;/material-button&gt;
+          </code></pre>
 					<aside class="notes">
 					Challenge the concept of "interactive". It doesn't have to be visually interactive. Appeal to all the senses. PERCEIVABLE and OPERABLE. And robust. And understandable.
 					</aside>
 				</section>
 
-        <section>
-          <h2 class="offscreen">Tab Index</h2>
-          <div class="tabIndex-example large-tag-wrap" tabIndex="0" contenteditable>
-            <p class="large-tag">&lt;div tabIndex="0"&gt;&lt;/div&gt;</p>
-          </div>
-        </section>
-
 				<section>
-					<h2>What Not To Do</h2>
-					<div class="inset-width">
-						<div class="hamburger-menu">
-							<div class="hamburger-button" title="Div requires clicking, does not operate as button"></div>
-							<ul aria-disabled="true">
-								<li><a href="javascript: return false;" tabIndex="-1">Lettuce</a></li>
-								<li><a href="javascript: return false;" tabIndex="-1">Tomato</a></li>
-								<li><a href="javascript: return false;" tabIndex="-1">E. coli</a></li>
-							</ul>
-						</div>
-					</div>
-          <pre><code contenteditable class="html">
-        &lt;div class="menu" ng-click="toggleMenu()"&gt;&lt;/div&gt;
-          </code></pre>
-					<aside class="notes">
-						Hamburger button is a div with no tabIndex, role or keypress event
-					</aside>
-				</section>
-
-				<section data-click-background="img/dancing-dog.gif">
-					<div class="inset-width text-background">
-						<h2>Close, but no keypress.</h2>
-						<pre><code class="html">
-  &lt;dance-button tabIndex="0"
-    ng-click="spicy123(go);"&gt;
-    DANCE!
-  &lt;/dance-button&gt;
-						</code></pre>
-						<div class="themed-button image-show boring-button" tabIndex="0" title="Div requires clicking to activate" aria-label="Gif button only works with mouse">DANCE!</div>
-						<div>
-							<button class="boring-reset reset disabled" aria-label="Reset dog dancing image">Rest</button>
-						</div>
-					</div>
-				</section>
-
-				<!-- <section>
-					<div class="inset-width text-background">
-						<h2>Everybody dance!</h2>
-						<pre><code class="html">
-  &lt;dance-button tabIndex="0" role="button"
-    ng-click="letsGetDown(toThat)"
-    ng-keypress="letsGetDown(toThat)"&gt;
-    DANCE!
-  &lt;/dance-button&gt;
-						</code></pre>
-						<button class="themed-button image-show" aria-label="Dance">DANCE!</button>
-						<div>
-							<button class="reset disabled" aria-label="Rest">Rest</button>
-						</div>
-					</div>
-          <aside class="notes">
-            You can test for a11y by mocking &amp; expecting keyboard events, could be hooked up to continuous integration process
-          </aside>
-				</section> -->
-
-				<section>
-					<h2>Keyboard Accessibility</h2>
-					<h3>One Simple Trick</h3>
-					<div class="inset-width">
+					<h2>Don't forget <code>:focus</code></h2>
 					<pre><code class="css">
   [tabIndex="0"] {
     color: $linkColor;
 
     &:focus, &:hover {
+      background-color: $linkColor;
       color: $linkActiveColor;
-      outline: default;
     }
   }
 					</code></pre>
-					</div>
 				</section>
 
         <section>
-          <h2>Make your framework do the heavy lifting <span class="offscreen">1 of 3</span></h2>
-          <pre><code class="html">
-  // AngularUI Bootstrap
-  &lt;accordion-group
-    is-open="status.open"
-    is-disabled="status.isDisabled"&gt;
-  &lt;/accordion-group&gt;
-
-
-          </code></pre>
+					<h2 class="h3-style">Handling Focus</h2>
+					<iframe width="1280" height="640" title="VirginAmerica.com VoiceOver Demo" src="//www.youtube.com/embed/8ZbYJSqE0EM" frameborder="0" allowfullscreen></iframe>
         </section>
 
-        <section data-transition="none">
-          <h2>Make your framework do the heavy lifting <span class="offscreen">2 of 3</span></h2>
-          <pre><code class="html">
-  // AngularUI Bootstrap
-  &lt;accordion-group
-    aria-expanded="true"
-    is-open="status.open"
-    aria-disabled="false"
-    is-disabled="status.isDisabled"&gt;
-  &lt;/accordion-group&gt;
-          </code></pre>
-          <aside class="notes">
-   Angular properties alongside aria properties get verbose.
-          </aside>
+        <section>
+					<h2>Demo scroll w/ focus to compare</h2>
         </section>
 
-        <section data-transition="none">
-          <h2>Make your framework do the heavy lifting <span class="offscreen">3 of 3</span></h2>
-          <h3 class="offscreen">Example where ARIA attributes are the default</h3>
-          <pre><code class="html">
-  // AngularUI Bootstrap
-  &lt;accordion-group
-    ng-expanded="status.open"
-    ng-disabled="status.isDisabled"&gt;
-  &lt;/accordion-group&gt;
-
-
-          </code></pre>
+        <section>
+					<h2 class="h1-style">Alerting the User</h2>
+					<pre><code class="html">
+  &lt;live-region level="polite"&gt;&lt;/live-region&gt;
+					</code></pre>
+					<pre><code class="javascript">
+  function liveRegionDirective(element, attrs) {
+    element.attr('aria-live', attrs.level);
+  }
+  ...
+  function otherDirective() {
+    scope.liveRegion.append(scope.message);
+  }
+					</code></pre>
         </section>
 
 				<section>
@@ -386,65 +214,82 @@
 						Here's how I practice what I preach
 					</aside>
 				</section>
-
+				
 				<section>
-					<h2>Angular Material Radio Buttons</h2>
-					<div class="twoThirdsCol skinnyCol">
-						<img src="img/radio-buttons.png" alt="Radio Button screenshot: radio-group selected via keyboard">
-					</div>
-					<div class="twoThirdsCol wideCol">
-					<pre><code class="html">
-&lt;material-radio-group ng-model="data.group"&gt;
-  &lt;material-radio-button value="1"&gt;
-    Label 1
-  &lt;/material-radio-button&gt;
-  &lt;material-radio-button value="2"&gt;
-    Label 2
-  &lt;/material-radio-button&gt;
-&lt;/material-radio-group&gt;
-					</code></pre>
+					<h2>Material Checkbox (1/2)</h2>
+					<div class="full-screen-code">
+						<pre><code class="javascript" style="max-height: 640px;">
+ // material.components.checkbox
+ function MaterialCheckboxDirective($materialAria, ...) {
+   tAttrs.tabIndex = 0;
+   tElement.attr('role', 'checkbox');
+
+   return function postLink(...) {
+     $materialAria.expectAttribute(element, 'aria-label');
+    
+     function keypressListener(ev) {
+      if (element[0].hasAttribute('disabled')) return;
+     ...
+						</code></pre>
 					</div>
 				</section>
 
 				<section>
-					<h2 class="h3-style">Angular Material Radio Buttons (cont'd)</h2>
-					<pre><code class="javascript" style="max-height: 640px;">
-function materialRadioGroupDirective() {
-  element.attr({
-    'role': 'radiogroup',
-    'tabIndex': '0'
-  })
-  .on('keydown', keydownListener);
+					<h2>Material Checkbox (2/2)</h2>
+					<div class="full-screen-code">
+						<pre><code class="javascript" style="max-height: 640px;">
+ // material.services.aria 
+ function expectAttribute(element, attrName, defaultValue) {
+   var node = element[0];
+   if (!node.hasAttribute(attrName)) {
+     var hasDefault = angular.isDefined(defaultValue) && defaultValue.length;
+     if (!hasDefault) {
+       $log.warn(messageTemplate, attrName, getTagString(node));
+       $log.warn(node);
+     } else {
+       element.attr(attrName, defaultValue.trim());
+     }
+   }
+ }
+						</code></pre>
+					</div>
+				</section>
 
-  function keydownListener(ev) {
-    if (ev.which === Constant.KEY_CODE.LEFT_ARROW) {
-      rgCtrl.selectPrevious(element);
-    }
-    else if (ev.which === Constant.KEY_CODE.RIGHT_ARROW) {
-      rgCtrl.selectNext(element);
-    }
-  }
-}
-function materialRadioButtonDirective($expectAria) {
-  element.attr('role', 'radio');
-  $expectAria(element, 'aria-label', element.text());
-
-  var lastChecked;
-  attr.observe('value', render);
-  function render() {
-    var checked = (rgCtrl.getViewValue() === attr.value);
-    if(checked === lastChecked){ return; }
-    lastChecked = checked;
-    element.attr('aria-checked', checked);
-  }
-}
+				<section>
+					<h2>About that <em>disabled</em> attribute</h2>
+					<img src="img/material-checkbox-disabled.png" alt="Disabled checkbox missing ARIA attribute" style="width: 100%;">
+					<pre style="width: 95%;"><code class="html" style="width: 100%;">
+ // chrome://accessibility/
+ AXCheckBox AXRoleDescription='check box' 
+   AXEnabled='1' AXFocused='0' AXRequired='0' 
+   AXTitle='Checkbox (Disabled)' AXValue='0' 
+   AXDescription='Disabled checkbox'
 					</code></pre>
+				</section>
+
+				<section>
+					<h2>Disable with ARIA</h2>
+					<div class="full-screen-code">
+						<pre><code class="javascript" style="max-height: 640px;">
+ // material.components.checkbox
+ function MaterialCheckboxDirective($materialAria, ...) {
+   tAttrs.tabIndex = 0;
+   tElement.attr('role', 'checkbox');
+
+   scope.$watch('disabled', function(newValue){
+     element.attr('aria-disabled', newValue);
+   })
+   ...
+						</code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h2 class="h1-style">Testing</h2>
+
 				</section>
 
         <section>
-          <!-- <h2>Slides</h2>
-          <p class="big-italic"><a href="http://tiny.cc/mvc-a11y" target="_blank" title="Link opens in a new window">http://tiny.cc/mvc-a11y</a></p>
-          <div class="separator inset-width" style="margin-bottom: 1em;"></div> -->
           <h2>Resources</h2>
           <ul>
             <li><a href="http://substantial.com/blog/2014/07/22/how-i-audit-a-website-for-accessibility/" target="_blank" title="Link opens in a new window">Auditing a Website for Accessibility</a></li>
@@ -459,7 +304,7 @@ function materialRadioButtonDirective($expectAria) {
 			</div>
 
 			<footer>
-        <p class="copyright">Accessibility of JavaScript MVCs<br>
+        <p class="copyright">Angular Accessibility<br>
           <a href="http://twitter.com/marcysutton" target="_blank" title="Link opens in a new window">@marcysutton</a> <span aria-hidden="true">/</span> <a href="http://marcysutton.com" target="_blank" title="Link opens in a new window">MarcySutton.com</a></p>
       </footer>
 		</div>
