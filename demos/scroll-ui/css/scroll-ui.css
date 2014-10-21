@@ -1,0 +1,110 @@
+.status-bar {
+  background-color: purple;
+  color: white;
+  font-size: 1.5em;
+  padding: 1em;
+  position: fixed;
+  top: 0;
+  text-align: center;
+  width: 100%; }
+
+.hiddenY {
+  transform: translateY(-100%); }
+
+.offscreen {
+  display: block;
+  position: absolute;
+  left: -50000px; }
+
+.scroll-ui header {
+  height: auto;
+  padding: 1em; }
+.scroll-ui h1 {
+  float: left;
+  margin: 0 0 1em;
+  max-width: 50%; }
+.scroll-ui button {
+  background-color: purple;
+  border: 2px solid transparent;
+  box-shadow: #f0f0f0 0px 0px 0px 3px inset, #edddf5 2px 3px 0px;
+  color: white;
+  display: inline-block;
+  padding: 1em;
+  margin: 1em auto; }
+  .scroll-ui button:hover, .scroll-ui button:focus {
+    border: 2px solid purple; }
+.scroll-ui ul.utility-nav {
+  float: right; }
+.scroll-ui ul li {
+  display: inline-block; }
+  .scroll-ui ul li button {
+    background: none;
+    border: 1px solid #999999;
+    color: currentColor;
+    height: 100%;
+    width: 100%; }
+.scroll-ui main {
+  clear: both; }
+.scroll-ui .centered-inputs {
+  text-align: center; }
+  .scroll-ui .centered-inputs label {
+    display: inline-block;
+    padding-right: 1em; }
+.scroll-ui h2 {
+  padding: 2em 0;
+  text-align: center; }
+.scroll-ui ul.airport-list {
+  clear: both;
+  text-align: center; }
+  .scroll-ui ul.airport-list li {
+    height: 88px;
+    vertical-align: middle;
+    width: 15%; }
+    .scroll-ui ul.airport-list li button {
+      margin: 0; }
+.scroll-ui .people-picker {
+  max-height: 0;
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.5s; }
+  .scroll-ui .people-picker.visible {
+    max-height: 100%; }
+  .scroll-ui .people-picker ul {
+    text-align: center; }
+  .scroll-ui .people-picker li {
+    height: 220px;
+    position: relative;
+    width: 23%; }
+  .scroll-ui .people-picker h3 {
+    position: absolute;
+    padding: 0.5em;
+    text-align: left; }
+  .scroll-ui .people-picker button.pp-number {
+    display: block;
+    font-size: 7em;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    width: 100%; }
+  .scroll-ui .people-picker .pp-control {
+    border-color: transparent;
+    box-shadow: none;
+    display: block;
+    font-size: 24px;
+    line-height: 1;
+    height: auto;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    width: 25%; }
+    .scroll-ui .people-picker .pp-control.add {
+      bottom: 40%;
+      right: 0;
+      z-index: 1; }
+    .scroll-ui .people-picker .pp-control.subtract {
+      top: 50%;
+      z-index: 2; }
+    .scroll-ui .people-picker .pp-control:hover, .scroll-ui .people-picker .pp-control:focus {
+      border: 2px solid purple; }
+
+/*# sourceMappingURL=scroll-ui.css.map */
