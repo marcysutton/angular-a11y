@@ -52,7 +52,7 @@
   padding: 5px 10px;
   position: fixed;
   white-space: nowrap;
-  text-shadow: 1px 3px 3px black; }
+  text-shadow: 1px 3px 3px #000; }
 .reveal ul#table-of-contents {
   display: block;
   list-style: none;
@@ -108,7 +108,7 @@
     background-color: black; }
     .reveal pre code {
       background-color: black;
-      color: #cccccc;
+      color: #ccc;
       font-size: 1.75em;
       line-height: 1.45em;
       max-height: 540px; }
@@ -141,11 +141,11 @@
       position: relative;
       z-index: 1; }
     .reveal footer [aria-hidden=true] {
-      color: #999999;
+      color: #999;
       margin: 0 4px; }
 
 ::selection {
-  color: white;
+  color: #fff;
   background: #97948f;
   text-shadow: none; }
 
@@ -246,13 +246,13 @@
   .reveal section figure img {
     margin: 0; }
   .reveal section figure .note {
-    background-color: black;
-    color: white;
+    background-color: #000;
+    color: #fff;
     font-style: italic;
     padding: 3px 5px;
     position: absolute; }
   .reveal section figure figcaption {
-    color: #cccccc;
+    color: #ccc;
     font-size: 0.65em;
     margin: 0;
     padding: 0.2em 0 0.75em;
@@ -273,15 +273,15 @@
   display: block;
   font-size: 300%; }
 .reveal .large-tag-wrap {
-  background-color: black;
+  background-color: #000;
   padding: 1em; }
 .reveal .large-tag {
-  color: #cccccc;
+  color: #ccc;
   font-family: Menlo, monospace;
   font-size: 2.5em;
   margin-top: 0.5em; }
 .reveal .muted {
-  color: #999999; }
+  color: #999; }
 .reveal ul {
   font-size: 1.5em;
   line-height: 1.25;
@@ -333,7 +333,7 @@
 .reveal a:not(.image):hover {
   color: #01476f; }
 .reveal .roll span:after {
-  color: white;
+  color: #fff;
   background: #01476f; }
 
 /*********************************************
@@ -491,7 +491,7 @@
 .reveal .left-align {
   text-align: left; }
 .reveal .notes p {
-  color: #cccccc;
+  color: #ccc;
   font-size: 2em;
   position: absolute; }
 .reveal .drop-caps {
@@ -517,7 +517,7 @@
   padding-top: 61%;
   position: relative;
   width: 120px;
-  text-shadow: 1px 3px 3px black;
+  text-shadow: 1px 3px 3px #000;
   transition: border-color 0.25s; }
   .reveal .hamburger-button:before {
     background: transparent url(../../img/hamburger.svg) no-repeat;
@@ -560,7 +560,7 @@
     display: inline-block;
     padding: 0 0.25em; }
   .reveal #hamburgerTextDiv.initialized h2 {
-    color: black;
+    color: #000;
     text-shadow: none; }
 .reveal #hamburgerImgDiv {
   background-repeat: repeat;
@@ -575,7 +575,7 @@
   border-radius: 3px;
   border-width: 0;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  color: white;
+  color: #fff;
   cursor: pointer;
   display: inline-block;
   font-family: "RobotoDraft", sans-serif;
@@ -586,17 +586,17 @@
   -webkit-transition: 0.5s;
   transition: 0.5s; }
   .reveal .themed-button:hover, .reveal button.reset:hover, .reveal .themed-button:focus, .reveal button.reset:focus {
-    background-color: black;
-    color: white; }
+    background-color: #000;
+    color: #fff; }
 .reveal button.reset {
-  background-color: white;
-  color: black;
+  background-color: #fff;
+  color: #000;
   display: inline-block;
   font-size: 0.65em;
   margin-top: 0; }
   .reveal button.reset:hover, .reveal button.reset:focus {
-    background-color: black;
-    color: white; }
+    background-color: #000;
+    color: #fff; }
   .reveal button.reset.disabled {
     display: none; }
 .reveal .inline-icon-block .text {
@@ -650,7 +650,7 @@
   font-size: 1.25em;
   margin-bottom: 4%; }
   .reveal p.byline a {
-    color: white; }
+    color: #fff; }
 .reveal a.substantial-logo {
   color: #0277bb;
   font-size: 0.85em;
@@ -660,7 +660,7 @@
   position: relative;
   text-shadow: none; }
   .reveal a.substantial-logo:hover, .reveal a.substantial-logo:focus {
-    color: white;
+    color: #fff;
     text-decoration: none; }
 .reveal .image-headline {
   border: 4px solid #212121;
@@ -738,3 +738,5 @@
 
 .jqcloud span {
   padding: 0; }
+
+/*# sourceMappingURL=marcysutton.css.map */
