@@ -108,7 +108,7 @@ body {
 	font-size: $mainFontSize;
 	font-weight: 200;
 	color: $mainColor;
-  
+
   iframe {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
   }
@@ -131,7 +131,7 @@ body {
     pre {
       width: 100%;
       code {
-        max-height: 100%;
+        // max-height: 100%;
       }
     }
   }
@@ -606,7 +606,7 @@ body {
 .reveal {
   .definition {
     margin: 0 auto;
-    
+
     p {
       font-size: 0.85em;
       margin-bottom: 0;
@@ -630,6 +630,10 @@ body {
     margin: 1em auto 0;
     position: relative;
     width: 70%;
+
+    pre {
+      margin-top: 0;
+    }
   }
   .inset-width-smaller {
     margin: 1em auto 0;

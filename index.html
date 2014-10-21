@@ -68,6 +68,11 @@
 				</section>
 
 				<section>
+					<h2>Accessibility is about</h2>
+					<h3 class="h1-style" style="font-size: 14rem;">PEOPLE.</h3>
+				</section>
+
+				<section>
 					<h2 style="margin-bottom:0.5em;">#A11Y in Angular Apps</h2>
 					<ul>
             <li>Write meaningful HTML</li>
@@ -100,8 +105,7 @@
 				</section>
 
         <section>
-          <!-- <h2 class="h3-style">ARIA Core Components</h2> -->
-          <div class="definition inset-width">
+          <div class="definition inset-width" style="margin-top: 0">
             <h3 class="h4-style">Roles</h3>
             <p>What does this thing do?</p>
             <pre><code class="html">
@@ -146,9 +150,14 @@
 						</code></pre>
 					</div>
 				</section>
-				
+
+        <section>
+          <h2>Keyboard Access</h2>
+          <img src="img/keyboard-panda-1.gif" alt="Person in panda costume smashes keyboard on desk" style="min-height: 500px;">
+        </section>
+
 				<section>
-					<h2>Enabling the keyboard</h2>
+					<h2>Enable the keyboard.</h2>
 					<pre><code class="html">
   &lt;div ng-click="sorryKeyboards()"&gt;&lt;/div&gt; // Non :(
           </code></pre>
@@ -176,7 +185,7 @@
         </section>
 
 				<section>
-					<h2>Don't forget <code>:focus</code></h2>
+					<h2>Don't forget <code>:focus.</code></h2>
 					<pre><code class="css">
   [tabIndex="0"] {
     color: $linkColor;
@@ -190,7 +199,6 @@
 				</section>
 
         <section>
-					<h2 class="h3-style">Handling Focus</h2>
 					<iframe width="1280" height="640" title="VirginAmerica.com VoiceOver Demo" src="//www.youtube.com/embed/8ZbYJSqE0EM" frameborder="0" allowfullscreen></iframe>
         </section>
 
@@ -199,7 +207,7 @@
         </section>
 
         <section>
-					<h2 class="h1-style">Alerting the User</h2>
+					<h2>Alerting the User</h2>
 					<pre><code class="html">
   &lt;live-region level="polite"&gt;&lt;/live-region&gt;
 					</code></pre>
@@ -293,8 +301,35 @@
 
 				<section>
 					<h2 class="h1-style">Testing</h2>
-
+          <ul>
+            <li>Roles</li>
+            <li>Labels</li>
+            <li>Watched properties</li>
+            <li>Interactions</li>
+          </ul>
 				</section>
+
+        <section>
+          <div class="full-screen-code">
+            <pre><code class="javascript">
+  it('should be operable via arrow keys', inject(function($compile, $rootScope) {
+    var element = $compile('&lt;md-radio-group ng-model="color"&gt;' +
+                            '&lt;md-radio-button value="blue"&gt;&lt;/md-radio-button&gt;' +
+                            '&lt;md-radio-button value="green"&gt;&lt;/md-radio-button&gt;' +
+                          '&lt;/md-radio-group&gt;')($rootScope);
+
+    $rootScope.$apply(function(){
+      $rootScope.color = 'blue';
+    });
+
+    var rbGroupElement = element.eq(0);
+    TestUtil.triggerEvent(rbGroupElement, "keydown", {keyCode: Constant.KEY_CODE.RIGHT_ARROW});
+
+    expect($rootScope.color).toEqual('green');
+  }));
+            </code></pre>
+          </div>
+        </section>
 
         <section>
           <h2>Resources</h2>

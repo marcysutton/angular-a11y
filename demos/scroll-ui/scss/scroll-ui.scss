@@ -1,0 +1,142 @@
+.status-bar {
+	background-color: purple;
+	color: white;
+	font-size: 1.5em;
+	padding: 1em;
+	position: fixed;
+	top: 0;
+	text-align: center;
+	width: 100%;
+}
+.hiddenY {
+	transform: translateY(-100%);
+}
+.offscreen {
+	display: block;
+	position: absolute;
+	left: -50000px; 
+}
+.scroll-ui {
+	header {
+		height: auto;
+		padding: 1em;
+	}
+	h1 {
+		float: left;
+		margin: 0 0 1em;
+		max-width: 50%;
+	}
+	button {
+		background-color: purple;
+		border: 2px solid transparent;
+		box-shadow: rgb(240, 240, 240) 0px 0px 0px 3px inset, rgb(237, 221, 245) 2px 3px 0px;
+		color: white;
+		display: inline-block;
+		padding: 1em;
+		margin: 1em auto;
+
+		&:hover, &:focus {
+			border: 2px solid purple;
+		}
+	}
+	ul {
+		&.utility-nav {
+			float: right;
+		}
+		li {
+			display: inline-block;
+
+			button {
+				background: none;
+				border: 1px solid rgb(153, 153, 153);
+				color: currentColor;
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+	main {
+		clear: both;
+	}
+	.centered-inputs {
+		text-align: center;
+
+		label {
+			display: inline-block;
+			padding-right: 1em;
+		}
+	}
+	h2 {
+		padding: 2em 0;
+		text-align: center;
+	}
+	ul.airport-list {
+		clear: both;
+		text-align: center;
+		
+		li {
+			height: 88px;
+			vertical-align: middle;
+			width: 15%;
+
+			button {
+				margin: 0;
+			}
+		}
+	}
+	.people-picker {
+		max-height: 0;
+		overflow: hidden;
+		text-align: center;
+		transition: all 0.5s;
+
+		&.visible {
+			max-height: 100%;
+		}
+
+		ul {
+			text-align: center;
+		}
+		li {
+			height: 220px;
+			position: relative;
+			width: 23%;
+		}
+		h3 {
+			position: absolute;
+			padding: 0.5em;
+			text-align: left;
+		}
+		button.pp-number {
+			display: block;
+			font-size: 7em;
+			height: 100%;
+			margin: 0;
+			position: absolute;
+			width: 100%;
+		}
+		button.pp-control {
+			border-color: transparent;
+			box-shadow: none;
+			font-size: 2em;
+			line-height: 1;
+			height: auto;
+			margin: 0;
+			position: absolute;
+			right: 0;
+			width: 25%;
+
+			&.add {
+				bottom: 40%;
+				z-index: 1;
+			}
+			&.subtract {
+				top: 50%;
+				z-index: 2;
+			}
+			&:hover, &:focus {
+				border: 2px solid purple;
+			}
+		}
+	}
+}
