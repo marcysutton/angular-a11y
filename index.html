@@ -203,21 +203,27 @@
         </section>
 
         <section>
-					<h2>Demo scroll w/ focus to compare</h2>
+					<h2 class="h1-style"><a href="demos/scroll-ui/" target="_blank" title="Link opens in a new window">Demo</a></h2>
         </section>
 
         <section>
-					<h2>Alerting the User</h2>
+					<h2 class="h3-style">Alerting the User</h2>
 					<pre><code class="html">
   &lt;live-region level="polite"&gt;&lt;/live-region&gt;
 					</code></pre>
 					<pre><code class="javascript">
-  function liveRegionDirective(element, attrs) {
-    element.attr('aria-live', attrs.level);
+  function liveRegionDirective($scope, $element, $attrs) {
+    element.attr({
+      'role' : 'region',
+      'aria-live': $attrs.level
+    });
+    $scope.$on('statusUpdated', function(scope, message) {
+      $element.html(message.text);
+    });
   }
   ...
-  function otherDirective() {
-    scope.liveRegion.append(scope.message);
+  function otherDirective($scope) {
+    $scope.$broadcast('statusUpdated', message);
   }
 					</code></pre>
         </section>

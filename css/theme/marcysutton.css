@@ -51,8 +51,7 @@
   left: -50000px;
   padding: 5px 10px;
   position: fixed;
-  white-space: nowrap;
-  text-shadow: 1px 3px 3px #000; }
+  white-space: nowrap; }
 .reveal ul#table-of-contents {
   display: block;
   list-style: none;
