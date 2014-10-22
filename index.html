@@ -54,6 +54,7 @@
 				<section>
 					<h2 class="h1-style">Angular Accessibility</h2>
 					<p>Marcy Sutton, Seattle, USA<br>Web Developer, Angular Material Contributor</p>
+					<p><a href="http://marcysutton.github.io/angular-a11y">http://marcysutton.github.io/angular-a11y</a></p>
 				</section>
 
 				<section>
@@ -104,6 +105,23 @@
 					<p class="big-italic" style="margin: 0.5em 0;">Expands HTML's semantic vocabulary</p>
 				</section>
 
+				<section>
+					<h2 class="h1-style">ngAria</h2>
+					<pre><code class="javascript" style="max-height: 750px;">
+ // ngAria - ngModel directive
+ function getRadioReaction() {
+   if (needsTabIndex) {
+     needsTabIndex = false;
+     return function ngAriaRadioReaction(newVal) {
+       var boolVal = newVal === attr.value;
+       elem.attr('aria-checked', boolVal);
+       elem.attr('tabindex', 0 - !boolVal);
+     };
+   ...
+					</code></pre>
+					<p><a href="https://docs.angularjs.org/api/ngAria" target="_blank" title="Link opens in a new window">https://docs.angularjs.org/api/ngAria</a></p>
+				</section>
+
         <section>
           <div class="definition inset-width" style="margin-top: 0">
             <h3 class="h4-style">Roles</h3>
@@ -127,7 +145,7 @@
           </div>
      		</section>
 
-				<section>
+				<!-- <section>
 					<h2>Using Roles</h2>
 					<ul>
 						<li>They're element types</li>
@@ -139,12 +157,12 @@
 					<aside class="notes">
 						Simplest abstraction possible
 					</aside>
-				</section>
+				</section> -->
 
 				<section>
 					<h2>Application Role</h2>
 					<p class="big-italic">Disables a screen reader&rsquo;s &ldquo;virtual cursor&rdquo;</p>
-					<div class="definition">
+					<div class="definition inset-width">
 						<pre><code class="html">
       &lt;body role="application"&gt;&lt;/body&gt;
 						</code></pre>
@@ -177,13 +195,6 @@
 					</aside>
 				</section>
 
-        <section>
-          <h2 class="offscreen">Tab Index</h2>
-          <div class="tabIndex-example large-tag-wrap" tabIndex="0" contenteditable>
-            <p class="large-tag">&lt;div tabIndex="0"&gt;&lt;/div&gt;</p>
-          </div>
-        </section>
-
 				<section>
 					<h2>Don't forget <code>:focus.</code></h2>
 					<pre><code class="css">
@@ -199,6 +210,7 @@
 				</section>
 
         <section>
+        	<h2 class="h3-style">VirginAmerica.com</h2>
 					<iframe width="1280" height="640" title="VirginAmerica.com VoiceOver Demo" src="//www.youtube.com/embed/8ZbYJSqE0EM" frameborder="0" allowfullscreen></iframe>
         </section>
 
@@ -211,7 +223,7 @@
 					<pre><code class="html">
   &lt;live-region level="polite"&gt;&lt;/live-region&gt;
 					</code></pre>
-					<pre><code class="javascript">
+					<pre><code class="javascript" style="max-height: 540px;">
   function liveRegionDirective($scope, $element, $attrs) {
     element.attr({
       'role' : 'region',
@@ -306,7 +318,7 @@
 				</section>
 
 				<section>
-					<h2 class="h1-style">Testing</h2>
+					<h2 class="h1-style">Testing for A11Y</h2>
           <ul>
             <li>Roles</li>
             <li>Labels</li>
@@ -316,13 +328,20 @@
 				</section>
 
         <section>
+	        <h2 class="h3-style">Assert Functionality</h2>
           <div class="full-screen-code">
             <pre><code class="javascript">
+ // material/components/radioButton.spec.js
+ describe('radioButton', function() {
+  beforeEach(module('material.components.radioButton'));
+
   it('should be operable via arrow keys', inject(function($compile, $rootScope) {
-    var element = $compile('&lt;md-radio-group ng-model="color"&gt;' +
-                            '&lt;md-radio-button value="blue"&gt;&lt;/md-radio-button&gt;' +
-                            '&lt;md-radio-button value="green"&gt;&lt;/md-radio-button&gt;' +
-                          '&lt;/md-radio-group&gt;')($rootScope);
+    var element = $compile(
+                '&lt;md-radio-group ng-model="color"&gt;' +
+                  '&lt;md-radio-button value="blue"&gt;&lt;/md-radio-button&gt;' +
+                  '&lt;md-radio-button value="green"&gt;&lt;/md-radio-button&gt;' +
+                '&lt;/md-radio-group&gt;'
+                )($rootScope);
 
     $rootScope.$apply(function(){
       $rootScope.color = 'blue';
@@ -333,21 +352,48 @@
 
     expect($rootScope.color).toEqual('green');
   }));
+ });
+
+  ... 
+	
+  // material/config/test-utils.js
+  var TestUtil = {
+    triggerEvent: function (element, eventName, eventData) {
+      eventData = eventData || {};
+      var e = $.extend({}, $.Event(eventName), eventData);
+      if(eventData.keyCode){
+        e.which = eventData.keyCode;
+      }
+      element.trigger(e);
+    }
+  }
             </code></pre>
           </div>
         </section>
 
         <section>
+					<h2>Tools</h2>
+					<ul>
+						<li>Your Keyboard</li>
+						<li>Android: TalkBack</li>
+						<li>iOS: VoiceOver</li>
+						<li>Mac: VoiceOver</li>
+						<li>Windows: JAWS, WindowEyes, NVDA</li>
+					</ul>
+        </section>
+
+        <section>
           <h2>Resources</h2>
           <ul>
-            <li><a href="http://substantial.com/blog/2014/07/22/how-i-audit-a-website-for-accessibility/" target="_blank" title="Link opens in a new window">Auditing a Website for Accessibility</a></li>
+            <li><a href="https://docs.angularjs.org/api/ngAria" target="_blank" title="Link opens in a new window">ngAria in Angular</a></li>
+            <li><a href="http://substantial.com/blog/2014/07/22/how-i-audit-a-website-for-accessibility/" target="_blank" title="Link opens in a new window">Auditing for Accessibility</a></li>
             <li><a href="https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en" target="_blank" title="Link opens in a new window">Chrome Accessibility Dev Tools</a></li>
-            <li><a href="http://a11yproject.com/" target="_blank" title="Link opens in a new window">A11y Project</a></li>
+            <li><a href="http://leaverou.github.io/whathecolor/" target="_blank" title="Link opens in a new window">Color Contrast Checker</a></li>
           </ul>
         </section>
 
         <section>
-          <h2 style="margin-top: 0.5em;">Thanks, ngEurope! -<a href="http://twitter.com/marcysutton" target="_blank" title="Link opens in a new window">@marcysutton</a></h2>
+          <h2 style="margin-top: 0.5em;">Thanks, ngEurope!</h2>
         </section>
 			</div>
 

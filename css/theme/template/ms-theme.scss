@@ -123,15 +123,12 @@ body {
       color: $tertiaryColor;
       font-size: 1.75em;
       line-height: 1.45em;
-      max-height: 540px;
+      max-height: 640px;
     }
   }
   .full-screen-code {
     pre {
       width: 100%;
-      code {
-        // max-height: 100%;
-      }
     }
   }
   .text-background {
