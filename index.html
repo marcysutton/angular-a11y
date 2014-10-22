@@ -219,6 +219,27 @@
         </section>
 
         <section>
+					<h2 class="h3-style">Handling Focus</h2>
+					<div class="full-screen-code">
+						<pre><code class="javascript">
+ $scope.$watch('airportIsSelected', function(newValue){
+  if(newValue){
+    $scope.pickerIsVisible = true;
+    
+    $('html,body').animate({
+      scrollTop: peoplePicker.offset().top
+    }, 600);
+
+    peoplePicker.find('button').first().focus();
+
+    $rootScope.$broadcast('statusUpdated', self.selectedAirport);
+   }
+ });
+						</code></pre>
+					</div>
+        </section>
+
+        <section>
 					<h2 class="h3-style">Alerting the User</h2>
 					<pre><code class="html">
   &lt;live-region level="polite"&gt;&lt;/live-region&gt;
@@ -232,10 +253,6 @@
     $scope.$on('statusUpdated', function(scope, message) {
       $element.html(message.text);
     });
-  }
-  ...
-  function otherDirective($scope) {
-    $scope.$broadcast('statusUpdated', message);
   }
 					</code></pre>
         </section>

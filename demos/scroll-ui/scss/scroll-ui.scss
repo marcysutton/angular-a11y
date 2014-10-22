@@ -96,9 +96,11 @@ $wide_mobile: "screen and (max-width: 64em)";
 		}
 	}
 	.people-picker {
+		margin: 8em 0;
 		max-height: 0;
 		overflow: hidden;
 		text-align: center;
+		padding-top: 2em;
 		transition: all 0.5s;
 
 		&.visible {
