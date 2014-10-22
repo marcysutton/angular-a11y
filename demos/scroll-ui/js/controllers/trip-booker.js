@@ -14,19 +14,19 @@ scrollUI.controller('TripBookerCtrl', [
 		};
 
 		$scope.$watch('airportIsSelected', function(newValue){
-			if(newValue === true){
+			if(newValue){
 				$scope.pickerIsVisible = true;
-				var peoplePicker = document.querySelector('#people-picker');
+				var peoplePicker = $('#people-picker');
 
 				$rootScope.$broadcast('statusbarmessage', self.selectedAirport);
+				
+				$('html,body').animate({
+          scrollTop: peoplePicker.offset().top
+        }, 600);
 
-				setTimeout(function () {
-					window.scrollTo(0, peoplePicker.offsetTop - 100);
+				peoplePicker.find('.pp-number').first().focus();
 
-					peoplePicker.querySelectorAll('.pp-number')[0].focus();
-
-					$scope.airportIsSelected = false;
-				}, 300);
+				$scope.airportIsSelected = false;
 			}
 		});
 }]);
