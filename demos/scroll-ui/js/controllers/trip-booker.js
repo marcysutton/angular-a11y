@@ -5,8 +5,6 @@ scrollUI.controller('TripBookerCtrl', [
 	function ($scope, $element, $rootScope) {
 		var self = this;
 
-		self.element = $element;
-		
 		$scope.airportSelected = function(airport) {
 			console.log(airport.label);
 
@@ -25,9 +23,9 @@ scrollUI.controller('TripBookerCtrl', [
 				setTimeout(function () {
 					window.scrollTo(0, peoplePicker.offsetTop - 100);
 
-					setTimeout(function(){
-						peoplePicker.querySelectorAll('.pp-number')[0].focus();
-					})
+					peoplePicker.querySelectorAll('.pp-number')[0].focus();
+
+					$scope.airportIsSelected = false;
 				}, 300);
 			}
 		});

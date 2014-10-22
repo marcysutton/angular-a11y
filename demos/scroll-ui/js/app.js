@@ -15,6 +15,11 @@ scrollUI.controller('appController', ['$scope', '$location',
       value: 'multi-city',
       label: 'Multi City'
     }];
+
+    $scope.openDeparting = function(){
+      alert('Sorry! You can only depart from Seattle.');
+    };
+
     $scope.airportList = [{
       label: 'Seattle',
       code: 'SEA',
@@ -39,4 +44,8 @@ scrollUI.controller('appController', ['$scope', '$location',
 
     $scope.pickerIsVisible = false;
     $scope.peopleList = ['Adults', 'Children', 'Lap Infants', 'Pets'];
+
+    $scope.footerLinkNames = [
+      'Sitemap', 'Contact Us', 'Accessibility', 'Help', 'Blog', 'Unsubscribe'
+    ]
 }]);

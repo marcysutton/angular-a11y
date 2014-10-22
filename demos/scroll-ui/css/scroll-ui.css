@@ -2,6 +2,7 @@
   background-color: purple;
   color: white;
   font-size: 1.5em;
+  line-height: 1;
   padding: 1em;
   position: fixed;
   top: 0;
@@ -9,6 +10,7 @@
   width: 100%; }
 
 .hiddenY {
+  -webkit-transform: translateY(-100%);
   transform: translateY(-100%); }
 
 .offscreen {
@@ -21,6 +23,7 @@
   padding: 1em; }
 .scroll-ui h1 {
   float: left;
+  line-height: 1;
   margin: 0 0 1em;
   max-width: 50%; }
 .scroll-ui button {
@@ -60,6 +63,11 @@
     height: 88px;
     vertical-align: middle;
     width: 15%; }
+    @media screen and (max-width: 64em) {
+      .scroll-ui ul.airport-list li {
+        margin: 0 auto;
+        max-width: 240px;
+        width: 100%; } }
     .scroll-ui ul.airport-list li button {
       margin: 0; }
 .scroll-ui .people-picker {
@@ -75,6 +83,11 @@
     height: 220px;
     position: relative;
     width: 23%; }
+    @media screen and (max-width: 64em) {
+      .scroll-ui .people-picker li {
+        margin: 0 auto;
+        max-width: 320px;
+        width: 100%; } }
   .scroll-ui .people-picker h3 {
     position: absolute;
     padding: 0.5em;
@@ -86,25 +99,44 @@
     margin: 0;
     position: absolute;
     width: 100%; }
-  .scroll-ui .people-picker .pp-control {
+  .scroll-ui .people-picker button.pp-control {
     border-color: transparent;
     box-shadow: none;
-    display: block;
-    font-size: 24px;
+    font-size: 2em;
     line-height: 1;
     height: auto;
     margin: 0;
     position: absolute;
     right: 0;
     width: 25%; }
-    .scroll-ui .people-picker .pp-control.add {
+    .scroll-ui .people-picker button.pp-control.add {
       bottom: 40%;
-      right: 0;
       z-index: 1; }
-    .scroll-ui .people-picker .pp-control.subtract {
+    .scroll-ui .people-picker button.pp-control.subtract {
       top: 50%;
       z-index: 2; }
-    .scroll-ui .people-picker .pp-control:hover, .scroll-ui .people-picker .pp-control:focus {
+    .scroll-ui .people-picker button.pp-control:hover, .scroll-ui .people-picker button.pp-control:focus {
       border: 2px solid purple; }
+.scroll-ui footer {
+  margin-top: 10em;
+  min-height: 200px;
+  position: relative; }
+  .scroll-ui footer ul {
+    background-color: purple;
+    bottom: 0;
+    min-height: 100%;
+    padding: 2em 0;
+    position: absolute;
+    width: 100%; }
+    .scroll-ui footer ul li {
+      display: block;
+      float: left;
+      width: 50%; }
+      .scroll-ui footer ul li:nth-child(2n) {
+        float: right; }
+      .scroll-ui footer ul li a {
+        color: white;
+        display: block;
+        margin: 0 0 1em 1em; }
 
 /*# sourceMappingURL=scroll-ui.css.map */
