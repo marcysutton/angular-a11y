@@ -424,9 +424,12 @@ body {
   	     -o-transition: color .5s;
   	        transition: color .5s;
   }
-	a:not(.image):hover {
+	a:not(.image):hover, a:not(.image):focus {
 		color: $linkColorHover;
 	}
+  a:not(.image):focus {
+    border-bottom: 1px dotted #666;
+  }
 
   .roll span:after {
   	color: $white;

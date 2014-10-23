@@ -329,8 +329,10 @@
   -ms-transition: color .5s;
   -o-transition: color .5s;
   transition: color .5s; }
-.reveal a:not(.image):hover {
+.reveal a:not(.image):hover, .reveal a:not(.image):focus {
   color: #01476f; }
+.reveal a:not(.image):focus {
+  border-bottom: 1px dotted #666; }
 .reveal .roll span:after {
   color: #fff;
   background: #01476f; }
