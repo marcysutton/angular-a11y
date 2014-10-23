@@ -71,9 +71,11 @@
     .scroll-ui ul.airport-list li button {
       margin: 0; }
 .scroll-ui .people-picker {
+  margin: 8em 0;
   max-height: 0;
   overflow: hidden;
   text-align: center;
+  padding-top: 2em;
   transition: all 0.5s; }
   .scroll-ui .people-picker.visible {
     max-height: 100%; }

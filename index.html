@@ -54,6 +54,7 @@
 				<section>
 					<h2 class="h1-style">Angular Accessibility</h2>
 					<p>Marcy Sutton, Seattle, USA<br>Web Developer, Angular Material Contributor</p>
+					<p><a href="http://marcysutton.github.io/angular-a11y">http://marcysutton.github.io/angular-a11y</a></p>
 				</section>
 
 				<section>
@@ -218,11 +219,32 @@
         </section>
 
         <section>
+					<h2 class="h3-style">Handling Focus</h2>
+					<div class="full-screen-code">
+						<pre><code class="javascript">
+ $scope.$watch('airportIsSelected', function(newValue){
+  if(newValue){
+    $scope.pickerIsVisible = true;
+    
+    $('html,body').animate({
+      scrollTop: peoplePicker.offset().top
+    }, 600);
+
+    peoplePicker.find('button').first().focus();
+
+    $rootScope.$broadcast('statusbarmessage', self.selectedAirport);
+   }
+ });
+						</code></pre>
+					</div>
+        </section>
+
+        <section>
 					<h2 class="h3-style">Alerting the User</h2>
 					<pre><code class="html">
   &lt;live-region level="polite"&gt;&lt;/live-region&gt;
 					</code></pre>
-					<pre><code class="javascript">
+					<pre><code class="javascript" style="max-height: 540px;">
   function liveRegionDirective($scope, $element, $attrs) {
     element.attr({
       'role' : 'region',
@@ -327,8 +349,13 @@
 				</section>
 
         <section>
+	        <h2 class="h3-style">Assert Functionality</h2>
           <div class="full-screen-code">
             <pre><code class="javascript">
+ // material/components/radioButton.spec.js
+ describe('radioButton', function() {
+  beforeEach(module('material.components.radioButton'));
+
   it('should be operable via arrow keys', inject(function($compile, $rootScope) {
     var element = $compile(
                 '&lt;md-radio-group ng-model="color"&gt;' +
@@ -346,6 +373,21 @@
 
     expect($rootScope.color).toEqual('green');
   }));
+ });
+
+  ... 
+	
+  // material/config/test-utils.js
+  var TestUtil = {
+    triggerEvent: function (element, eventName, eventData) {
+      eventData = eventData || {};
+      var e = $.extend({}, $.Event(eventName), eventData);
+      if(eventData.keyCode){
+        e.which = eventData.keyCode;
+      }
+      element.trigger(e);
+    }
+  }
             </code></pre>
           </div>
         </section>
