@@ -19,7 +19,7 @@
 		<li><a href="#">Sign up</a></li>
 	</ul>
 </header>
-<main ng-controller="TripBookerCtrl">
+<main ng-controller="TripBookerCtrl" class="trip-booker">
 	<fieldset class="centered-inputs">
 		<label ng-repeat="type in tripTypes">
 			<input type="radio" name="trip-type" ng-click="" value="{{type.value}}">
@@ -63,7 +63,8 @@
 	<script src="../shared/js/lib/angular.js"></script>
 	<script src="../shared/js/lib/jquery.min.js"></script>
 	<script src="js/app.js"></script>
-	<script src="js/controllers/trip-booker.js"></script>
+	<script src="js/controllers/trip-booker-ctrl.js"></script>
+	<script src="js/directives/trip-booker.js"></script>
 	<script src="js/directives/status-bar.js"></script>
 </body>
 </html>

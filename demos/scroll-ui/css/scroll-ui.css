@@ -127,9 +127,10 @@
     background-color: purple;
     bottom: 0;
     min-height: 100%;
+    left: 0;
     padding: 2em 0;
     position: absolute;
-    width: 100%; }
+    right: 0; }
     .scroll-ui footer ul li {
       display: block;
       float: left;
