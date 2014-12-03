@@ -18,13 +18,14 @@
 		<li><a href="#">Sign in</a></li>
 		<li><a href="#">Sign up</a></li>
 	</ul>
+	<div class="clear"></div>
 </header>
 <main ng-controller="TripBookerCtrl" class="trip-booker">
 	<fieldset class="centered-inputs">
-		<label ng-repeat="type in tripTypes">
-			<input type="radio" name="trip-type" ng-click="" value="{{type.value}}">
-			{{type.label}}
-		</label>
+		<div ng-repeat="type in tripTypes">
+		<input type="radio" name="trip-type" ng-click="" value="{{type.value}}" id="{{type.value}}">
+		<label for="{{type.value}}"><span><span></span></span>{{type.label}}</label>
+		</div>
 	</fieldset>
 
 	<h2>Book from <a href="#" ng-bind="airportList[0].label" ng-click="openDeparting()"></a> to</h2>

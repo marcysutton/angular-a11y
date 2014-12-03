@@ -1,5 +1,5 @@
 .status-bar {
-  background-color: purple;
+  background-color: #7D4194;
   color: white;
   font-size: 1.5em;
   line-height: 1;
@@ -18,16 +18,48 @@
   position: absolute;
   left: -50000px; }
 
+.clear {
+  clear: both;
+  display: block; }
+
 .scroll-ui header {
+  background: #7b4397;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdiNDM5NyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU5JSIgc3RvcC1jb2xvcj0iI2I1MjM4YSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijg3JSIgc3RvcC1jb2xvcj0iI2RjMjMyZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-linear-gradient(left, #7b4397 0%, #b5238a 59%, #dc2430 87%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #7b4397), color-stop(59%, #b5238a), color-stop(87%, #dc2430));
+  background: -webkit-linear-gradient(left, #7b4397 0%, #b5238a 59%, #dc2430 87%);
+  background: -o-linear-gradient(left, #7b4397 0%, #b5238a 59%, #dc2430 87%);
+  background: -ms-linear-gradient(left, #7b4397 0%, #b5238a 59%, #dc2430 87%);
+  background: linear-gradient(to right, #7b4397 0%, #b5238a 59%, #dc2430 87%);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+  min-width: 320px;
+  position: relative;
+  width: 100%;
   height: auto;
   padding: 1em; }
-.scroll-ui h1 {
-  float: left;
-  line-height: 1;
-  margin: 0 0 1em;
-  max-width: 50%; }
+  .scroll-ui header a {
+    color: white; }
+    .scroll-ui header a:focus, .scroll-ui header a:hover {
+      color: white;
+      text-decoration: underline; }
+  .scroll-ui header h1 {
+    float: left;
+    line-height: 1;
+    margin: 0;
+    max-width: 50%; }
+.scroll-ui a {
+  color: #7D4194; }
+  .scroll-ui a:focus, .scroll-ui a:hover {
+    color: #aa1ce0; }
+  .scroll-ui a:focus {
+    text-decoration: underline;
+    outline: none; }
 .scroll-ui button {
-  background-color: purple;
+  background-color: #7D4194;
   border: 2px solid transparent;
   box-shadow: #f0f0f0 0px 0px 0px 3px inset, #edddf5 2px 3px 0px;
   color: white;
@@ -35,7 +67,7 @@
   padding: 1em;
   margin: 1em auto; }
   .scroll-ui button:hover, .scroll-ui button:focus {
-    border: 2px solid purple; }
+    border: 2px solid #7D4194; }
 .scroll-ui ul.utility-nav {
   float: right; }
 .scroll-ui ul li {
@@ -50,9 +82,52 @@
   clear: both; }
 .scroll-ui .centered-inputs {
   text-align: center; }
-  .scroll-ui .centered-inputs label {
+  .scroll-ui .centered-inputs div {
+    display: inline-block; }
+  .scroll-ui .centered-inputs input[type=checkbox]:not(old),
+  .scroll-ui .centered-inputs input[type=radio]:not(old) {
+    width: 2em;
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    opacity: 0; }
+  .scroll-ui .centered-inputs input[type=checkbox]:not(old) + label,
+  .scroll-ui .centered-inputs input[type=radio]:not(old) + label {
     display: inline-block;
-    padding-right: 1em; }
+    margin-left: -2em;
+    line-height: 1.5em;
+    padding: 0.25em 0.5em; }
+  .scroll-ui .centered-inputs input[type=checkbox]:not(old) + label > span,
+  .scroll-ui .centered-inputs input[type=radio]:not(old) + label > span {
+    display: inline-block;
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0.25em 0.5em 0.25em 0.25em;
+    border: 0.0625em solid silver;
+    border-radius: 0.5em;
+    background: #e0e0e0;
+    background-image: -moz-linear-gradient(#f0f0f0, #e0e0e0);
+    background-image: -ms-linear-gradient(#f0f0f0, #e0e0e0);
+    background-image: -o-linear-gradient(#f0f0f0, #e0e0e0);
+    background-image: -webkit-linear-gradient(#f0f0f0, #e0e0e0);
+    background-image: linear-gradient(#f0f0f0, #e0e0e0);
+    vertical-align: bottom; }
+  .scroll-ui .centered-inputs input[type=radio]:not(old):focus + label {
+    background-color: #f4f3f3;
+    box-shadow: 0px 0px 3px #000; }
+  .scroll-ui .centered-inputs input[type=radio]:not(old):checked + label > span > span {
+    display: block;
+    width: 0.9em;
+    height: 0.9em;
+    margin: 0.125em;
+    border: 0.0625em solid #73994d;
+    border-radius: 0.4em;
+    background: #7D4194;
+    background-image: -moz-linear-gradient(#7D4194, #7c4193);
+    background-image: -ms-linear-gradient(#7D4194, #7c4193);
+    background-image: -o-linear-gradient(#7D4194, #7c4193);
+    background-image: -webkit-linear-gradient(#7D4194, #7c4193);
+    background-image: linear-gradient(#7D4194, #7c4193); }
 .scroll-ui h2 {
   padding: 2em 0;
   text-align: center; }
@@ -118,13 +193,15 @@
       top: 50%;
       z-index: 2; }
     .scroll-ui .people-picker button.pp-control:hover, .scroll-ui .people-picker button.pp-control:focus {
-      border: 2px solid purple; }
+      border: 2px solid #7D4194; }
 .scroll-ui footer {
+  border-bottom: 10px solid #7D4194;
+  border-top: 2px solid #ccc;
+  background-color: #ebebeb;
   margin-top: 10em;
   min-height: 200px;
   position: relative; }
   .scroll-ui footer ul {
-    background-color: purple;
     bottom: 0;
     min-height: 100%;
     left: 0;
@@ -138,8 +215,9 @@
       .scroll-ui footer ul li:nth-child(2n) {
         float: right; }
       .scroll-ui footer ul li a {
-        color: white;
+        color: black;
         display: block;
+        font-weight: bold;
         margin: 0 0 1em 1em; }
 
 /*# sourceMappingURL=scroll-ui.css.map */
