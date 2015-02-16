@@ -313,8 +313,9 @@ body {
         position: absolute;
       }
       figcaption {
-        color: $tertiaryColor;
-        font-size: 0.65em;
+        color: $darkColor;
+        font-style: italic;
+        font-size: 1em;
         margin: 0;
         padding: 0.2em 0 0.75em;
         text-align: center;

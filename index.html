@@ -13,7 +13,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		
+
 		<link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
@@ -51,7 +51,7 @@
 					<img src="img/human-robot-communication.jpg" title="Human-to-robot communication at the CSUN 2014 Conference" alt="Human-to-robot communication at the CSUN 2014 Conference">
 				</section>
 
-				<section>
+				<!--<section>
 					<h2 class="h1-style" style="margin-bottom: 0.25em;">What is Accessibility?</h2>
 					<p class="big-italic">Everyone can perceive, understand, navigate, and interact with the Web, and  they can contribute to the Web.</p>
 					<aside class="notes">
@@ -65,22 +65,88 @@
 				<section>
 					<h2>Accessibility is about</h2>
 					<h3 class="h1-style" style="font-size: 14rem;">PEOPLE.</h3>
-				</section>
+				</section>-->
 
 				<section>
-					<h2 class="h1-style">Angular Accessibility</h2>
-					<p>Marcy Sutton, Seattle, USA<br>Developer @Substantial, Angular Material Contributor</p>
+					<h2 class="h1-style"><span style="display: block;">Developments in</span>
+            Angular.js Accessibility</h2>
+					<p>Marcy Sutton, Seattle, USA<br>Developer @Substantial, Angular.js Contributor</p>
 					<p><a href="http://marcysutton.github.io/angular-a11y">http://marcysutton.github.io/angular-a11y</a></p>
 				</section>
 
+        <section>
+          <p><a href="https://twitter.com/pauljadam/status/550822616898863106"><img src="img/angular-textbook.png" style="max-height: 740px;" alt="#AngularJS web apps are never accessible because even the books on it start with inaccessible code samples! Paul J. Adam (@pauljadam) January 2, 2015" class="plain"></a></p>
+        </section>
+
+        <section>
+          <h2>Anti-patterns</h2>
+          <img src="img/angular-docs-input.png" style="max-height: 580px;" alt="" role="presentation">
+          <div class="offscreen">
+            <h3>Inaccessible input example from Angular.js official docs</h3>
+            <code>
+              <script>
+                angular.module('inputExample', [])
+                   .controller('ExampleController', ['$scope', function($scope) {
+                     $scope.user = {name: 'guest', last: 'visitor'};
+                   }]);
+              </script>
+              <div ng-controller="ExampleController">
+                <form name="myForm">
+                  User name: <input type="text" name="userName" ng-model="user.name" required>
+                  <span class="error" ng-show="myForm.userName.$error.required">
+                    Required!</span><br>
+                Last name: <input type="text" name="lastName" ng-model="user.last"
+                  ng-minlength="3" ng-maxlength="10">
+                <span class="error" ng-show="myForm.lastName.$error.minlength">
+                  Too short!</span>
+                <span class="error" ng-show="myForm.lastName.$error.maxlength">
+                  Too long!</span><br>
+              </form>
+              <hr>
+              <tt>user = {{user}}</tt><br/>
+              <tt>myForm.userName.$valid = {{myForm.userName.$valid}}</tt><br>
+              <tt>myForm.userName.$error = {{myForm.userName.$error}}</tt><br>
+              <tt>myForm.lastName.$valid = {{myForm.lastName.$valid}}</tt><br>
+              <tt>myForm.lastName.$error = {{myForm.lastName.$error}}</tt><br>
+              <tt>myForm.$valid = {{myForm.$valid}}</tt><br>
+              <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br>
+              <tt>myForm.$error.minlength = {{!!myForm.$error.minlength}}</tt><br>
+              <tt>myForm.$error.maxlength = {{!!myForm.$error.maxlength}}</tt><br>
+            </div>
+            </code>
+          </div>
+        </section>
+
+        <section>
+          <h2>Inaccessible Sites</h2>
+          <img src="img/virgin-america-2015.png" alt="VirginAmerica.com" style="max-height: 580px;">
+        </section>
+
+        <section>
+          <img src="img/depressed-snoopy.gif" alt="Snoopy sadly laying on top of his doghouse in the pouring rain" style="min-height: 640px;">
+        </section>
+
+        <section>
+          <h2>Making it better</h2>
+          <ul>
+            <li>Submit feedback on websites</li>
+            <li>Submit issues/pull requests via Github</li>
+            <li>Create accessible examples</li>
+            <li>Improve the framework</li>
+            <li>Advocacy</li>
+            <li>
+          </ul>
+        </section>
+
 				<section>
-					<h2 style="margin-bottom:0.5em;">#A11Y in Angular Apps</h2>
+					<h2 style="margin-bottom:0.5em;">Creating Accessible Examples</h2>
 					<ul>
-            <li>Write meaningful HTML</li>
-						<li>Enable the keyboard</li>
-						<li>Handle focus</li>
-            <li>Alert the user</li>
-            <li>Coverage with tests</li>
+            <li>Semantic HTML</li>
+						<li>Keyboard focus styles</li>
+						<li>Focus management</li>
+            <li>Text alternatives</li>
+            <li>Notifying the user</li>
+            <li>Graceful degradation*</li>
 					</ul>
 					<aside class="notes">
           Handling focus: tabIndex, replacing part of the DOM causes focus mgmt probz
@@ -90,20 +156,49 @@
 				</section>
 
 				<section>
-					<h2 class="h4-style">Step 1 to writing meaningful HTML</h2>
-					<h2>Use Semantic Elements</h2>
-					<pre><code class="html">
-	&lt;md-button tabIndex="-1"&gt;
-	  &lt;button&gt;Flat Button&lt;/button&gt;
-	&lt;/md-button&gt;
-					</code></pre>
+					<h2 class="h3-style">Semantic HTML</h2>
+          <pre><code class="html">
+    &lt;button class="md-button" ng-click="doStuff()"&gt;
+      Material Button
+    &lt;/button&gt;
+          </code></pre>
+          <pre><code class="html">
+    &lt;md-button role="button" tabIndex="0"
+      ng-keypress="doStuff()" ng-click="doStuff()"&gt;
+      Material Button
+    &lt;/md-button&gt;
+          </code></pre>
 				</section>
 
 				<section>
-					<h2 class="h4-style">Step 2 to writing meaningful HTML</h2>
-					<h3 class="h1-style">Use ARIA</h3>
-					<p class="big-italic" style="margin: 0.5em 0;">Expands HTML's semantic vocabulary</p>
-				</section>
+					<h2>(No) Keyboard focus styles</h2>
+          <figure><pre><code class="css">
+  .navlist--main > li > a
+    color: $white
+    display: block
+
+    &amp;:hover
+      text-decoration: underline
+
+          </code></pre>
+          <figcaption>Sass</figcaption>
+          </figure>
+        </section>
+
+        <section data-transition="none">
+          <h2>Keyboard focus styles</h2>
+          <figure><pre><code class="css">
+  .navlist--main > li > a
+    color: $white
+    display: block
+
+    &amp;:hover, &amp;:focus
+      color: $somethingElse
+      text-decoration: underline
+          </code></pre>
+          <figcaption>Sass</figcaption>
+          </figure>
+        </section>
 
 				<section>
 					<h2 class="h1-style">ngAria</h2>
@@ -186,7 +281,7 @@
 
 					<pre><code class="html">
   &lt;md-button role="button" tabIndex="0"
-    ng-click="woohoo()" 
+    ng-click="woohoo()"
     ng-keypress="woohoo()"&gt;
   &lt;/md-button&gt;
           </code></pre>
@@ -225,7 +320,7 @@
  $scope.$watch('airportIsSelected', function(newValue){
   if(newValue){
     $scope.pickerIsVisible = true;
-    
+
     $('html,body').animate({
       scrollTop: peoplePicker.offset().top
     }, 600);
@@ -264,7 +359,7 @@
 						Here's how I practice what I preach
 					</aside>
 				</section>
-				
+
 				<section>
 					<h2>Material Checkbox (1/2)</h2>
 					<div class="full-screen-code">
@@ -276,7 +371,7 @@
 
    return function postLink(...) {
      $materialAria.expectAttribute(element, 'aria-label');
-    
+
      function keypressListener(ev) {
       if (element[0].hasAttribute('disabled')) return;
      ...
@@ -288,7 +383,7 @@
 					<h2>Material Checkbox (2/2)</h2>
 					<div class="full-screen-code">
 						<pre><code class="javascript" style="max-height: 640px;">
- // material.services.aria 
+ // material.services.aria
  function expectAttribute(element, attrName, defaultValue) {
    var node = element[0];
    if (!node.hasAttribute(attrName)) {
@@ -310,9 +405,9 @@
 					<img src="img/material-checkbox-disabled.png" alt="Disabled checkbox missing ARIA attribute" style="width: 100%;">
 					<pre style="width: 95%;"><code class="html" style="width: 100%;">
  // chrome://accessibility/
- AXCheckBox AXRoleDescription='check box' 
-   AXEnabled='1' AXFocused='0' AXRequired='0' 
-   AXTitle='Checkbox (Disabled)' AXValue='0' 
+ AXCheckBox AXRoleDescription='check box'
+   AXEnabled='1' AXFocused='0' AXRequired='0'
+   AXTitle='Checkbox (Disabled)' AXValue='0'
    AXDescription='Disabled checkbox'
 					</code></pre>
 				</section>
@@ -371,8 +466,8 @@
   }));
  });
 
-  ... 
-	
+  ...
+
   // material/config/test-utils.js
   var TestUtil = {
     triggerEvent: function (element, eventName, eventData) {
@@ -412,12 +507,12 @@
         </section>
 
         <section>
-          <h2 style="margin-top: 0.5em;">Thanks, ngEurope!</h2>
+          <h2 style="margin-top: 0.5em;">Thanks, CSUN!</h2>
         </section>
 			</div>
 
 			<footer>
-        <p class="copyright">Angular Accessibility<br>
+        <p class="copyright">Developments in Angular.js Accessibility<br>
           <a href="http://twitter.com/marcysutton" target="_blank" title="Link opens in a new window">@marcysutton</a> <span aria-hidden="true">/</span> <a href="http://marcysutton.com" target="_blank" title="Link opens in a new window">MarcySutton.com</a></p>
       </footer>
 		</div>
