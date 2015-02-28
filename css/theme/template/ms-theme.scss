@@ -241,12 +241,45 @@ body {
     // font-style: normal;
   }
   blockquote {
-    background-color: transparent;
+    box-shadow: none;
     font-style: italic;
     line-height: 100%;
-    font-size: 2em;
+    font-size: 1.35em;
     text-align: left;
 
+    .blockquote-content {
+      position: relative;
+    }
+
+    span.icon {
+      &:before, &:after {
+        font-size: 100px;
+        position: absolute;
+        speak: none;
+      }
+
+      &:before {
+        content: '\201C';
+        left: -30px;
+        top: 0px;
+      }
+      &:after {
+        bottom: 0;
+        content: '\201D';
+        right: 0;
+      }
+    }
+    
+    cite {
+      color: $darkColor;
+      display: block;
+      margin-top: 0.5em;
+    }
+
+    p {
+      padding: 0;
+      width: 100%;
+    }
     &.large {
       font-size: 3em;
       margin-bottom: 0.75em;

@@ -133,20 +133,31 @@
             <li>Submit issues/pull requests via Github</li>
             <li>Create accessible examples</li>
             <li>Improve the framework</li>
-            <li>Advocacy</li>
+            <li>Speaking, Always-on Advocacy</li>
             <li>
           </ul>
         </section>
 
+        <section>
+          <blockquote>
+            <div class="blockquote-content">
+              <span class="icon" aria-hidden="true"></span>
+              <p>Please accept our sincere apologies for the accessibility problems you were having with our web site.</p>
+   
+              <p>Please be assured that your email has been shared with our Web Team. We will let them know that there are accessibility issues that prevent customers with disabilities from using our site.</p>
+            </div>
+            <cite>Virgin America Customer Service</cite>
+          </blockquote>
+        </section>
+
 				<section>
-					<h2 style="margin-bottom:0.5em;">Creating Accessible Examples</h2>
+					<h2>Creating Accessible Examples</h2>
 					<ul>
             <li>Semantic HTML</li>
 						<li>Keyboard focus styles</li>
 						<li>Focus management</li>
             <li>Text alternatives</li>
             <li>Notifying the user</li>
-            <li>Graceful degradation*</li>
 					</ul>
 					<aside class="notes">
           Handling focus: tabIndex, replacing part of the DOM causes focus mgmt probz
@@ -156,7 +167,7 @@
 				</section>
 
 				<section>
-					<h2 class="h3-style">Semantic HTML</h2>
+					<h2>Semantic HTML</h2>
           <pre><code class="html">
     &lt;button class="md-button" ng-click="doStuff()"&gt;
       Material Button
@@ -171,39 +182,128 @@
 				</section>
 
 				<section>
-					<h2>(No) Keyboard focus styles</h2>
+					<h2>No Visible Focus</h2>
+          <p>(real life example)</p>
           <figure><pre><code class="css">
-  .navlist--main > li > a
-    color: $white
-    display: block
+  .navlist--main > li > a {
+    color: $white;
+    display: block;
 
-    &amp;:hover
-      text-decoration: underline
-
+    &:hover {
+      text-decoration: underline;
+    }
+  }
           </code></pre>
           <figcaption>Sass</figcaption>
           </figure>
+        </section>
+
+        <section>
+          <h2 class="h3-style">You Had One Job</h2>
+          <img src="img/keyboard-panda-1.gif" alt="Person in panda costume smashes keyboard on desk" style="min-height: 500px;">
         </section>
 
         <section data-transition="none">
-          <h2>Keyboard focus styles</h2>
+          <h2>Visible Focus</h2>
           <figure><pre><code class="css">
-  .navlist--main > li > a
-    color: $white
-    display: block
+  .navlist--main > li > a {
+    color: $white;
+    display: block;
 
-    &amp;:hover, &amp;:focus
-      color: $somethingElse
-      text-decoration: underline
+    &:hover, &:focus {
+      color: $somethingElse;
+      text-decoration: underline;
+    }
+  }
           </code></pre>
           <figcaption>Sass</figcaption>
           </figure>
         </section>
 
+        <section>
+          <h2 class="h3-style">Focus Management</h2>
+          <iframe title="MarcySutton.com Accessible Navigation" width="1120" height="720" src="https://www.youtube.com/embed/IkguYBkE9XA?rel=0" frameborder="0" allowfullscreen></iframe>
+        </section>
+
+        <section>
+          <h2 class="h3-style">Focus Management</h2>
+          <div>
+            <pre><code class="javascript">
+    var navButton = $('#global-menu'),
+        navMenu = $('#global-nav');
+    var navLinks = navMenu.find('a');
+
+    // remove links from tab order by default
+    navLinks.attr('tabIndex', '-1');
+
+    navMenu.on('keydown', function(event) {
+      // handle escape key
+      if(event.keyCode === 27) {
+        resetNav();
+        navButton.focus();
+      }
+    });
+    navButton.on('click', function(event) {
+      if(document.body.classList.contains('active')) {
+        resetNav();
+      } else {
+        document.body.classList.add('active');
+        navLinks.eq(0).focus();
+        navLinks.removeAttr('tabIndex');
+      }
+    });
+
+    function resetNav() {
+      document.body.classList.remove('active');
+      navLinks.attr('tabIndex', '-1');
+    }
+            </code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="h3-style">Text Alternatives</h2>
+        </section>
+
+        <section>
+          <h2 class="h3-style">Notifying the User</h2>
+          <pre><code class="html">
+  &lt;live-region level="polite"&gt;&lt;/live-region&gt;
+          </code></pre>
+          <pre><code class="javascript" style="max-height: 540px;">
+  function liveRegionDirective($scope, $element, $attrs) {
+    element.attr({
+      'role' : 'region',
+      'aria-live': $attrs.level
+    });
+    $scope.$on('statusUpdated', function(scope, message) {
+      $element.html(message.text);
+    });
+  }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2 class="h1-style">Improve the framework</h2>
+          <img src="img/AngularJS-Shield-large.png" class="plain" alt="AngularJS">
+        </section>
+
 				<section>
-					<h2 class="h1-style">ngAria</h2>
+					<h2>ngAria</h2>
+          <h3>A11Y Module in Angular 1.3+</h3>          
+          <img src="img/Bandaid-on-heart.png" alt="Band-Aid on heart" class="plain">
+          <p><a href="https://docs.angularjs.org/guide/accessibility" target="_blank" title="Link opens in a new window">https://docs.angularjs.org/guide/accessibility</a></p>
+        </section>
+
+        <section>
+          <h2>ngAria</h2>
+          <h3>Interfaces with the following directives:</h3>
+          <p><strong>ngModel, ngDisabled, ngShow, ngHide, ngClick, ngDblClick</strong></p>
+        </section>
+
+        <section>
+          <h2 class="h3-style">ngAria: ngModel Overrides</h2>
 					<pre><code class="javascript" style="max-height: 750px;">
- // ngAria - ngModel directive
  function getRadioReaction() {
    if (needsTabIndex) {
      needsTabIndex = false;
@@ -217,151 +317,16 @@
 					<p><a href="https://docs.angularjs.org/api/ngAria" target="_blank" title="Link opens in a new window">https://docs.angularjs.org/api/ngAria</a></p>
 				</section>
 
-        <section>
-          <div class="definition inset-width" style="margin-top: 0">
-            <h3 class="h4-style">Roles</h3>
-            <p>What does this thing do?</p>
-            <pre><code class="html">
-    &lt;div role="img" style="background-image..."&gt;
-            </code></pre>
-          </div>
-          <div class="definition inset-width">
-            <h3 class="h4-style">States</h3>
-            <p>The current condition of this particular thing</p>
-            <pre><code class="html">
-    &lt;md-input-group aria-disabled="true"&gt;
-            </code></pre>
-          </div>
-          <div class="definition inset-width">
-            <h3 class="h4-style">Properties</h3>
-            <pre><code class="html">
-  &lt;md-checkbox aria-label="Unsubscribe"&gt;
-            </code></pre>
-          </div>
-     		</section>
-
-				<!-- <section>
-					<h2>Using Roles</h2>
-					<ul>
-						<li>They're element types</li>
-						<li>They're landmarks</li>
-		     		<li>Start with native HTML tags</li>
-						<li>Read the <a href="http://www.w3.org/TR/wai-aria/" target="_blank" title="Link opens in a new window">documentation</a></li>
-						<li>Don't overdo it</li>
-					</ul>
-					<aside class="notes">
-						Simplest abstraction possible
-					</aside>
-				</section> -->
-
 				<section>
-					<h2>Application Role</h2>
-					<p class="big-italic">Disables a screen reader&rsquo;s &ldquo;virtual cursor&rdquo;</p>
-					<div class="definition inset-width">
-						<pre><code class="html">
-      &lt;body role="application"&gt;&lt;/body&gt;
-						</code></pre>
-					</div>
-				</section>
-
-        <section>
-          <h2>Keyboard Access</h2>
-          <img src="img/keyboard-panda-1.gif" alt="Person in panda costume smashes keyboard on desk" style="min-height: 500px;">
-        </section>
-
-				<section>
-					<h2>Enable the keyboard.</h2>
-					<pre><code class="html">
-  &lt;div ng-click="sorryKeyboards()"&gt;&lt;/div&gt; // Non :(
-          </code></pre>
-
-					<pre><code class="html">
-  &lt;button ng-click="woohoo()"&gt;&lt;/button&gt;  // Oui! :)
-          </code></pre>
-
-					<pre><code class="html">
-  &lt;md-button role="button" tabIndex="0"
-    ng-click="woohoo()"
-    ng-keypress="woohoo()"&gt;
-  &lt;/md-button&gt;
-          </code></pre>
-					<aside class="notes">
-					Challenge the concept of "interactive". It doesn't have to be visually interactive. Appeal to all the senses. PERCEIVABLE and OPERABLE. And robust. And understandable.
-					</aside>
-				</section>
-
-				<section>
-					<h2>Don't forget <code>:focus.</code></h2>
-					<pre><code class="css">
-  [tabIndex="0"] {
-    color: $linkColor;
-
-    &:focus, &:hover {
-      background-color: $linkColor;
-      color: $linkActiveColor;
-    }
-  }
-					</code></pre>
-				</section>
-
-        <section>
-        	<h2 class="h3-style">VirginAmerica.com</h2>
-					<iframe width="1280" height="640" title="VirginAmerica.com VoiceOver Demo" src="//www.youtube.com/embed/8ZbYJSqE0EM" frameborder="0" allowfullscreen></iframe>
-        </section>
-
-        <section>
-					<h2 class="h1-style"><a href="demos/scroll-ui/" target="_blank" title="Link opens in a new window">Demo</a></h2>
-        </section>
-
-        <section>
-					<h2 class="h3-style">Handling Focus</h2>
-					<div class="full-screen-code">
-						<pre><code class="javascript">
- $scope.$watch('airportIsSelected', function(newValue){
-  if(newValue){
-    $scope.pickerIsVisible = true;
-
-    $('html,body').animate({
-      scrollTop: peoplePicker.offset().top
-    }, 600);
-
-    peoplePicker.find('button').first().focus();
-
-    $rootScope.$broadcast('statusUpdated', self.selectedAirport);
-   }
- });
-						</code></pre>
-					</div>
-        </section>
-
-        <section>
-					<h2 class="h3-style">Alerting the User</h2>
-					<pre><code class="html">
-  &lt;live-region level="polite"&gt;&lt;/live-region&gt;
-					</code></pre>
-					<pre><code class="javascript" style="max-height: 540px;">
-  function liveRegionDirective($scope, $element, $attrs) {
-    element.attr({
-      'role' : 'region',
-      'aria-live': $attrs.level
-    });
-    $scope.$on('statusUpdated', function(scope, message) {
-      $element.html(message.text);
-    });
-  }
-					</code></pre>
-        </section>
-
-				<section>
-					<h2 class="h3-style">Angular.js Material Design</h2>
-					<a href="https://material.angularjs.org/#/material.components.radioButton/readme/overview" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material-RadioButtons.png" class="plain" alt="Angular Material Radio Buttons" style="max-height: 700px;"></a>
+					<h2>Angular.js Material Design</h2>
+					<a href="https://material.angularjs.org/" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material.png" alt="Angular.js Material Design" style="max-height: 640px;"></a>
 					<aside class="notes">
 						Here's how I practice what I preach
 					</aside>
 				</section>
 
 				<section>
-					<h2>Material Checkbox (1/2)</h2>
+					<h2 class="h3-style">Material Checkbox (1/2)</h2>
 					<div class="full-screen-code">
 						<pre><code class="javascript" style="max-height: 640px;">
  // material.components.checkbox
@@ -380,7 +345,7 @@
 				</section>
 
 				<section>
-					<h2>Material Checkbox (2/2)</h2>
+					<h2 class="h3-style">Material Checkbox (2/2)</h2>
 					<div class="full-screen-code">
 						<pre><code class="javascript" style="max-height: 640px;">
  // material.services.aria
@@ -400,47 +365,28 @@
 					</div>
 				</section>
 
-				<section>
-					<h2>About that <em>disabled</em> attribute</h2>
-					<img src="img/material-checkbox-disabled.png" alt="Disabled checkbox missing ARIA attribute" style="width: 100%;">
-					<pre style="width: 95%;"><code class="html" style="width: 100%;">
- // chrome://accessibility/
- AXCheckBox AXRoleDescription='check box'
-   AXEnabled='1' AXFocused='0' AXRequired='0'
-   AXTitle='Checkbox (Disabled)' AXValue='0'
-   AXDescription='Disabled checkbox'
-					</code></pre>
-				</section>
+        <section>
+          <h2>Angular 2.0</h2>
+        </section>
+        
+        <section>
+          <h2 class="h3-style">Protractor–Integration Testing</h2>
+        
+        </section>
 
 				<section>
-					<h2>Disable with ARIA</h2>
-					<div class="full-screen-code">
-						<pre><code class="javascript" style="max-height: 640px;">
- // material.components.checkbox
- function MaterialCheckboxDirective($materialAria, ...) {
-   tAttrs.tabIndex = 0;
-   tElement.attr('role', 'checkbox');
-
-   scope.$watch('disabled', function(newValue){
-     element.attr('aria-disabled', newValue);
-   })
-   ...
-						</code></pre>
-					</div>
-				</section>
-
-				<section>
-					<h2>Unit Testing</h2>
+					<h2>Testing for Accessibility!</h2>
           <ul>
-            <li>Labels</li>
-            <li>ARIA Roles</li>
+            <li>Check for Labels</li>
+            <li>Validate Roles</li>
             <li>Watched ARIA Properties</li>
             <li>Interactions</li>
+            <li>Color Contrast</li>
           </ul>
 				</section>
 
         <section>
-	        <h2 class="h3-style">Assert Functionality</h2>
+	        <h2 class="h3-style">Unit Testing</h2>
           <div class="full-screen-code">
             <pre><code class="javascript">
  // material/components/radioButton.spec.js
@@ -449,11 +395,11 @@
 
   it('should be operable via arrow keys', inject(function($compile, $rootScope) {
     var element = $compile(
-                '&lt;md-radio-group ng-model="color"&gt;' +
-                  '&lt;md-radio-button value="blue"&gt;&lt;/md-radio-button&gt;' +
-                  '&lt;md-radio-button value="green"&gt;&lt;/md-radio-button&gt;' +
-                '&lt;/md-radio-group&gt;'
-                )($rootScope);
+        '&lt;md-radio-group ng-model="color"&gt;' +
+          '&lt;md-radio-button value="blue"&gt;&lt;/md-radio-button&gt;' +
+          '&lt;md-radio-button value="green"&gt;&lt;/md-radio-button&gt;' +
+        '&lt;/md-radio-group&gt;'
+        )($rootScope);
 
     $rootScope.$apply(function(){
       $rootScope.color = 'blue';
@@ -484,25 +430,16 @@
         </section>
 
         <section>
-					<h2>Tools</h2>
-					<ul>
-						<li>Your Keyboard</li>
-						<li>Android: TalkBack</li>
-						<li>iOS: VoiceOver</li>
-						<li>Mac: VoiceOver</li>
-						<li>Windows: JAWS, WindowEyes, NVDA</li>
-					</ul>
-        </section>
-
-        <section>
           <h2>Resources</h2>
+          <p><em>All links open in new windows</em></p>
           <ul>
-            <li><a href="https://docs.angularjs.org/api/ngAria" target="_blank" title="Link opens in a new window">ngAria in Angular</a></li>
-            <li><a href="http://www.w3.org/TR/aria-in-html/" target="_blank" title="Link opens in a new window">Using ARIA in HTML</a></li>
-            <li><a href="http://substantial.com/blog/2014/07/22/how-i-audit-a-website-for-accessibility/" target="_blank" title="Link opens in a new window">Auditing for Accessibility</a></li>
-            <li><a href="https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en" target="_blank" title="Link opens in a new window">Chrome Accessibility Dev Tools</a></li>
-            <li><a href="http://webaim.org/projects/screenreadersurvey5/" target="_blank" title="Link opens in a new window">WebAIM Screen Reader Survey</a></li>
-            <li><a href="http://leaverou.github.io/whathecolor/" target="_blank" title="Link opens in a new window">Color Contrast Checker</a></li>
+            <li><a href="http://angularjs.blogspot.com/2014/11/using-ngaria.html" target="_blank" title="Link opens in a new window">Using ngAria</a></li>
+            <li><a href="https://docs.angularjs.org/guide/accessibility" target="_blank" title="Link opens in a new window">ngAria Developer Guide</a></li>
+            <!-- UPDATE PROTRACTOR LINK!! -->
+            <li><a href="https://github.com/marcysutton/protractor" target="_blank" title="Link opens in a new window">Protractor Accessibility Plugin</a></li>
+            <!--  -->
+            <li><a href="http://unobfuscated.blogspot.com/2015/02/angularjs-accessibility-knocking-off-my.html" target="_blank" title="Link opens in a new window">Accessible TodoMVC by Dylan Barrell</a></li>
+            <li><a href="https://github.com/dequelabs/ngA11y" target="_blank" title="Link opens in a new window">ngA11y by Deque</a></li>
           </ul>
         </section>
 
