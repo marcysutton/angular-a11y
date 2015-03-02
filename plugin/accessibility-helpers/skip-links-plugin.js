@@ -30,7 +30,8 @@ var SkipLinks = (function(){
     // if the skip to nav link is present, we'll make it jump to our links
     if( document.querySelector( SKIP_TO_NAV_LINK_SELECTOR ) ){
 
-      NUM_SLIDES = document.querySelectorAll( SLIDE_SELECTOR ).length;
+      SLIDES = document.querySelectorAll( SLIDE_SELECTOR );
+      NUM_SLIDES = SLIDES.length;
 
       buildSkipLinks();
     }
@@ -43,8 +44,10 @@ var SkipLinks = (function(){
 
     var skipLinkHTML = '';
 
-    for(var i = 1; i < NUM_SLIDES; i++){
-      skipLinkHTML += '<li><a href="#/slide' + i + '">Slide ' + i + '</a></li>';
+    for(var i = 1; i < NUM_SLIDES; i++) {
+      var slideText = SLIDES[i].querySelector('h2').textContent;
+      console.log(slideText);
+      skipLinkHTML += '<li><a href="#/slide' + i + '">' + i + slideText + '</a></li>';
     }
     skipLinkHTML += '</ul>';
 

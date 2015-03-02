@@ -23,51 +23,51 @@
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<script src="lib/js/jquery-1.11.1.min.js"></script>
+		<!--<script src="lib/js/jquery-1.11.1.min.js"></script>-->
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : '';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
 	</head>
 
 	<body>
-		<h1 class="offscreen">Angular Accessibility by Marcy Sutton</h1>
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
+				<section data-title="Developments in Angular.js Accessibility">
+          <h1 class="offscreen">Developments in Angular.js Accessibility</h1>
 					<h2>Hello</h2>
-					<img src="img/human-robot-communication.jpg" title="Human-to-robot communication at the CSUN 2014 Conference" alt="Human-to-robot communication at the CSUN 2014 Conference">
+					<img src="img/human-robot-communication.jpg" alt="Human-to-robot communication at last year's CSUN Conference">
 				</section>
 
-				<section>
-					<h2 class="h1-style"><span style="display: block;">Developments in</span>
+				<section data-title="Author: Marcy Sutton">
+					<h2 class="h1-style" aria-hidden="true"><span style="display: block;">Developments in</span>
             Angular.js Accessibility</h2>
 					<p>Marcy Sutton, Seattle, WA<br>Developer @Substantial, Angular.js Contributor</p>
 					<p><a href="http://marcysutton.github.io/angular-a11y">http://marcysutton.github.io/angular-a11y</a></p>
 				</section>
 
-        <section>
-          <p><a href="https://twitter.com/pauljadam/status/550822616898863106" class="image" target="_blank" title="Link opens in a new window"><img src="img/angular-textbook.png" style="max-height: 740px;" alt="#AngularJS web apps are never accessible because even the books on it start with inaccessible code samples! Paul J. Adam (@pauljadam) January 2, 2015" class="plain"></a></p>
+        <section data-title="Inaccessible code samples">
+          <figure>
+            <a href="https://twitter.com/pauljadam/status/550822616898863106" class="image" target="_blank" title="Link opens in a new window"><img src="img/angular-textbook.png" style="max-height: 740px;" alt="#AngularJS web apps are never accessible because even the books on it start with inaccessible code samples! Paul J. Adam (@pauljadam) January 2, 2015" class="plain"></a>
+            <figcaption class="offscreen">#AngularJS web apps are never accessible because even the books on it start with inaccessible code samples! Paul J Adam January 2, 2015</figcaption>
+          </figure>
         </section>
 
-        <section>
+        <section data-title="Anti-patterns">
           <h2>Anti-patterns</h2>
           <figure>
             <img src="img/angular-docs-input.png" style="max-height: 580px;" alt="" role="presentation">
             <div class="offscreen">
-            <h3>Inaccessible input example from Angular.js official docs</h3>
             <code>
               <script>
               /*
@@ -103,19 +103,26 @@
             </div>
             </code>
           </div>
+          <figcaption class="offscreen">Inaccessible input example from Angular.js official docs</figcaption>
           </figure>
         </section>
 
-        <section>
+        <section data-title="Inaccessible sites">
           <h2>Inaccessible Sites</h2>
-          <img src="img/virgin-america-2015.png" alt="VirginAmerica.com" style="max-height: 580px;">
+          <figure>
+            <img src="img/virgin-america-2015.png" style="max-height: 580px;">
+            <figcaption class="offscreen">VirginAmerica.com</figcaption>
+          </figure>
         </section>
 
-        <section>
-          <img src="img/depressed-snoopy.gif" alt="Snoopy sadly laying on top of his doghouse in the pouring rain" style="min-height: 640px;">
+        <section data-title="Depressed Snoopy">
+          <figure>
+            <img src="img/depressed-snoopy.gif" style="min-height: 640px;">
+            <figcaption class="offscreen">Snoopy sadly laying on top of his doghouse in the pouring rain</figcaption>
+          </figure>
         </section>
 
-        <section>
+        <section data-title="Making it better">
           <h2>Making it better</h2>
           <ul>
             <li>Submit feedback on websites</li>
@@ -127,7 +134,7 @@
           </ul>
         </section>
 
-        <section>
+        <section data-title="Customer Service Feedback">
           <blockquote>
             <div class="blockquote-content">
               <span class="icon" aria-hidden="true"></span>
@@ -139,7 +146,7 @@
           </blockquote>
         </section>
 
-				<section>
+				<section data-title="Creating accessible examples">
 					<h2>Creating Accessible Examples</h2>
 					<ul>
             <li>Semantic HTML</li>
@@ -155,12 +162,12 @@
 					</aside>
 				</section>
 
-        <section>
+        <section data-title="Angular.js Material Design">
           <h2 class="h3-style">Angular.js Material Design</h2>
           <a href="https://material.angularjs.org" class="image" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material.png" alt="Angular Material docs website" style="max-height: 600px;"></a>
         </section>
 
-				<section>
+				<section data-title="Semantic HTML">
 					<h2>Semantic HTML</h2>
           <pre><code class="html">
     &lt;button class="md-button" ng-click="doStuff()"&gt;
@@ -175,7 +182,7 @@
           </code></pre>
 				</section>
 
-				<section>
+				<section data-title="No visible focus">
 					<h2>No Visible Focus</h2>
           <p>(real life example)</p>
           <figure><pre><code class="css">
@@ -192,12 +199,12 @@
           </figure>
         </section>
 
-        <section>
+        <section data-title="Frustration gif">
           <h2 class="h3-style">You Had One Job</h2>
           <img src="img/keyboard-panda-1.gif" alt="Person in panda costume smashes keyboard on desk" style="min-height: 500px;">
         </section>
 
-        <section>
+        <section data-title="Visible Focus">
           <h2>Visible Focus</h2>
           <figure><pre><code class="css">
   .navlist--main > li > a {
@@ -214,14 +221,14 @@
           </figure>
         </section>
 
-        <section>
-          <h2 class="h3-style">Focus Management</h2>
+        <section data-title="Focus Management Screencast">
+          <h2 class="h3-style">Focus Management<span class="offscreen"> screencast</span></h2>
           <iframe width="1120" height="640" src="https://www.youtube.com/embed/3z_ZUUONbc8" frameborder="0" allowfullscreen
           title="Angular Material Focus Management"></iframe>
         </section>
 
-        <section>
-          <h2 class="h3-style">Focus Management</h2>
+        <section data-title="Focus Management Code Sample">
+          <h2 class="h3-style">Focus Management<span class="offscreen"> code sample</span></h2>
           <figure>
             <pre><code class="html">
   &lt;a ng-href="#/page" ng-click="focusSection()"&gt;Page&lt;/a&gt;
@@ -239,7 +246,7 @@
           </figure>
         </section>
 
-        <section>
+        <section data-title="Text alternatives">
           <h2 class="h3-style">Text Alternatives</h2>
           <figure>
             <img src="img/angular-material-radio-icons-log.png" alt="" style="max-height: 660px;">
@@ -250,7 +257,7 @@
           </aside>
         </section>
 
-        <section>
+        <section data-title="mdAria Labeling Service">
           <h2 class="h3-style">You <em>will</em> provide a text alternative.</h2>
           <figure>
             <pre><code class="javascript">
@@ -269,7 +276,7 @@
           </figure>
         </section>
 
-        <section>
+        <section data-title="Notifying the user with mdAutocomplete">
           <h2 class="h3-style">Notifying the User</h2>
           <figure>
             <img src="img/angular-material-autocomplete.png" alt="">
@@ -277,7 +284,7 @@
           </figure>
         </section>
 
-        <section>
+        <section data-title="mdAutocomplete Code sample">
           <h2 class="h3-style">Notifying the User</h2>
           <figure>
           <pre><code class="html">
@@ -296,19 +303,19 @@
           </figure>
         </section>
 
-        <section>
+        <section data-title="Improve the framework">
           <h2 class="h1-style">Improve the framework</h2>
           <img src="img/AngularJS-Shield-large.png" class="plain" alt="AngularJS">
         </section>
 
-				<section>
+				<section data-title="ngAria new accessibility module">
 					<h2>ngAria</h2>
           <h3>Accessibility Module in Angular 1.3+</h3>
           <img src="img/Bandaid-on-heart.png" alt="Band-Aid on heart" class="plain">
           <p><a href="https://docs.angularjs.org/guide/accessibility" target="_blank" title="Link opens in a new window">https://docs.angularjs.org/guide/accessibility</a></p>
         </section>
 
-        <section>
+        <section data-title="ngAria Directives">
           <h2>ngAria</h2>
           <h3 class="h4-style">Adds support to these directives:</h3>
           <ul>
@@ -322,8 +329,8 @@
           </ul>
         </section>
 
-        <section>
-          <h2 class="h3-style">ngAria & ngDisabled</h2>
+        <section data-title="ngAria and ngDisabled">
+          <h2 class="h3-style">ngAria &amp; ngDisabled</h2>
           <figure>
             <pre><code class="html">
   &lt;md-checkbox ng-disabled="true" aria-disabled="true"...
@@ -339,8 +346,8 @@
           </figure>
         </section>
 
-        <section>
-          <h2 class="h3-style">ngAria & ngMessages</h2>
+        <section data-title="ngAria and ngMessages">
+          <h2 class="h3-style">ngAria &amp; ngMessages</h2>
           <figure>
           <pre><code class="html">
   &lt;label&gt;Label &lt;input type="text" minlength="5" /&gt;&lt;/label&gt;
@@ -359,8 +366,8 @@
           </figure>
         </section>
 
-        <section>
-          <h2 class="h3-style">ngAria & ngClick</h2>
+        <section data-title="ngAria and ngClick">
+          <h2 class="h3-style">ngAria &amp; ngClick</h2>
           <figure class="full-screen-code">
 					<pre><code class="javascript" style="max-height: 680px;">
  .directive('ngClick',['$aria', function($aria) {
@@ -380,23 +387,23 @@
           </figure>
 				</section>
 
-        <section>
+        <section data-title="Just use buttons">
           <h2 class="h3-style">That's a lot of effort...</h2>
           <h3 class="h1-style">Just use Buttons!</h3>
         </section>
 
-        <section>
+        <section data-title="Angular 2.0">
           <h2 class="h1-style">Angular 2.0</h2>
         </section>
 
-        <section>
+        <section data-title="So long, directives">
           <h2>So long, directives</h2>
           <figure>
             <a href="https://www.youtube.com/watch?v=gNmWybAyBHI" target="_blank" class="image" title="Angular 2.0 Core by Igor Minar & Tobias Bosch at ng-europe 2014 on Youtube opens in a new window"><img src="img/angular2-DDO-RIP.png" alt="Directive Definition Object R.I.P. at ngEurope on Youtube" style="max-height: 600px;"></a>
           </figure>
         </section>
 
-        <section>
+        <section data-title="Changes in Angular 2.0">
           <h2>Changes in Angular 2.0</h2>
           <ul>
             <li>No more <a href="https://docs.angularjs.org/api/ng/service/$compile" target="_blank" title="Link opens in a new window">Directive Definition Object<span class="offscreen"> Link opens in a new window</span></a></li>
@@ -408,7 +415,7 @@
           </ul>
         </section>
 
-        <section>
+        <section data-title="Binding events">
           <h2>Binding events</h2>
           <figure>
           <pre><code class="html">
@@ -428,7 +435,7 @@
           </figure>
         </section>
 
-        <section>
+        <section data-title="Angular 2 Todo">
           <h2>Angular 2 Todo (~fixed)</h2>
           <figure>
           <pre><code class="html">
@@ -447,7 +454,7 @@
           </figure>
         </section>
 
-        <section>
+        <section data-title="Angular 2.0 on Github">
           <h2 class="h3-style">Angular 2.0 on Github</h2>
           <figure>
             <img src="img/angular2-github.png" style="max-height: 600px">
@@ -455,7 +462,7 @@
           </figure>
         </section>
 
-        <section>
+        <section data-title="Proctractor">
           <h2><a href="https://github.com/angular/protractor" target="_blank" title="Link opens in a new window">Protractor</a></h2>
           <h3>End-to-end testing for AngularJS</h3>
           <ul>
@@ -467,7 +474,7 @@
           <!--<p><a href="https://github.com/angular/protractor" target="_blank" title="Link opens in a new window">https://github.com/angular/protractor<span class="offscreen"> Link opens in a new window</span></a></p>-->
         </section>
 
-        <section>
+        <section data-title="Quote from Karl Groves on Tenon.io">
           <blockquote style="width: 60%;">
             <div class="blockquote-content">
               <span class="icon" aria-hidden="true"></span>
@@ -477,7 +484,7 @@
           </blockquote>
         </section>
 
-        <section>
+        <section data-title="Protractor Accessibility Plugin">
           <h2>Protractor A11Y Plugin</h2>
           <h3 class="h4-style">Test your site with:</h3>
           <ul class="smaller">
@@ -490,7 +497,7 @@
           </figure>
         </section>
 
-				<section>
+				<section data-title="Testing for Accessibility">
 					<h2>Testing for Accessibility!</h2>
           <ul>
             <li>Check for Labels</li>
@@ -545,7 +552,7 @@
           </div>
         </section>-->
 
-        <section>
+        <section data-title="Resources">
           <h2>Resources</h2>
           <p><em>All links open in new windows</em></p>
           <ul>
@@ -560,7 +567,7 @@
           </ul>
         </section>
 
-        <section>
+        <section data-title="The end">
           <h2>The End.</h2>
         </section>
 			</div>
@@ -606,13 +613,11 @@
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/accessibility-helpers/accessibility-helpers.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'lib/js/slides.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
 				]
 			});
 		</script>
