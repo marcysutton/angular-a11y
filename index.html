@@ -80,8 +80,9 @@
 
         <section>
           <h2>Anti-patterns</h2>
-          <img src="img/angular-docs-input.png" style="max-height: 580px;" alt="" role="presentation">
-          <div class="offscreen">
+          <figure>
+            <img src="img/angular-docs-input.png" style="max-height: 580px;" alt="" role="presentation">
+            <div class="offscreen">
             <h3>Inaccessible input example from Angular.js official docs</h3>
             <code>
               <script>
@@ -118,6 +119,7 @@
             </div>
             </code>
           </div>
+          </figure>
         </section>
 
         <section>
@@ -130,13 +132,13 @@
         </section>
 
         <section>
-          <h2>Let's make it better</h2>
+          <h2>Making it better</h2>
           <ul>
             <li>Submit feedback on websites</li>
-            <li>Submit issues/pull requests via Github</li>
+            <li>Submit issues/<a href="https://github.com/angular/angular.js/pull/11079" target="_blank" title="Link opens in a new window">pull</a> <a href="https://github.com/angular/angular.js/pull/10318" target="_blank" title="Link opens in a new window">requests</a> via Github</li>
             <li>Create accessible examples</li>
             <li>Improve the framework</li>
-            <li>Speaking, Always-on advocacy</li>
+            <li>Speak at meetups, teach classes</li>
             <li>
           </ul>
         </section>
@@ -145,11 +147,11 @@
           <blockquote>
             <div class="blockquote-content">
               <span class="icon" aria-hidden="true"></span>
-              <p>Please accept our sincere apologies for the accessibility problems you were having with our web site.</p>
+              <p>Please accept our sincere apologies for the accessibility problems you were having.</p>
 
               <p>Please be assured that your email has been shared with our Web Team. We will let them know that there are accessibility issues that prevent customers with disabilities from using our site.</p>
             </div>
-            <cite>Virgin America Customer Service</cite>
+            <cite>Virgin America Customer Service, 2/17/15</cite>
           </blockquote>
         </section>
 
@@ -170,8 +172,8 @@
 				</section>
 
         <section>
-          <h2 class="h3-style">Angular Material</h2>
-          <img src="img/Angular-Material.png" alt="" style="max-height: 600px;">
+          <h2 class="h3-style">Angular.js Material Design</h2>
+          <a href="https://material.angularjs.org" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material.png" alt="Angular Material docs website" style="max-height: 600px;"></a>
         </section>
 
 				<section>
@@ -238,17 +240,16 @@
           <h2 class="h3-style">Focus Management</h2>
           <figure>
             <pre><code class="html">
-    &lt;a ng-href="#/some-page" ng-click="clicked()"&gt;Page&lt;/a&gt;
+  &lt;a ng-href="#/page" ng-click="focusSection()"&gt;Page&lt;/a&gt;
             </code></pre>
             <pre><code class="javascript">
-    $rootScope.$on('$locationChangeSuccess', openPage);
-    function openPage() {
-      $scope.closeMenu();
-      if (self.clicked) {
-        mainContentArea.focus();
-        self.clicked = false;
-      }
-    }
+  $rootScope.$on('$locationChangeSuccess', openPage);
+  function openPage() {
+    $scope.closeMenu();
+    if (self.autoFocusContent) {
+      mainContentArea.focus();
+      self.autoFocusContent = false;
+      ...
             </code></pre>
             <figcaption><a href="http://material.angularjs.org" target="_blank" title="Link opens in a new window">http://material.angularjs.org<span class="offscreen"> opens in a new window</span></a></figcaption>
           </figure>
@@ -266,7 +267,7 @@
         </section>
 
         <section>
-          <h2 class="h3-style">You <em>will</em> provide a text alternative</h2>
+          <h2 class="h3-style">You <em>will</em> provide a text alternative.</h2>
           <figure>
             <pre><code class="javascript">
   $mdAria.expect(element, 'aria-label');
@@ -288,7 +289,7 @@
           <h2 class="h3-style">Notifying the User</h2>
           <figure>
             <img src="img/angular-material-autocomplete.png" alt="">
-            <figcaption>Angular Material Autocomplete</figcaption>
+            <figcaption>Angular Material Autocomplete with 4 Matches</figcaption>
           </figure>
         </section>
 
@@ -318,14 +319,14 @@
 
 				<section>
 					<h2>ngAria</h2>
-          <h3>A11Y Module in Angular 1.3+</h3>
+          <h3>Accessibility Module in Angular 1.3+</h3>
           <img src="img/Bandaid-on-heart.png" alt="Band-Aid on heart" class="plain">
           <p><a href="https://docs.angularjs.org/guide/accessibility" target="_blank" title="Link opens in a new window">https://docs.angularjs.org/guide/accessibility</a></p>
         </section>
 
         <section>
           <h2>ngAria</h2>
-          <h3 class="h4-style">Adds ARIA support to these directives:</h3>
+          <h3 class="h4-style">Adds support to these directives:</h3>
           <ul>
             <li>ngModel</li>
             <li>ngDisabled</li>
@@ -338,12 +339,11 @@
         </section>
 
         <section>
-          <h2 class="h3-style">ngAria: ngDisabled Enhancements</h2>
+          <h2 class="h3-style">ngAria & ngDisabled</h2>
           <figure>
             <pre><code class="html">
   &lt;md-checkbox ng-disabled="true" aria-disabled="true"...
             </code></pre>
-            <figcaption>ngDisabled &amp; ngAria</figcaption>
           </figure>
           <figure>
             <pre><code class="javascript">
@@ -351,12 +351,12 @@
     return $aria.$$watchExpr('ngDisabled', 'aria-disabled');
   }])
             </code></pre>
-            <figcaption>ngAria Source</figcaption>
+            <figcaption><a href="https://github.com/angular/angular.js/blob/master/src/ngAria/aria.js#L289" target="_blank" title="Link opens in a new window">ngAria Source<span class="offscreen"> for ngDisabled opens in a new window</span></a></figcaption>
           </figure>
         </section>
 
         <section>
-          <h2 class="h3-style">ngAria: ngMessages Enhancements</h2>
+          <h2 class="h3-style">ngAria & ngMessages</h2>
           <figure>
           <pre><code class="html">
   &lt;label&gt;Label &lt;input type="text" minlength="5" /&gt;&lt;/label&gt;
@@ -371,32 +371,34 @@
         if (!elem.attr('aria-live')) {
           elem.attr('aria-live', 'assertive');
           </code></pre>
-          <figcaption>ngMessages Source</figcaption>
+          <figcaption><a href="https://github.com/angular/angular.js/blob/master/src/ngAria/aria.js#L292" target="_blank" title="Link opens in a new window">ngAria Source<span class="offscreen"> for ngMessages opens in a new window</span></a></figcaption>
           </figure>
         </section>
 
         <section>
-          <h2 class="h3-style">ngAria: ngClick Enhancements</h2>
-          <figure>
-					<pre><code class="javascript" style="max-height: 750px;">
+          <h2 class="h3-style">ngAria & ngClick</h2>
+          <figure class="full-screen-code">
+					<pre><code class="javascript" style="max-height: 680px;">
  .directive('ngClick',['$aria', function($aria) {
   return {
-    compile: function(scope, elem, attr) {
-      var nodeBlackList = ['BUTTON','A','INPUT','TEXTAREA'];
-      if (!isNodeOneOf(elem, nodeBlackList)) {
-        elem.on('keypress', function(event) {
-          if (event.keyCode === 32 || event.keyCode === 13) {
-            scope.$apply(callback);
-          }
-          function callback() {
-          ...
+   compile: function(scope, elem, attr) {
+    var nodeBlackList = ['BUTTON','A','INPUT','TEXTAREA'];
+    if (!elem.attr('role') && !isNodeOneOf(elem, nodeBlackList)) {
+      elem.attr('role', 'button');
+    }
+    if (!isNodeOneOf(elem, nodeBlackList)) {
+      elem.on('keypress', function(event) {
+        if (event.keyCode === 32 || event.keyCode === 13) {
+          scope.$apply(callback);
+        ...
 					</code></pre>
-					<figcaption><a href="https://github.com/angular/angular.js/pull/10318" target="_blank" title="Link opens in a new window">https://github.com/angular/angular.js/pull/10318</a></figcaption>
+					<figcaption><a href="https://github.com/angular/angular.js/pull/10318" target="_blank" title="Link opens in a new window">https://github.com/angular/angular.js/pull/10318<span class="offscreen"> Opens in a new window</span></a></figcaption>
           </figure>
 				</section>
 
         <section>
-          <h2 class="h1-style">Use Buttons!</h2>
+          <h2 class="h3-style">That's a lot of effort...</h2>
+          <h3 class="h1-style">Just use Buttons!</h3>
         </section>
 
         <section>
@@ -405,38 +407,45 @@
 
         <section>
           <h2>So long, directives</h2>
-          <img src="img/angular2-DDO-RIP.png" alt="DDO RIP at ngEurope" style="max-height: 600px;">
-        </section>
-
-        <section>
-          <h2>Binding events</h2>
           <figure>
-          <pre><code class="html">
-  <button ng-click="deliverTacos()">Give me tacos</button>
-          </code></pre>
-          <figcaption>Angular 1.x</figcaption>
-          </figure>
-          <figure>
-          <pre><code class="html">
-  <button (click)="deliverTacos()">Give me tacos</button>
-          </code></pre>
-          <figcaption>Angular 2.0</figcaption>
+            <a href="https://www.youtube.com/watch?v=gNmWybAyBHI" target="_blank" title="Angular 2.0 Core by Igor Minar & Tobias Bosch at ng-europe 2014 on Youtube opens in a new window"><img src="img/angular2-DDO-RIP.png" alt="Directive Definition Object R.I.P. at ngEurope on Youtube" style="max-height: 600px;"></a>
           </figure>
         </section>
 
         <section>
           <h2>Changes in Angular 2.0</h2>
           <ul>
-            <li>No more directive definition object</li>
-            <li>No more controllers</li>
+            <li>No more <a href="https://docs.angularjs.org/api/ng/service/$compile" target="_blank" title="Link opens in a new window">Directive Definition Object<span class="offscreen"> Link opens in a new window</span></a></li>
+            <li>No more Controllers</li>
+            <li>Works with Web Components</li>
             <li>Bind to properties, not attributes</li>
             <li>No more jqLite DOM wrapper</li>
-            <li>Works with Web Components</li>
+            <li>ES6 modules</li>
           </ul>
         </section>
 
         <section>
-          <h2>Todo example (~fixed)</h2>
+          <h2>Binding events</h2>
+          <figure>
+          <pre><code class="html">
+      &lt;button ng-click="deliverTacos()"
+              ng-focus="anticipationEvent()"&gt;
+        Give me tacos &lt;/button&gt;
+          </code></pre>
+          <figcaption>Angular 1.x</figcaption>
+          </figure>
+          <figure>
+          <pre><code class="html">
+      &lt;button (click)="deliverTacos()"
+              (focus)="anticipationEvent()"&gt;
+        Give me tacos &lt;/button&gt;
+          </code></pre>
+          <figcaption>Angular 2.0</figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>Angular 2 Todo (~fixed)</h2>
           <figure>
           <pre><code class="html">
   &lt;div class="view"
@@ -463,16 +472,22 @@
         </section>
 
         <section>
-          <h2>Protractor</h2>
+          <h2><a href="https://github.com/angular/protractor" target="_blank" title="Link opens in a new window">Protractor</a></h2>
           <h3>End-to-end testing for AngularJS</h3>
-          <a href="https://github.com/angular/protractor" target="_blank" title="Link opens in a new window">https://github.com/angular/protractor<span class="offscreen"> Link opens in a new window</span></a>
+          <ul>
+            <li>Node.js command line application</li>
+            <li>Runs on WebDriver</li>
+            <li>Choose your test framework</li>
+            <li>Great for continuous integration</li>
+          </ul>
+          <!--<p><a href="https://github.com/angular/protractor" target="_blank" title="Link opens in a new window">https://github.com/angular/protractor<span class="offscreen"> Link opens in a new window</span></a></p>-->
         </section>
 
         <section>
-          <blockquote>
+          <blockquote style="width: 60%;">
             <div class="blockquote-content">
               <span class="icon" aria-hidden="true"></span>
-              <p>10% of the tests we can run automatically with Tenon.io catch ~67% of the accessibility errors</p>
+              <p>10% of the tests we can run automatically with Tenon.io catch ~67% of the accessibility errors&hellip;</p>
             </div>
             <cite>Karl Groves, #a11ycampbay</cite>
           </blockquote>
@@ -487,7 +502,7 @@
           </ul>
           <figure>
             <img src="img/protractor-tenon-crop.png" class="plain" alt="Command Line Accessibility Tests" style="max-height: 360px;">
-            <!--<figcaption><a href="https://github.com/angular/protractor" target="_blank" title="Link opens in a new window">PLUGIN LINK HERE<span class="offscreen"> Link opens in a new window</span></a></figcaption>-->
+            <figcaption><a href="https://github.com/angular/protractor" target="_blank" title="Link opens in a new window">https://github.com/angular/protractor<span class="offscreen"> Link opens in a new window</span></a></figcaption>
           </figure>
         </section>
 
@@ -555,13 +570,14 @@
             <!-- UPDATE PROTRACTOR LINK!! -->
             <li><a href="https://github.com/marcysutton/protractor" target="_blank" title="Link opens in a new window">Protractor Accessibility Plugin</a></li>
             <!--  -->
+            <li><a href="https://material.angularjs.org" target="_blank" title="Link opens in a new window">Angular.js Material Design</a></li>
             <li><a href="http://unobfuscated.blogspot.com/2015/02/angularjs-accessibility-knocking-off-my.html" target="_blank" title="Link opens in a new window">Accessible TodoMVC by Dylan Barrell</a></li>
             <li><a href="https://github.com/dequelabs/ngA11y" target="_blank" title="Link opens in a new window">ngA11y by Deque</a></li>
           </ul>
         </section>
 
         <section>
-          <h2 style="margin-top: 0.5em;">Thanks, CSUN!</h2>
+          <h2>The End.</h2>
         </section>
 			</div>
 

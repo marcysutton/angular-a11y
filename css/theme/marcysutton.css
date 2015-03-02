@@ -197,6 +197,7 @@
 .reveal blockquote {
   box-shadow: none;
   font-style: italic;
+  font-weight: 400;
   line-height: 100%;
   font-size: 1.4em;
   text-align: left; }
@@ -347,6 +348,7 @@
  * LINKS
  *********************************************/
 .reveal a:not(.image), .reveal .highlight {
+  border: 1px solid transparent;
   color: #0277bb;
   text-decoration: none;
   -webkit-transition: color .5s;
@@ -357,7 +359,7 @@
 .reveal a:not(.image):hover, .reveal a:not(.image):focus {
   color: #01476f; }
 .reveal a:not(.image):focus {
-  border-bottom: 1px dotted #666; }
+  border: 1px dotted #666; }
 .reveal .roll span:after {
   color: white;
   background: #01476f; }
