@@ -23,7 +23,8 @@ var SlideAccessibility = (function(){
   for(var i=0; i<slides.length; i++){
     slides[i].setAttribute('data-id', i);
     var contents = slides[i].innerHTML;
-    slides[i].innerHTML = '<div class="accessibilityWrapper" tabIndex="-1">'+contents+'</div>';
+    slides[i].innerHTML = '<div class="accessibilityWrapper" tabIndex="-1">'+
+      contents+'</div>';
   }
 
   Reveal.addEventListener('slidechanged', sendFocusToCurrentSlide.bind(this));
@@ -52,13 +53,14 @@ var SkipLinks = (function(){
   // be sure to update the CSS as well
   var GLOBAL_SKIP_LINK_ID = 'global-skip-link',
     SLIDE_SKIP_LINKS_ID = 'table-of-contents',
-    GLOBAL_SKIP_LINK_TEXT = 'Skip to navigation',
+    GLOBAL_SKIP_LINK_TEXT = 'Show navigation',
 
     SLIDE_SELECTOR = '.slides section',
     SKIP_LINK_TARGET_SELECTOR = '.accessibilityWrapper',
     CONTROLS_SELECTOR = '.controls',
 
-    NUM_SLIDES = document.querySelectorAll( SLIDE_SELECTOR ).length,
+    SLIDES = document.querySelectorAll( SLIDE_SELECTOR ),
+    NUM_SLIDES = SLIDES.length,
 
     // Cached references to DOM elements
     dom = {};
@@ -71,7 +73,7 @@ var SkipLinks = (function(){
       dom.controls = document.querySelector( CONTROLS_SELECTOR );
     }
 
-    buildSkipLinks();
+    // buildSkipLinks();
 
   /**
    * Build skip links.
@@ -83,8 +85,9 @@ var SkipLinks = (function(){
 
     var skipLinkHTML = '';
 
-    for(var i = 0; i < NUM_SLIDES; i++){
-      skipLinkHTML += '<li><a href="#/' + i + '">Slide ' + (i + 1) + '</a></li>';
+    for(var i = 0; i < NUM_SLIDES; i++) {
+      var slideText = SLIDES[i].getAttribute('data-title');
+      skipLinkHTML += '<li><a href="#/' + i + '">' + (i + 1) + '. ' + slideText + '</a></li>';
     }
     skipLinkHTML += '</ul>';
 
@@ -165,7 +168,7 @@ var SkipLinks = (function(){
     skipLinkBlur(event);
     var href = event.currentTarget.getAttribute('href');
     var section = document.querySelector('[data-id="'+href.split('#/')[1]+'"]');
-    section.querySelector( SKIP_LINK_TARGET_SELECTOR ).focus();
+    // section.querySelector( SKIP_LINK_TARGET_SELECTOR ).focus();
   }
 
 

@@ -9,33 +9,28 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #111111;
-  background-color: #111111; }
+  background: #111;
+  background-color: #111; }
 
 .reveal {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 30px;
   font-weight: normal;
   letter-spacing: -0.02em;
-  color: #eeeeee; }
+  color: #eee; }
 
 ::selection {
-  color: white;
+  color: #fff;
   background: #e7ad52;
   text-shadow: none; }
 
 /*********************************************
  * HEADERS
  *********************************************/
-.reveal h1,
-.reveal h2,
-.reveal h3,
-.reveal h4,
-.reveal h5,
-.reveal h6 {
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
   margin: 0 0 20px 0;
-  color: #eeeeee;
-  font-family: "Montserrat", Impact, sans-serif;
+  color: #eee;
+  font-family: 'Montserrat', Impact, sans-serif;
   line-height: 0.9em;
   letter-spacing: -0.03em;
   text-transform: none;
@@ -71,7 +66,7 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #eeeeee;
+  border: 4px solid #eee;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   -webkit-transition: all .2s linear;
   -moz-transition: all .2s linear;
@@ -87,20 +82,16 @@ body {
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
-.reveal .controls div.navigate-left,
-.reveal .controls div.navigate-left.enabled {
+.reveal .controls div.navigate-left, .reveal .controls div.navigate-left.enabled {
   border-right-color: #e7ad52; }
 
-.reveal .controls div.navigate-right,
-.reveal .controls div.navigate-right.enabled {
+.reveal .controls div.navigate-right, .reveal .controls div.navigate-right.enabled {
   border-left-color: #e7ad52; }
 
-.reveal .controls div.navigate-up,
-.reveal .controls div.navigate-up.enabled {
+.reveal .controls div.navigate-up, .reveal .controls div.navigate-up.enabled {
   border-bottom-color: #e7ad52; }
 
-.reveal .controls div.navigate-down,
-.reveal .controls div.navigate-down.enabled {
+.reveal .controls div.navigate-down, .reveal .controls div.navigate-down.enabled {
   border-top-color: #e7ad52; }
 
 .reveal .controls div.navigate-left.enabled:hover {

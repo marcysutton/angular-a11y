@@ -59,11 +59,12 @@
 
       a {
         display: block;
-        font-size: 0.6em;
+        font-size: 0.45em;
         left: -50000px;
         padding: 5px 10px;
         position: absolute;
         white-space: nowrap;
+        transition: none;
       }
     }
   }
@@ -193,6 +194,7 @@ body {
   h1, h2, h3, h4, h5, h6 {
     color: $headingColor;
   	font-family: $headingFont;
+    line-height: 1;
   	letter-spacing: $headingLetterSpacing;
     margin: $headingMargin;
   	text-transform: $headingTextTransform;
