@@ -438,7 +438,7 @@
 			'<button class="navigate-left" aria-label="previous"></button>' +
 			'<button class="navigate-right" aria-label="next"></button>' +
 			'<button class="navigate-up" aria-label="up"></button>' +
-			'<button class="navigate-down" aria-label="down"></button>' );
+			'<button class="navigate-down" aria-label="down"></button>', dom.wrapper.querySelector('footer') );
 
 		// Slide number
 		dom.slideNumber = createSingletonNode( dom.wrapper, 'div', 'slide-number', '' );
@@ -561,7 +561,7 @@
 	 * If the element already exists the existing instance will
 	 * be returned.
 	 */
-	function createSingletonNode( container, tagname, classname, innerHTML ) {
+	function createSingletonNode( container, tagname, classname, innerHTML, appendBefore ) {
 
 		// Find all nodes matching the description
 		var nodes = container.querySelectorAll( '.' + classname );
@@ -581,7 +581,12 @@
 		if( typeof innerHTML === 'string' ) {
 			node.innerHTML = innerHTML;
 		}
-		container.appendChild( node );
+    if (appendBefore) {
+      container.insertBefore( node, appendBefore );
+    }
+    else {
+      container.appendChild( node );
+    }
 
 		return node;
 
