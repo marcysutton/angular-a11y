@@ -118,6 +118,16 @@ body {
 
   pre {
     background-color: black;
+    display: block;
+    position: relative;
+    width: 90%;
+    margin: 15px auto;
+    text-align: left;
+    font-size: .55em;
+    font-family: monospace;
+    line-height: 1.2em;
+    word-wrap: break-word;
+    box-shadow: 0 0 6px rgba(0,0,0,.3);
 
     code {
       background-color: black;
@@ -125,6 +135,10 @@ body {
       font-size: 1.75em;
       line-height: 1.45em;
       max-height: 640px;
+      padding: 5px;
+      overflow: auto;
+      // max-height: 400px;
+      word-wrap: normal;
     }
   }
   .full-screen-code {

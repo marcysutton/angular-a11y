@@ -107,13 +107,26 @@
   .reveal code {
     font-size: 110%; }
   .reveal pre {
-    background-color: black; }
+    background-color: black;
+    display: block;
+    position: relative;
+    width: 90%;
+    margin: 15px auto;
+    text-align: left;
+    font-size: .55em;
+    font-family: monospace;
+    line-height: 1.2em;
+    word-wrap: break-word;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); }
     .reveal pre code {
       background-color: black;
       color: #ccc;
       font-size: 1.75em;
       line-height: 1.45em;
-      max-height: 640px; }
+      max-height: 640px;
+      padding: 5px;
+      overflow: auto;
+      word-wrap: normal; }
   .reveal .full-screen-code pre {
     width: 100%; }
   .reveal .text-background {
