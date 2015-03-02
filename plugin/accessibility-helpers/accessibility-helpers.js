@@ -24,18 +24,8 @@ var SlideAccessibility = (function(){
     slides[i].setAttribute('data-id', i);
     var contents = slides[i].innerHTML;
     slides[i].innerHTML = '<div class="accessibilityWrapper" tabIndex="-1">'+
-      '<a name="slide'+ i +'" class="slideFocus offscreen">Slide ' + i + '</a>' +
       contents+'</div>';
   }
-
-  Reveal.addEventListener('slidechanged', sendFocusToCurrentSlide.bind(this));
-
-	function sendFocusToCurrentSlide(args) {
-		var currentSlide = Reveal.getCurrentSlide();
-		window.setTimeout(function(){
-			currentSlide.querySelector('.accessibilityWrapper').focus();
-		},200);
-	};
 
 })();
 
@@ -74,7 +64,7 @@ var SkipLinks = (function(){
       dom.controls = document.querySelector( CONTROLS_SELECTOR );
     }
 
-    buildSkipLinks();
+    // buildSkipLinks();
 
   /**
    * Build skip links.

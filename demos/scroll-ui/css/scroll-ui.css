@@ -84,21 +84,21 @@
   text-align: center; }
   .scroll-ui .centered-inputs div {
     display: inline-block; }
-  .scroll-ui .centered-inputs input[type=checkbox]:not(old),
-  .scroll-ui .centered-inputs input[type=radio]:not(old) {
+  .scroll-ui .centered-inputs input[type=checkbox],
+  .scroll-ui .centered-inputs input[type=radio] {
     width: 2em;
     margin: 0;
     padding: 0;
     font-size: 2em;
     opacity: 0; }
-  .scroll-ui .centered-inputs input[type=checkbox]:not(old) + label,
-  .scroll-ui .centered-inputs input[type=radio]:not(old) + label {
+  .scroll-ui .centered-inputs input[type=checkbox] + label,
+  .scroll-ui .centered-inputs input[type=radio] + label {
     display: inline-block;
     margin-left: -2em;
     line-height: 1.5em;
     padding: 0.25em 0.5em; }
-  .scroll-ui .centered-inputs input[type=checkbox]:not(old) + label > span,
-  .scroll-ui .centered-inputs input[type=radio]:not(old) + label > span {
+  .scroll-ui .centered-inputs input[type=checkbox] + label > span,
+  .scroll-ui .centered-inputs input[type=radio] + label > span {
     display: inline-block;
     width: 1.25em;
     height: 1.25em;
@@ -112,10 +112,10 @@
     background-image: -webkit-linear-gradient(#f0f0f0, #e0e0e0);
     background-image: linear-gradient(#f0f0f0, #e0e0e0);
     vertical-align: bottom; }
-  .scroll-ui .centered-inputs input[type=radio]:not(old):focus + label {
+  .scroll-ui .centered-inputs input[type=radio]:focus + label {
     background-color: #f4f3f3;
     box-shadow: 0px 0px 3px #000; }
-  .scroll-ui .centered-inputs input[type=radio]:not(old):checked + label > span > span {
+  .scroll-ui .centered-inputs input[type=radio]:checked + label > span > span {
     display: block;
     width: 0.9em;
     height: 0.9em;

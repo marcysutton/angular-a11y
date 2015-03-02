@@ -114,23 +114,23 @@ $hover: #aa1ce0;
 		div {
 			display: inline-block;
 		}
-		input[type=checkbox]:not(old),
-		input[type=radio   ]:not(old){
+		input[type=checkbox],
+		input[type=radio   ]{
 		  width     : 2em;
 		  margin    : 0;
 		  padding   : 0;
 		  font-size : 2em;
 		  opacity   : 0;
 		}
-		input[type=checkbox]:not(old) + label,
-		input[type=radio   ]:not(old) + label{
+		input[type=checkbox] + label,
+		input[type=radio   ] + label{
 		  display      : inline-block;
 		  margin-left  : -2em;
 		  line-height  : 1.5em;
 		  padding: 0.25em 0.5em;
 		}
-		input[type=checkbox]:not(old) + label > span,
-		input[type=radio   ]:not(old) + label > span {
+		input[type=checkbox] + label > span,
+		input[type=radio   ] + label > span {
 		  display          : inline-block;
 		  width            : 1.25em;
 		  height           : 1.25em;
@@ -145,11 +145,11 @@ $hover: #aa1ce0;
 		  background-image :         linear-gradient(rgb(240,240,240),rgb(224,224,224));
 		  vertical-align   : bottom;
 		}
-		input[type=radio]:not(old):focus + label {
+		input[type=radio]:focus + label {
 			background-color: #f4f3f3;
 			box-shadow: 0px 0px 3px #000;
 		}
-		input[type=radio]:not(old):checked + label > span > span {
+		input[type=radio]:checked + label > span > span {
 		  display          : block;
 		  width            : 0.9em;
 		  height           : 0.9em;
