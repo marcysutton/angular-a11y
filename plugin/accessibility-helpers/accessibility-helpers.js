@@ -27,15 +27,6 @@ var SlideAccessibility = (function(){
       contents+'</div>';
   }
 
-  Reveal.addEventListener('slidechanged', sendFocusToCurrentSlide.bind(this));
-
-	function sendFocusToCurrentSlide(args) {
-		var currentSlide = Reveal.getCurrentSlide();
-		window.setTimeout(function(){
-			currentSlide.querySelector('.accessibilityWrapper').focus();
-		},200);
-	};
-
 })();
 
 /*!
@@ -168,7 +159,7 @@ var SkipLinks = (function(){
     skipLinkBlur(event);
     var href = event.currentTarget.getAttribute('href');
     var section = document.querySelector('[data-id="'+href.split('#/')[1]+'"]');
-    // section.querySelector( SKIP_LINK_TARGET_SELECTOR ).focus();
+    section.querySelector( SKIP_LINK_TARGET_SELECTOR ).focus();
   }
 
 

@@ -66,43 +66,7 @@
         <section data-title="Anti-patterns">
           <h2>Anti-patterns</h2>
           <figure>
-            <img src="img/angular-docs-input.png" style="max-height: 580px;" alt="" role="presentation">
-            <div class="offscreen">
-            <code>
-              <script>
-              /*
-                // Angular input docs example
-                angular.module('inputExample', [])
-                   .controller('ExampleController', ['$scope', function($scope) {
-                     $scope.user = {name: 'guest', last: 'visitor'};
-                   }]);
-              */
-              </script>
-              <div ng-controller="ExampleController">
-                <form name="myForm">
-                  User name: <input type="text" name="userName" ng-model="user.name" required>
-                  <span class="error" ng-show="myForm.userName.$error.required">
-                    Required!</span><br>
-                Last name: <input type="text" name="lastName" ng-model="user.last"
-                  ng-minlength="3" ng-maxlength="10">
-                <span class="error" ng-show="myForm.lastName.$error.minlength">
-                  Too short!</span>
-                <span class="error" ng-show="myForm.lastName.$error.maxlength">
-                  Too long!</span><br>
-              </form>
-              <hr>
-              <tt>user = {{user}}</tt><br/>
-              <tt>myForm.userName.$valid = {{myForm.userName.$valid}}</tt><br>
-              <tt>myForm.userName.$error = {{myForm.userName.$error}}</tt><br>
-              <tt>myForm.lastName.$valid = {{myForm.lastName.$valid}}</tt><br>
-              <tt>myForm.lastName.$error = {{myForm.lastName.$error}}</tt><br>
-              <tt>myForm.$valid = {{myForm.$valid}}</tt><br>
-              <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br>
-              <tt>myForm.$error.minlength = {{!!myForm.$error.minlength}}</tt><br>
-              <tt>myForm.$error.maxlength = {{!!myForm.$error.maxlength}}</tt><br>
-            </div>
-            </code>
-          </div>
+            <img src="img/angular-docs-input.png" style="max-height: 580px;">
           <figcaption class="offscreen">Inaccessible input example from Angular.js official docs</figcaption>
           </figure>
         </section>
@@ -142,7 +106,7 @@
 
               <p>Please be assured that your email has been shared with our Web Team. We will let them know that there are accessibility issues that prevent customers with disabilities from using our site.</p>
             </div>
-            <cite>Virgin America Customer Service, 2/17/15</cite>
+            <cite>Virgin America Customer Service, <time datetime="2015-02-15">2/17/15</time></cite>
           </blockquote>
         </section>
 
@@ -155,11 +119,6 @@
             <li>Text alternatives</li>
             <li>Notifying the user</li>
 					</ul>
-					<aside class="notes">
-          Handling focus: tabIndex, replacing part of the DOM causes focus mgmt probz
-
-					*Graceful degradation is worth mentioning but it is outside the scope of this talk.
-					</aside>
 				</section>
 
         <section data-title="Angular.js Material Design">
