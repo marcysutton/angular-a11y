@@ -351,15 +351,14 @@
   border: 1px solid transparent;
   color: #0277bb;
   text-decoration: none;
-  -webkit-transition: color .5s;
-  -moz-transition: color .5s;
-  -ms-transition: color .5s;
-  -o-transition: color .5s;
-  transition: color .5s; }
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -ms-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s; }
 .reveal a:not(.image):hover, .reveal a:not(.image):focus {
+  border: 1px dotted #666;
   color: #01476f; }
-.reveal a:not(.image):focus {
-  border: 1px dotted #666; }
 .reveal .roll span:after {
   color: white;
   background: #01476f; }

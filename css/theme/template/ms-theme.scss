@@ -458,18 +458,16 @@ body {
   	color: $linkColor;
   	text-decoration: none;
 
-  	-webkit-transition: color .5s;
-  	   -moz-transition: color .5s;
-  	    -ms-transition: color .5s;
-  	     -o-transition: color .5s;
-  	        transition: color .5s;
+  	-webkit-transition: all .5s;
+  	   -moz-transition: all .5s;
+  	    -ms-transition: all .5s;
+  	     -o-transition: all .5s;
+  	        transition: all .5s;
   }
 	a:not(.image):hover, a:not(.image):focus {
+    border: 1px dotted #666;
 		color: $linkColorHover;
 	}
-  a:not(.image):focus {
-    border: 1px dotted #666;
-  }
 
   .roll span:after {
   	color: $white;
