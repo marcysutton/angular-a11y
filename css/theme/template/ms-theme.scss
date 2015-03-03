@@ -184,6 +184,10 @@ body {
       color: $secondaryColor;
       margin: 0 4px;
     }
+
+    @media #{$mobile} {
+      display: none;
+    }
   }
 }
 ::selection {

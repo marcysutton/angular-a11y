@@ -49,3 +49,6 @@ $selectionColor: $white;
 @mixin bodyBackground() {
 	background: $backgroundColor;
 }
+
+// breakpoints
+$mobile: "(max-width: 600px)";
