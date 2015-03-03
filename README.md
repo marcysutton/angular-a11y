@@ -1,4 +1,4 @@
-#Angular Accessibility
+#Angular.js Accessibility
 [http://marcysutton.github.io/angular-a11y/](http://marcysutton.github.io/angular-a11y/)
 
 By [Marcy Sutton](http://marcysutton.com)<br>
@@ -6,7 +6,8 @@ Developer at [Substantial](http://substantial.com) and accessibility engineer on
 twitter: [@marcysutton](http://twitter.com/marcysutton)
 
 ##Presented at:
-* ngEurope 2014
+* [CSUN 2015](http://www.csun.edu/cod/conference/2015/sessions/index.php/public/presentations/view/172)
+* [ngEurope 2014](https://www.youtube.com/watch?v=dmYDggEgU-s) - archived slides: [http://marcysutton.com/slides/angular-a11y-ng-europe](http://marcysutton.com/slides/angular-a11y-ng-europe)
 
 ## Installation
 
