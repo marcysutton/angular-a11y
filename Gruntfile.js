@@ -124,7 +124,7 @@ module.exports = function(grunt) {
       },
       theme: {
         files: [ 'css/theme/source/*.scss', 'css/theme/template/*.scss' ],
-        tasks: 'css-themes'
+        tasks: 'css-core'
       },
       css: {
         files: [ 'css/reveal.scss' ],
@@ -167,7 +167,7 @@ module.exports = function(grunt) {
   grunt.registerTask( 'package', [ 'default', 'zip' ] );
 
   // Serve presentation locally
-  grunt.registerTask( 'serve', [ 'connect', 'css-themes', 'watch' ] );
+  grunt.registerTask( 'serve', [ 'connect', 'watch' ] );
 
   // Run tests
   grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );

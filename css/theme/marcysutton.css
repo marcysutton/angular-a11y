@@ -158,6 +158,9 @@
     .reveal footer [aria-hidden=true] {
       color: #999;
       margin: 0 4px; }
+    @media (max-width: 600px) {
+      .reveal footer {
+        display: none; } }
 
 ::selection {
   color: #fff;
