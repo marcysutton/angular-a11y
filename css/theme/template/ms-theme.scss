@@ -129,7 +129,7 @@ body {
     word-wrap: break-word;
     box-shadow: 0 0 6px rgba(0,0,0,.3);
 
-    code {
+    code, & > div {
       background-color: black;
       color: $tertiaryColor;
       font-size: 1.75em;
@@ -139,6 +139,16 @@ body {
       overflow: auto;
       // max-height: 400px;
       word-wrap: normal;
+
+      &.small {
+        font-size: 1.25em;
+      }
+      .green {
+        color: lime;
+      }
+      .red {
+        color: red;
+      }
     }
   }
   .full-screen-code {
@@ -257,8 +267,8 @@ body {
     text-transform: none;
   }
   em {
-    // font-family: $;
-    // font-style: normal;
+    font-style: italic;
+    font-weight: 400;
   }
   blockquote {
     box-shadow: none;
@@ -413,6 +423,10 @@ body {
     font-family: $codeFont;
     font-size: 2.5em;
     margin-top: 0.5em;
+
+    pre code {
+      font-size: 1.25em;
+    }
   }
   .muted {
     color: $mutedColor;
@@ -424,6 +438,11 @@ body {
     margin: 0.5em 0;
     text-align: center;
 
+    &.inline {
+      li {
+        display: inline-block;
+      }
+    }
     li {
       margin-bottom: 0.25em;
     }
@@ -585,7 +604,28 @@ body {
 	border-top-color: $linkColorHover;
 }
 
+/*********************************************
+ * TABLES
+ *********************************************/
+.reveal {
+  table {
+    font-size: 0.75em;
+    line-height: 1;
 
+    tbody tr {
+      border-top: 1px solid rgba(0,0,0,0.12);
+    }
+
+    th {
+      background-color: rgba(0,0,0,0.12);
+      padding: 0.5em;
+      text-align: center;
+    }
+    td {
+      padding: 0.5em;
+    }
+  }
+}
 /*********************************************
  * PROGRESS BAR
  *********************************************/
