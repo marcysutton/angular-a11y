@@ -118,7 +118,7 @@
     line-height: 1.2em;
     word-wrap: break-word;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); }
-    .reveal pre code {
+    .reveal pre code, .reveal pre > div {
       background-color: black;
       color: #ccc;
       font-size: 1.75em;
@@ -127,6 +127,12 @@
       padding: 5px;
       overflow: auto;
       word-wrap: normal; }
+      .reveal pre code.small, .reveal pre > div.small {
+        font-size: 1.25em; }
+      .reveal pre code .green, .reveal pre > div .green {
+        color: lime; }
+      .reveal pre code .red, .reveal pre > div .red {
+        color: red; }
   .reveal .full-screen-code pre {
     width: 100%; }
   .reveal .text-background {
@@ -320,6 +326,8 @@
   font-family: Menlo, monospace;
   font-size: 2.5em;
   margin-top: 0.5em; }
+  .reveal .large-tag pre code {
+    font-size: 1.25em; }
 .reveal .muted {
   color: #999; }
 .reveal ul {
@@ -438,6 +446,21 @@
 
 .reveal .controls div.navigate-down.enabled:hover {
   border-top-color: #01476f; }
+
+/*********************************************
+ * TABLES
+ *********************************************/
+.reveal table {
+  font-size: 0.75em;
+  line-height: 1; }
+  .reveal table tbody tr {
+    border-top: 1px solid rgba(0, 0, 0, 0.12); }
+  .reveal table th {
+    background-color: rgba(0, 0, 0, 0.12);
+    padding: 0.5em;
+    text-align: center; }
+  .reveal table td {
+    padding: 0.5em; }
 
 /*********************************************
  * PROGRESS BAR
