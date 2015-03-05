@@ -73,7 +73,7 @@
             <li>Material Design</li>
             <li>ngAria</li>
             <li>Protractor</li>
-            <li>Angular 2.0</li>
+            <li>Angular 2</li>
           </ul>
         </section>
 
@@ -83,7 +83,7 @@
         </section>
 
         <section data-title="Angular.js Material Design">
-          <h2 class="h3-style">Angular Material</h2>
+          <h2 class="h3-style">Material Design for Angular 1.x</h2>
           <a href="https://material.angularjs.org" class="image" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material.png" alt="Angular Material docs website" style="max-height: 600px;"></a>
         </section>
 
@@ -299,7 +299,7 @@
         </section>
 
         <section>
-          <h2>Protractor A11Y Plugin: Setup</h2>
+          <h2 class="h3-style">Protractor A11Y Plugin: Setup</h2>
           <pre><code class="javascript">
   exports.config = {
     plugins: [{
@@ -315,67 +315,6 @@
   }
           </code></pre>
         </section>
-
-        <!--<section>
-          <figure class="full-screen-code">
-            <pre><div class="bash small">
-  1 spec, 0 failures
-  Finished in 0.64 seconds
-  Plugin: /Users/marcy/Sites/Google/protractor/plugins/accessibility/index.js (teardown)
-    <span class="green">Pass:  Chrome A11Y - Audio elements should have controls
-    Pass:  Chrome A11Y - ARIA state and property values must be valid
-    Pass:  Chrome A11Y - Elements with ARIA roles must use a valid, non-abstract ARIA role</span>
-    <span class="red">Fail:  Chrome A11Y - Controls and media elements should have labels</span>
-
-      3 elements failed:
-      &lt;input ng-model="firstName" type="text" class="ng-pristine ng-valid ng-touched"&gt;
-      &lt;input ng-model="lastName" type="text" class="ng-pristine ng-valid ng-touched"&gt;
-      &lt;select ng-options="v as ('v' + v.version + (v.isSnapshot ? ' (snapshot)' : '')) group by getGroupName(v) for v in docs_versions" ng-model="docs_version" ng-change="jumpToDocsVersion(docs_version)" cl
-
-      https://github.com/GoogleChrome/accessibility-developer-tools/wiki/Audit-Rules#-ax_text_01--controls-and-media-elements-should-have-labels
-    <span class="green">Pass:  Chrome A11Y - These elements are focusable but either invisible or obscured by another element</span>
-    <span class="red">Fail:  Chrome A11Y - Images should have an alt attribute</span>
-
-      1 element failed:
-      &lt;img src="http://example.com/img.jpg"&gt;
-
-      https://github.com/GoogleChrome/accessibility-developer-tools/wiki/Audit-Rules#-ax_text_02--images-should-have-an-alt-attribute-unless-they-have-an-aria-role-of-presentation
-    <span class="green">Pass:  Chrome A11Y - The purpose of each link should be clear from the link text
-    Pass:  Chrome A11Y - Text elements should have a reasonable contrast ratio
-    Pass:  Chrome A11Y - role=main should only appear on significant elements
-    Pass:  Chrome A11Y - Meaningful images should not be used in element backgrounds
-    Pass:  Chrome A11Y - aria-labelledby attributes should refer to an element which exists in the DOM
-    Pass:  Chrome A11Y - The web page should have a title that describes topic or purpose
-    Pass:  Chrome A11Y - Elements with ARIA roles must have all required attributes for that role
-    Pass:  Chrome A11Y - Video elements should use &lt;track&gt; elements to provide captions</span>
-    <span class="red">Fail:  Tenon.io - Language not set</span>
-      Language of the document has not been set. Set the language of the document by adding the 'lang' attribute on the &lt;html&gt; element using an ISO 639-1 language code
-
-      &lt;html xmlns="http://www.w3.org/1999/xhtml" ng-app="" ng-hint="" class="ng-scope"&gt;&lt;head style=""&gt;&lt;script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js" style=""&gt;&lt;/script&gt;&lt;script type="text/javascript
-
-    <span class="red">Fail:  Tenon.io - Image missing alt attribute</span>
-      All images must have an alt attribute. Not supplying an alt attribute will mean that users who cannot see the image will not understand what the image conveys.
-
-      &lt;img src="http://example.com/img.jpg" pagespeed_url_hash="1810523318" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"&gt;
-
-    <span class="red">Fail:  Tenon.io - Form element has no label</span>
-      Provide a label for all controls. This allows all users to understand the type of information expected in the field.
-
-      &lt;input ng-model="firstName" type="text" class="ng-pristine ng-valid ng-touched"&gt;
-
-    <span class="red">Fail:  Tenon.io - Form element has no label</span>
-      Provide a label for all controls. This allows all users to understand the type of information expected in the field.
-
-      &lt;input ng-model="lastName" type="text" class="ng-pristine ng-valid ng-touched"&gt;
-
-    <span class="red">Fail:  Tenon.io - Form element has no label</span>
-      Provide a label for all controls. This allows all users to understand the type of information expected in the field.
-
-      &lt;select ng-options="v as ('v' + v.version + (v.isSnapshot ? ' (snapshot)' : '')) group by getGroupName(v) for v in docs_versions" ng-model="docs_version" ng-change="jumpToDocsVersion(docs_version)" class="docs-version-jump ng-pristine ng-valid ng-touch
-            </div></pre>
-            <figcaption>Protractor output</figcaption>
-          </figure>
-        </section>-->
 
         <section>
           <h2 class="h3-style">Protractor Accessibility</h2>
@@ -420,15 +359,16 @@
           </ul>
 				</section>
 
-        <section data-title="Angular 2.0">
-          <h2 class="h1-style">Angular 2.0</h2>
-          <aside class="notes">
-            Early alpha.
-          </aside>
+        <section data-title="Angular 2">
+          <h2 class="h1-style">Angular 2</h2>
+          <ul class="inline">
+            <li><a href="http://angular.io" target="_blank" title="Link opens in a new window">angular.io</a> <span aria-hidden="true">|</span></li>
+            <li><a href="http://ng-conf.org" target="_blank" title="Link opens in a new window">ng-conf.org</a></li>
+          </ul>
         </section>
 
-        <section data-title="Changes in Angular 2.0">
-          <h2>Changes in Angular 2.0</h2>
+        <section data-title="Changes in Angular 2">
+          <h2>Changes in Angular 2</h2>
           <ul>
             <li>No more <a href="https://docs.angularjs.org/api/ng/service/$compile" target="_blank" title="Link opens in a new window">Directive Definition Object<span class="offscreen"> Link opens in a new window</span></a></li>
             <li>No more Controllers</li>
@@ -443,33 +383,33 @@
           <h2>Binding events</h2>
           <figure>
           <pre><code class="html">
-      &lt;button ng-click="deliverTacos()"
-              ng-focus="anticipationEvent()"&gt;
+      &lt;button ng-focus="anticipationEvent()"
+              ng-click="deliverTacos()"&gt;
         Give me tacos &lt;/button&gt;
           </code></pre>
           <figcaption>Angular 1.x</figcaption>
           </figure>
           <figure>
           <pre><code class="html">
-      &lt;button (click)="deliverTacos()"
-              (focus)="anticipationEvent()"&gt;
+      &lt;button (focus)="anticipationEvent()"
+              (click)="deliverTacos()"&gt;
         Give me tacos &lt;/button&gt;
           </code></pre>
-          <figcaption>Angular 2.0</figcaption>
+          <figcaption>Angular 2</figcaption>
           </figure>
         </section>
 
-        <section data-title="Angular 2.0 on Github">
-          <h2 class="h3-style">Angular 2.0 on Github</h2>
+        <section>
+          <h2>Angular 2 Includes ARIA Support</h2>
+        </section>
+
+        <section data-title="Angular 2 on Github">
+          <h2 class="h3-style">Angular 2 on Github</h2>
           <h3 class="h4-style">Contribute!</h3>
           <figure>
             <img src="img/angular2-github.png" style="max-height: 600px">
             <figcaption><a href="https://github.com/angular/angular" target="_blank" title="Link opens in a new window">https://github.com/angular/angular<span class="offscreen"> Link opens in a new window</span></a></figcaption>
           </figure>
-        </section>
-
-        <section>
-          <h2>ngAria !== Angular 2.0</h2>
         </section>
 
         <section data-title="Making it better">
@@ -490,9 +430,7 @@
           <ul>
             <li><a href="http://angularjs.blogspot.com/2014/11/using-ngaria.html" target="_blank" title="Link opens in a new window">Using ngAria</a></li>
             <li><a href="https://docs.angularjs.org/guide/accessibility" target="_blank" title="Link opens in a new window">ngAria Developer Guide</a></li>
-            <!-- UPDATE PROTRACTOR LINK!! -->
-            <li><a href="https://github.com/marcysutton/protractor" target="_blank" title="Link opens in a new window">Protractor Accessibility Plugin</a></li>
-            <!--  -->
+            <li><a href="http://marcysutton.com/angular-protractor-accessibility-plugin" target="_blank" title="Link opens in a new window">Protractor Accessibility Plugin</a></li>
             <li><a href="https://material.angularjs.org" target="_blank" title="Link opens in a new window">Angular.js Material Design</a></li>
             <li><a href="http://unobfuscated.blogspot.com/2015/02/angularjs-accessibility-knocking-off-my.html" target="_blank" title="Link opens in a new window">Accessible TodoMVC by Dylan Barrell</a></li>
             <li><a href="https://github.com/dequelabs/ngA11y" target="_blank" title="Link opens in a new window">ngA11y by Deque</a></li>

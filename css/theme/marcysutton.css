@@ -336,6 +336,8 @@
   list-style: none;
   margin: 0.5em 0;
   text-align: center; }
+  .reveal ul.inline li {
+    display: inline-block; }
   .reveal ul li {
     margin-bottom: 0.25em; }
   .reveal ul.left-aligned {

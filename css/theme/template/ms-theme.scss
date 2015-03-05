@@ -438,6 +438,11 @@ body {
     margin: 0.5em 0;
     text-align: center;
 
+    &.inline {
+      li {
+        display: inline-block;
+      }
+    }
     li {
       margin-bottom: 0.25em;
     }
