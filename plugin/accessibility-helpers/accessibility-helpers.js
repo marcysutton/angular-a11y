@@ -23,7 +23,7 @@ var SlideAccessibility = (function(){
   for(var i=0; i<slides.length; i++){
     slides[i].setAttribute('data-id', i);
     var contents = slides[i].innerHTML;
-    slides[i].innerHTML = '<div class="accessibilityWrapper" tabIndex="-1">'+
+    slides[i].innerHTML = '<div class="accessibilityWrapper">'+
       contents+'</div>';
   }
 
