@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Angular Accessibility</title>
+		<title>Accessibility in AngularJS and Beyond</title>
 
-		<meta name="description" content="Angular Accessibility">
+		<meta name="description" content="Accessibility in AngularJS and Beyond">
 		<meta name="author" content="Marcy Sutton">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -42,27 +42,26 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-title="Author: Marcy Sutton">
-          <h1>Developments in Angular Accessibility</h1>
-					<p>Marcy Sutton, Seattle, WA<br>Developer @Substantial, Angular Core Team Member</p>
+				<section>
+          <h1 class="offscreen">Accessibility in AngularJS and Beyond</h1>
+					<h2>Hello</h2>
+					<img src="img/human-robot-communication.jpg" alt="Human-to-robot communication at last year's CSUN Conference">
+				</section>
+
+				<section>
+          <h2 aria-hidden="true">Accessibility in AngularJS<br>and Beyond</h2>
+					<p>Marcy Sutton, Seattle, WA<br>Developer @Substantial, Angular.js Contributor</p>
 					<p><a href="http://marcysutton.github.io/angular-a11y">http://marcysutton.github.io/angular-a11y</a></p>
 				</section>
 
-        <section data-title="Inaccessible code samples">
+        <section>
           <figure>
             <a href="https://twitter.com/pauljadam/status/550822616898863106" class="image" target="_blank" title="Link opens in a new window"><img src="img/angular-textbook.png" style="max-height: 740px;" alt="#AngularJS web apps are never accessible because even the books on it start with inaccessible code samples! Paul J. Adam (@pauljadam) January 2, 2015" class="plain"></a>
             <figcaption class="offscreen">#AngularJS web apps are never accessible because even the books on it start with inaccessible code samples! Paul J Adam January 2, 2015</figcaption>
           </figure>
         </section>
 
-        <!--<section data-title="Depressed Snoopy">
-          <figure>
-            <img src="img/depressed-snoopy.gif" style="min-height: 640px;">
-            <figcaption class="offscreen">Snoopy sadly laying on top of his doghouse in the pouring rain</figcaption>
-          </figure>
-        </section>-->
-
-        <section data-title="Me and Angular">
+        <section>
           <h2><img src="img/AngularJS-Shield-large.png" class="plain" alt="Angular"><br>
           &amp; Me</h2>
         </section>
@@ -82,7 +81,7 @@
           <a href="http://www.google.com/design/spec/material-design/introduction.html#" target="_blank" title="Link opens in a new window" class="image"><img src="img/material-design-social.png" alt="Material Design for multi-screen consistency" style="max-height: 600px;"></a>
         </section>
 
-        <section data-title="Angular.js Material Design">
+        <section>
           <h2 class="h3-style">Material Design for Angular 1.x</h2>
           <a href="https://material.angularjs.org" class="image" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material.png" alt="Angular Material docs website" style="max-height: 600px;"></a>
         </section>
@@ -103,7 +102,7 @@
           </code></pre>
         </section>
 
-        <section data-title="Text alternatives">
+        <section>
           <h2 class="h3-style">Enforcing text alternatives</h2>
           <figure>
             <img src="img/angular-material-radio-icons-log.png" alt="" style="max-height: 660px;">
@@ -114,7 +113,26 @@
           </aside>
         </section>
 
-        <section data-title="Notifying the user with mdAutocomplete">
+        <section>
+          <h2 class="h3-style">You <em>will</em> provide a text alternative.</h2>
+          <figure>
+            <pre><code class="javascript">
+  $mdAria.expect(element, 'aria-label');
+            </code></pre>
+            <pre><code class="javascript">
+  function expect(element, attrName, defaultValue) {
+    if (!element.hasAttribute(attrName)) {
+      if (defaultValue.length) {
+        element.attr(attrName, defaultValue);
+      } else {
+        $log.warn('ARIA: Attribute "', attrName, '", required for accessibility, is missing on element:', element);
+      }
+            </code></pre>
+            <figcaption>$mdAria Service</figcaption>
+          </figure>
+        </section>
+
+        <section>
           <h2 class="h3-style">Notifying the User</h2>
           <figure>
             <img src="img/angular-material-autocomplete.png" alt="">
@@ -122,7 +140,7 @@
           </figure>
         </section>
 
-        <section data-title="mdAutocomplete Code sample">
+        <section>
           <h2 class="h3-style">Notifying the User (code)</h2>
           <figure>
           <pre><code class="html">
@@ -146,7 +164,7 @@
           <img src="img/angular-github.png" alt="Angular on Github" style="max-height: 600px;">
         </section>
 
-				<section data-title="ngAria new accessibility module">
+				<section>
 					<h2>ngAria</h2>
           <h3>Accessibility Module in Angular 1.3+</h3>
           <p><a href="https://docs.angularjs.org/guide/accessibility" target="_blank" title="Link opens in a new window">https://docs.angularjs.org/guide/accessibility</a></p>
@@ -169,7 +187,7 @@
           </code></pre>
         </section>
 
-        <section data-title="ngAria Directives">
+        <section>
           <h2>ngAria</h2>
           <h3 class="h4-style">Adds support to these directives:</h3>
           <ul>
@@ -183,7 +201,7 @@
           </ul>
         </section>
 
-        <section data-title="ngAria and ngDisabled">
+        <section>
           <h2 class="h3-style">ngAria &amp; ngDisabled</h2>
           <figure>
             <pre><code class="html">
@@ -201,35 +219,6 @@
         </section>
 
         <section>
-          <h2>ngMessages &amp; ngAria</h2>
-          <figure style="max-width: 900px; min-height: 236px; margin: 0 auto;">
-            <div data-height="268" data-theme-id="11082" data-slug-hash="emjjKX" data-default-tab="result" data-user="marcysutton" class='codepen'></div>
-            <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-            <figcaption><a href='http://codepen.io/marcysutton/pen/emjjKX/'>Demo on CodePen</a></figcaption>
-          </figure>
-        </section>
-
-        <section data-title="ngAria and ngMessages">
-          <h2 class="h3-style">ngAria &amp; ngMessages</h2>
-          <figure>
-          <pre><code class="html">
-  &lt;label&gt;Label &lt;input type="text" minlength="5" /&gt;&lt;/label&gt;
-  &lt;div ng-messages="myForm.myField.$error"&gt;
-    &lt;div ng-message="minlength, maxlength"&gt;
-      Your email must be between 5 and 100 characters long
-          </code></pre>
-          <pre><code class="javascript">
-  .directive('ngMessages', function() {
-    return {
-      link: function(scope, elem, attr) {
-        if (!elem.attr('aria-live')) {
-          elem.attr('aria-live', 'assertive');
-          </code></pre>
-          <figcaption><a href="https://github.com/angular/angular.js/blob/master/src/ngAria/aria.js#L292" target="_blank" title="Link opens in a new window">ngAria Source for ngMessages<span class="offscreen"> for ngMessages opens in a new window</span></a></figcaption>
-          </figure>
-        </section>
-
-        <section>
           <h2>ngClick</h2>
           <div class="large-tag full-screen-code">
             <pre><code class="html">
@@ -238,7 +227,7 @@
           </div>
         </section>
 
-        <section data-title="ngAria and ngClick">
+        <section>
           <h2 class="h3-style">ngAria &amp; ngClick</h2>
           <figure class="full-screen-code">
 					<pre><code class="javascript" style="max-height: 680px;">
@@ -259,12 +248,12 @@
           </figure>
 				</section>
 
-        <section data-title="Just use buttons">
+        <section>
           <h2 class="h3-style">That's a lot of effort...</h2>
           <h3 class="h1-style">Just use buttons!</h3>
         </section>
 
-        <section data-title="Proctractor">
+        <section>
           <h2><img src="img/protractor-logo.png" alt="Protractor: end-to-end testing for AngularJS" class="plain"></h2>
           <ul>
             <li>Node.js command line application</li>
@@ -275,7 +264,7 @@
           <!--<p><a href="https://github.com/angular/protractor" target="_blank" title="Link opens in a new window">https://github.com/angular/protractor<span class="offscreen"> Link opens in a new window</span></a></p>-->
         </section>
 
-        <section data-title="Quote from Karl Groves on Tenon.io">
+        <section>
           <blockquote style="margin: 0 auto; width: 60%;">
             <div class="blockquote-content">
               <span class="icon" aria-hidden="true"></span>
@@ -285,7 +274,7 @@
           </blockquote>
         </section>
 
-        <section data-title="Protractor Accessibility Plugin">
+        <section>
           <h2>Protractor A11Y Plugin</h2>
           <h3 class="h4-style">Test your site with:</h3>
           <ul class="smaller">
@@ -348,7 +337,7 @@
         </table>
         </section>
 
-				<section data-title="Testing for Accessibility">
+				<section>
 					<h2>Automated Testing Strategies</h2>
           <ul>
             <li>Check for Labels</li>
@@ -359,7 +348,7 @@
           </ul>
 				</section>
 
-        <section data-title="Angular 2">
+        <section>
           <h2 class="h1-style">Angular 2</h2>
           <ul class="inline">
             <li><a href="http://angular.io" target="_blank" title="Link opens in a new window">angular.io</a> <span aria-hidden="true">|</span></li>
@@ -367,7 +356,7 @@
           </ul>
         </section>
 
-        <section data-title="Changes in Angular 2">
+        <section>
           <h2>Changes in Angular 2</h2>
           <ul>
             <li>No more <a href="https://docs.angularjs.org/api/ng/service/$compile" target="_blank" title="Link opens in a new window">Directive Definition Object<span class="offscreen"> Link opens in a new window</span></a></li>
@@ -379,7 +368,7 @@
           </ul>
         </section>
 
-        <section data-title="Binding events">
+        <section>
           <h2>Binding events</h2>
           <figure>
           <pre><code class="html">
@@ -403,7 +392,7 @@
           <h2>Angular 2 Includes ARIA Support</h2>
         </section>
 
-        <section data-title="Angular 2 on Github">
+        <section>
           <h2 class="h3-style">Angular 2 on Github</h2>
           <h3 class="h4-style">Contribute!</h3>
           <figure>
@@ -412,7 +401,7 @@
           </figure>
         </section>
 
-        <section data-title="Making it better">
+        <section>
           <h2>Making it better</h2>
           <ul>
             <li>Submit feedback on websites</li>
@@ -424,7 +413,7 @@
           </ul>
         </section>
 
-        <section data-title="Resources">
+        <section>
           <h2>Resources</h2>
           <p><em>All links open in new windows</em></p>
           <ul>
@@ -437,13 +426,13 @@
           </ul>
         </section>
 
-        <section data-title="The end">
+        <section>
           <h2>The End.</h2>
         </section>
 			</div>
 
 			<footer>
-        <p class="copyright">Developments in Angular Accessibility<br>
+        <p class="copyright">Accessibility in AngularJS and Beyond<br>
           <a href="http://twitter.com/marcysutton" target="_blank" title="Link opens in a new window">@marcysutton</a> <span aria-hidden="true">/</span> <a href="http://marcysutton.com" target="_blank" title="Link opens in a new window">MarcySutton.com</a></p>
       </footer>
 		</div>
