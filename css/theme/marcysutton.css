@@ -35,45 +35,78 @@
  *
  * 2014 Marcy Sutton, http://marcysutton.com
  *********************************************/
-.reveal .slides {
-  z-index: 12; }
-  .reveal .slides > section > .accessibilityWrapper, .reveal .slides > section > section > .accessibilityWrapper {
-    display: none;
-    visibility: hidden; }
-  .reveal .slides > section.present > .accessibilityWrapper {
-    display: block;
-    visibility: visible;
-    outline: none; }
-  .reveal .slides > section > .accessibilityWrapper {
-    outline: none; }
-  .reveal .slides.staticPage > section {
-    display: block !important; }
-.reveal #global-skip-link {
-  display: block;
-  font-size: 0.6em;
-  left: -50000px;
-  padding: 5px 10px;
-  position: fixed;
-  white-space: nowrap; }
-.reveal ul#table-of-contents {
-  display: block;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: fixed; }
-  .reveal ul#table-of-contents li {
-    margin: 0;
-    padding: 0; }
-    .reveal ul#table-of-contents li a {
+.reveal {
+  /* Material */ }
+  .reveal .md-whiteframe-z1 {
+    max-width: 800px;
+    min-height: 500px;
+    margin: 0 auto 1em; }
+  .reveal md-content {
+    min-height: 400px; }
+  .reveal .md-button, .reveal md-checkbox, .reveal md-switch, .reveal md-radio-button {
+    font-size: 2em; }
+  .reveal .md-center-wrapper {
+    margin: 1em 0;
+    text-align: center; }
+    .reveal .md-center-wrapper div, .reveal .md-center-wrapper md-radio-button {
+      display: inline-block;
+      vertical-align: middle; }
+  .reveal md-toolbar h2 {
+    color: #fff;
+    font-size: 1.25em;
+    line-height: inherit;
+    margin: 0; }
+  .reveal md-toolbar .md-button {
+    margin: 0 16px 0 8px !important;
+    min-width: 0; }
+    .reveal md-toolbar .md-button .icon {
+      display: inline-block;
+      margin: 0;
+      height: 48px;
+      width: 48px; }
+    .reveal md-toolbar .md-button svg {
+      transform: scale(0.8, 0.8); }
+      .reveal md-toolbar .md-button svg rect {
+        fill: #fff; }
+  .reveal .slides {
+    z-index: 12; }
+    .reveal .slides > section > .accessibilityWrapper, .reveal .slides > section > section > .accessibilityWrapper {
+      display: none;
+      visibility: hidden; }
+    .reveal .slides > section.present > .accessibilityWrapper {
       display: block;
-      font-size: 0.45em;
-      left: -50000px;
-      padding: 5px 10px;
-      position: absolute;
-      white-space: nowrap;
-      transition: none; }
-.reveal .letter-icon {
-  font-size: 150%; }
+      visibility: visible;
+      outline: none; }
+    .reveal .slides > section > .accessibilityWrapper {
+      outline: none; }
+    .reveal .slides.staticPage > section {
+      display: block !important; }
+  .reveal #global-skip-link {
+    display: block;
+    font-size: 0.6em;
+    left: -50000px;
+    padding: 5px 10px;
+    position: fixed;
+    white-space: nowrap; }
+  .reveal ul#table-of-contents {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed; }
+    .reveal ul#table-of-contents li {
+      margin: 0;
+      padding: 0; }
+      .reveal ul#table-of-contents li a {
+        display: block;
+        font-size: 0.45em;
+        left: -50000px;
+        padding: 5px 10px;
+        position: absolute;
+        white-space: nowrap;
+        transition: none; }
+  .reveal .letter-icon {
+    font-size: 150%; }
 
 .reveal video, .reveal iframe {
   max-width: 100% !important;
@@ -99,7 +132,7 @@
  * GLOBAL STYLES
  *********************************************/
 .reveal {
-  font-size: 36px;
+  font-size: 3.5rem;
   font-weight: 200;
   color: #212121; }
   .reveal iframe {
@@ -324,7 +357,7 @@
 .reveal .large-tag {
   color: #ccc;
   font-family: Menlo, monospace;
-  font-size: 2.5em;
+  font-size: 2.25em;
   margin-top: 0.5em; }
   .reveal .large-tag pre code {
     font-size: 1.25em; }
@@ -401,11 +434,11 @@
   -ms-transition: all .2s linear;
   -o-transition: all .2s linear;
   transition: all .2s linear; }
-  .reveal section img.plain {
+  .reveal section img.plain, .reveal section img.denotation {
     background-color: transparent;
     border-width: 0;
     box-shadow: none; }
-    a .reveal section img.plain:hover, a .reveal section img.plain:focus {
+    a .reveal section img.plain:hover, a .reveal section img.denotation:hover, a .reveal section img.plain:focus, a .reveal section img.denotation:focus {
       background-color: rgba(207, 241, 16, 0.5); }
 .reveal img.freezeframe_done {
   border-width: 0;
@@ -457,12 +490,17 @@
   line-height: 1; }
   .reveal table tbody tr {
     border-top: 1px solid rgba(0, 0, 0, 0.12); }
+  .reveal table .border td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
   .reveal table th {
     background-color: rgba(0, 0, 0, 0.12);
     padding: 0.5em;
     text-align: center; }
   .reveal table td {
-    padding: 0.5em; }
+    padding: 0.5em;
+    border-right: 1px solid rgba(0, 0, 0, 0.12); }
+    .reveal table td:last-child {
+      border-right-width: 0; }
 
 /*********************************************
  * PROGRESS BAR
@@ -525,6 +563,20 @@
 /*********************************************
  * Slide Styles
  *********************************************/
+.reveal .background {
+  position: relative;
+  z-index: 0; }
+.reveal .foreground {
+  position: relative;
+  z-index: 1; }
+.reveal .denotation {
+  max-width: 200px;
+  position: absolute;
+  margin-left: 0.25em;
+  top: -0.5em; }
+  .reveal .denotation.side {
+    top: -2em;
+    right: 0; }
 .reveal .definition {
   margin: 0 auto; }
   .reveal .definition p {

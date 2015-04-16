@@ -4,9 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Accessibility in AngularJS and Beyond</title>
+		<title>Accessibility in Angular and Beyond</title>
 
-		<meta name="description" content="Accessibility in AngularJS and Beyond">
+		<meta name="description" content="Accessibility in Angular and Beyond">
+
 		<meta name="author" content="Marcy Sutton">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -19,7 +20,7 @@
 		<link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/material.css">
+    <link rel="stylesheet" href="css/theme/angular-material.min.css">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -43,14 +44,14 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-          <h1 class="offscreen">Accessibility in AngularJS and Beyond</h1>
-					<h2>Hello</h2>
-					<img src="img/human-robot-communication.jpg" alt="Human-to-robot communication at last year's CSUN Conference">
+          <h1 class="offscreen">Accessibility in Angular and Beyond</h1>
+					<h2>Accessibility == People</h2>
+					<img src="img/tandem-biking.jpg" alt="Tandem bicycling at CSUN 2015" style="max-height: 600px;">
 				</section>
 
 				<section>
-          <h2 aria-hidden="true">Accessibility in AngularJS<br>and Beyond</h2>
-					<p>Marcy Sutton, Seattle, WA<br>Developer @Substantial, Angular.js Contributor</p>
+          <h2 aria-hidden="true">Accessibility in Angular<br>and Beyond</h2>
+					<p>Marcy Sutton, Seattle, WA<br>Developer @Substantial, Angular Core Team Member</p>
 					<p><a href="http://marcysutton.github.io/angular-a11y">http://marcysutton.github.io/angular-a11y</a></p>
 				</section>
 
@@ -69,11 +70,17 @@
         <section>
           <h2>Today</h2>
           <ul>
-            <li>Material Design</li>
+            <li class="foreground">
+              Material Design &amp; a11y
+              <img src="img/taco-denotation.png" alt="" 
+                   class="denotation" style="top: -1.5em;">
+            </li>
             <li>ngAria</li>
             <li>Protractor</li>
             <li>Angular 2</li>
           </ul>
+          <br>
+          <p aria-hidden="true"><small><em>Legend: taco denotes a major topic in client-rendered app accessibility</em></small></p>
         </section>
 
         <section>
@@ -86,8 +93,100 @@
           <a href="https://material.angularjs.org" class="image" target="_blank" title="Link opens in a new window"><img src="img/Angular-Material.png" alt="Angular Material docs website" style="max-height: 600px;"></a>
         </section>
 
+        <section data-state="material-controls" ng-app="SlidesApp">
+          <h2 class="foreground">
+            Interactivity
+            <img src="img/taco-denotation.png" alt="Important Topic" class="denotation">
+          </h2>
+          <div class="md-whiteframe-z1 background" style="font-size: 12px;">
+            <md-toolbar>
+              <div class="md-toolbar-tools">
+                <md-button aria-label="Settings" class="tabbable">
+                  <span class="icon">
+                    <svg version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30'><rect width='30' height='5'/><rect y='24' width='30' height='5' /><rect y='12' width='30' height='5'/></svg>
+                  </span>
+                </md-button>
+                <h2>
+                  <span>Toolbar</span>
+                </h2>
+              </div>
+            </md-toolbar>
+            <!-- TODO: disable Reveal space bar and arrow keys inside app -->
+            <md-content layout="column" layout-align="center center">
+              <div class="md-center-wrapper">
+                <div>
+                  <md-checkbox ng-model="something" class="tabbable">Checkbox</md-checkbox>
+                </div>
+                <div>  
+                  <md-switch ng-model="somethingelse" class="tabbable">Switch</md-switch>
+                </div>
+              </div>
+              <div class="md-center-wrapper">
+                <md-button class="md-primary tabbable">Button</md-button>
+                <md-button class="md-raised tabbable">Button</md-button>
+                <md-button class="md-warn tabbable">Button</md-button>
+              </div>
+              <div class="md-center-wrapper">
+                <md-radio-group ng-model="data.group1" class="tabbable">
+                  <md-radio-button value="Apple">Radio</md-radio-button>
+                  <md-radio-button value="Banana"> Radio </md-radio-button>
+                  <md-radio-button value="Mango">Radio</md-radio-button>
+                </md-radio-group>
+              </div>
+            </md-content>
+          </div>
+        </section>
+
         <section>
-          <h2 class="h3-style">Focus management</h2>
+          <h2 class="h3-style">Hacking Browser Focus</h2>
+          <pre><code class="javascript">
+  // restrict focus styles to the keyboard
+  scope.mouseActive = false;
+  element.on('mousedown', function() {
+      scope.mouseActive = true;
+      $timeout(function(){
+        scope.mouseActive = false;
+      }, 100);
+    })
+    .on('focus', function() {
+      if(scope.mouseActive === false) { element.addClass('md-focused'); }
+    })
+    .on('blur', function() { element.removeClass('md-focused'); });
+          </code></pre>
+        </section>
+        
+        <section>
+          <h2>Text Alternatives
+            <img src="img/taco-denotation.png" alt="Important Topic" class="denotation">
+          </h2>
+          <div class="large-tag">
+          <pre><code class="html">
+   <span class="visually-hidden">Menu</span>
+
+   <label for="taco-input">Tacos!</label>
+
+   <button aria-label="Tacos!"></button>
+
+   <img alt="I don't want to taco bout it">
+          </code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="h3-style">Enforcing text alternatives</h2>
+          <figure>
+            <img src="img/angular-material-radio-icons-log.png" alt="" style="max-height: 660px;">
+            <figcaption><a href="https://material.angularjs.org/#/demo/material.components.radioButton" target="_blank" title="Link opens in a new window">Angular Material Radio Buttons<span class="offscreen"> opens in a new window</span></a></figcaption>
+          </figure>
+          <aside class="notes">
+            Also: form labels, icon buttons, background images with embedded text, etc.
+          </aside>
+        </section>
+
+        <section>
+          <h2>Focus management
+            <img src="img/taco-denotation.png" alt="Important Topic" class="denotation">
+          </h2>
           <pre><code class="html">
   &lt;a ng-href="#/page" ng-click="focusSection()"&gt;Page&lt;/a&gt;
           </code></pre>
@@ -103,37 +202,9 @@
         </section>
 
         <section>
-          <h2 class="h3-style">Enforcing text alternatives</h2>
-          <figure>
-            <img src="img/angular-material-radio-icons-log.png" alt="" style="max-height: 660px;">
-            <figcaption><a href="https://material.angularjs.org/#/demo/material.components.radioButton" target="_blank" title="Link opens in a new window">Angular Material Radio Buttons<span class="offscreen"> opens in a new window</span></a></figcaption>
-          </figure>
-          <aside class="notes">
-            Also: form labels, icon buttons, background images with embedded text, etc.
-          </aside>
-        </section>
-
-        <section>
-          <h2 class="h3-style">You <em>will</em> provide a text alternative.</h2>
-          <figure>
-            <pre><code class="javascript">
-  $mdAria.expect(element, 'aria-label');
-            </code></pre>
-            <pre><code class="javascript">
-  function expect(element, attrName, defaultValue) {
-    if (!element.hasAttribute(attrName)) {
-      if (defaultValue.length) {
-        element.attr(attrName, defaultValue);
-      } else {
-        $log.warn('ARIA: Attribute "', attrName, '", required for accessibility, is missing on element:', element);
-      }
-            </code></pre>
-            <figcaption>$mdAria Service</figcaption>
-          </figure>
-        </section>
-
-        <section>
-          <h2 class="h3-style">Notifying the User</h2>
+          <h2>Notifying the User
+            <img src="img/taco-denotation.png" alt="Important Topic" class="denotation">
+          </h2>
           <figure>
             <img src="img/angular-material-autocomplete.png" alt="">
             <figcaption><a href="https://material.angularjs.org/#/demo/material.components.autocomplete" target="_blank" title="Link opens in a new window">Angular Material Autocomplete with 4 Matches</a></figcaption>
@@ -222,7 +293,7 @@
           <h2>ngClick</h2>
           <div class="large-tag full-screen-code">
             <pre><code class="html">
- &lt;div ng-click="ohNoYouDidnt()"&gt;&lt;/div&gt;
+      &lt;div ng-click="ohNoYouDidnt()"&gt;&lt;/div&gt;
             </code></pre>
           </div>
         </section>
@@ -249,8 +320,13 @@
 				</section>
 
         <section>
-          <h2 class="h3-style">That's a lot of effort...</h2>
-          <h3 class="h1-style">Just use buttons!</h3>
+          <div class="foreground">
+            <h2 class="h3-style">That's a lot of effort...</h2>
+            <h3 class="h1-style">Just use buttons!</h3>
+
+            <img src="img/taco-denotation.png" alt="Important Topic" 
+                 class="denotation side">
+          </div>
         </section>
 
         <section>
@@ -261,25 +337,14 @@
             <li>Choose your test framework</li>
             <li>Great for continuous integration</li>
           </ul>
-          <!--<p><a href="https://github.com/angular/protractor" target="_blank" title="Link opens in a new window">https://github.com/angular/protractor<span class="offscreen"> Link opens in a new window</span></a></p>-->
-        </section>
-
-        <section>
-          <blockquote style="margin: 0 auto; width: 60%;">
-            <div class="blockquote-content">
-              <span class="icon" aria-hidden="true"></span>
-              <p>10% of the tests we can run automatically with Tenon.io catch ~67% of the accessibility errors&hellip;</p>
-            </div>
-            <cite>Karl Groves, #a11ycampbay</cite>
-          </blockquote>
         </section>
 
         <section>
           <h2>Protractor A11Y Plugin</h2>
           <h3 class="h4-style">Test your site with:</h3>
           <ul class="smaller">
-            <li>Chrome Accessibility Developer Tools</li>
-            <li>Tenon.io</li>
+            <li><a href="https://github.com/GoogleChrome/accessibility-developer-tools">Chrome Accessibility Developer Tools</a></li>
+            <li><a href="http://tenon.io">Tenon.io</a></li>
           </ul>
           <figure>
             <img src="img/protractor-tenon-crop.png" class="plain" alt="Command Line Accessibility Tests" style="max-height: 400px;">
@@ -289,6 +354,7 @@
 
         <section>
           <h2 class="h3-style">Protractor A11Y Plugin: Setup</h2>
+          <figure>
           <pre><code class="javascript">
   exports.config = {
     plugins: [{
@@ -303,38 +369,43 @@
     }]
   }
           </code></pre>
+          <figcaption>
+          <a href="https://github.com/angular/protractor/blob/master/docs/plugins.md#accessibility-plugin" target="_blank" title="Link opens in a new window">https://github.com/angular/protractor/blob/master/docs/plugins/<span class="offscreen"> Link opens in a new window</span></a></figcaption>
+          </figure>
         </section>
 
         <section>
           <h2 class="h3-style">Protractor Accessibility</h2>
           <h3 class="h4-style">Can I use?</h3>
-          <table>
-            <thead>
-            <tr>
-              <th>Library</th>
-              <th>Pricing</th>
-              <th>API Key</th>
-              <th>External Request</th>
-              <th>No. of Tests</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>Chrome Accessibility Developer Tools</td>
-              <td>Free</td>
-              <td>No</td>
-              <td>No</td>
-              <td>14</td>
-            </tr>
+          <div class="md-whiteframe-z1" style="max-width: 100%; min-height: 200px;">
+            <table>
+              <thead>
               <tr>
-              <td>Tenon.io</td>
-              <td>Free limited accounts, paid subscriptions</td>
-              <td>Yes</td>
-              <td>Yes</td>
-              <td>63</td>
-            </tr>
-          </tbody>
-        </table>
+                <th>Library</th>
+                <th>Pricing</th>
+                <th>API Key</th>
+                <th>External Request</th>
+                <th>No. of Tests</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="border">
+                <td>Chrome Accessibility Developer Tools</td>
+                <td>Free</td>
+                <td>No</td>
+                <td>No</td>
+                <td>14</td>
+              </tr>
+                <tr>
+                <td>Tenon.io</td>
+                <td>Free limited accounts, paid subscriptions</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>63</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
         </section>
 
 				<section>
@@ -350,10 +421,7 @@
 
         <section>
           <h2 class="h1-style">Angular 2</h2>
-          <ul class="inline">
-            <li><a href="http://angular.io" target="_blank" title="Link opens in a new window">angular.io</a> <span aria-hidden="true">|</span></li>
-            <li><a href="http://ng-conf.org" target="_blank" title="Link opens in a new window">ng-conf.org</a></li>
-          </ul>
+          <h3><a href="http://angular.io" target="_blank" title="Link opens in a new window">http://angular.io</a></h3>
         </section>
 
         <section>
@@ -389,7 +457,7 @@
         </section>
 
         <section>
-          <h2>Angular 2 Includes ARIA Support</h2>
+          <h2>Angular 2 includes ARIA support</h2>
         </section>
 
         <section>
@@ -399,18 +467,6 @@
             <img src="img/angular2-github.png" style="max-height: 600px">
             <figcaption><a href="https://github.com/angular/angular" target="_blank" title="Link opens in a new window">https://github.com/angular/angular<span class="offscreen"> Link opens in a new window</span></a></figcaption>
           </figure>
-        </section>
-
-        <section>
-          <h2>Making it better</h2>
-          <ul>
-            <li>Submit feedback on websites</li>
-            <li>Submit issues/<a href="https://github.com/angular/angular.js/pull/11079" target="_blank" title="Link opens in a new window">pull</a> <a href="https://github.com/angular/angular.js/pull/10318" target="_blank" title="Link opens in a new window">requests</a> via Github</li>
-            <li>Create accessible examples</li>
-            <li>Improve the framework</li>
-            <li>Speak at meetups, teach classes</li>
-            <li>
-          </ul>
         </section>
 
         <section>
@@ -427,18 +483,28 @@
         </section>
 
         <section>
-          <h2>The End.</h2>
+          <h2 class="foreground">The End.
+            <img src="img/taco-denotation.png" alt="Taco" 
+                 class="denotation" style="margin-left: 1em;">
+          </h2>
         </section>
 			</div>
 
 			<footer>
-        <p class="copyright">Accessibility in AngularJS and Beyond<br>
+        <p class="copyright">Accessibility in Angular and Beyond<br>
           <a href="http://twitter.com/marcysutton" target="_blank" title="Link opens in a new window">@marcysutton</a> <span aria-hidden="true">/</span> <a href="http://marcysutton.com" target="_blank" title="Link opens in a new window">MarcySutton.com</a></p>
       </footer>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
+        <!-- Angular Material Dependencies -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-aria.min.js"></script>
+
+    <!-- Angular Material Javascript using RawGit to load directly from `bower-material/master` -->
+    <script src="js/angular-material.min.js"></script>
 		<script>
 
 			// Full list of configuration options available here:
@@ -455,6 +521,13 @@
 		    width: 1440,
 		    height: 900,
 
+        keyboard: {
+          13: 'next', // go to the next slide when the ENTER key is pressed
+          27: function() {}/*, // do something custom when ESC is pressed
+          37: null,
+          39: null // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding)*/
+        },
+
 		    // Factor of the display size that should remain empty around the content
 		    margin: 0.1,
 
@@ -464,10 +537,6 @@
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
@@ -481,5 +550,8 @@
 				]
 			});
 		</script>
+    <script>
+      var app = angular.module('SlidesApp', ['ngMaterial']);
+    </script>
 	</body>
 </html>
