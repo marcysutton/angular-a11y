@@ -470,7 +470,7 @@ body {
   .large-tag {
     color: $tertiaryColor;
     font-family: $codeFont;
-    font-size: 2.5em;
+    font-size: 2.25em;
     margin-top: 0.5em;
 
     pre code {
@@ -664,7 +664,9 @@ body {
     tbody tr {
       border-top: 1px solid rgba(0,0,0,0.12);
     }
-
+    .border td {
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+    }
     th {
       background-color: rgba(0,0,0,0.12);
       padding: 0.5em;
@@ -672,6 +674,11 @@ body {
     }
     td {
       padding: 0.5em;
+      border-right: 1px solid rgba(0,0,0,0.12);
+
+      &:last-child {
+        border-right-width: 0;
+      }
     }
   }
 }
@@ -751,6 +758,27 @@ body {
  * Slide Styles
  *********************************************/
 .reveal {
+  .background {
+    position:relative; 
+    z-index: 0;
+  }
+  .foreground {
+    position: relative;
+    z-index: 1;
+  }
+  .denotation {
+    @extend .plain;
+    max-width: 200px;
+    position: absolute;
+    margin-left: 0.25em;
+    top: -0.5em;
+
+    &.side {
+      top: -2em;
+      right: 0;
+    }
+  }
+
   .definition {
     margin: 0 auto;
 
