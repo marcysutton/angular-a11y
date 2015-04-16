@@ -19,7 +19,7 @@
 		<link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/material.css">
+    <link rel="stylesheet" href="css/theme/angular-material.min.css">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -439,6 +439,13 @@
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
+        <!-- Angular Material Dependencies -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-aria.min.js"></script>
+
+    <!-- Angular Material Javascript using RawGit to load directly from `bower-material/master` -->
+    <script src="js/angular-material.min.js"></script>
 		<script>
 
 			// Full list of configuration options available here:
@@ -481,5 +488,8 @@
 				]
 			});
 		</script>
+    <script>
+      var app = angular.module('SlidesApp', ['ngMaterial']);
+    </script>
 	</body>
 </html>

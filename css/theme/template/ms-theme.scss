@@ -15,6 +15,55 @@
  * 2014 Marcy Sutton, http://marcysutton.com
  *********************************************/
 .reveal {
+   /* Material */
+  .md-whiteframe-z1 {
+    max-width: 800px; 
+    min-height: 500px;
+    margin: 0 auto 1em;
+  }
+  md-content {
+    min-height: 400px;
+  }
+  .md-button, md-checkbox, md-switch, md-radio-button {
+    font-size: 2em;
+  }
+  .md-center-wrapper {
+    margin: 1em 0;
+    text-align: center;
+
+    div, md-radio-button {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  md-toolbar h2 {
+    color: $selectionColor;
+    font-size: 1.25em;
+    line-height: inherit;
+    margin: 0;
+  }
+  md-toolbar .md-button {
+    margin: 0 16px 0 8px !important;
+    min-width: 0;
+
+    .icon {
+      display: inline-block;
+      margin: 0;
+      height: 48px;
+      width: 48px;
+    }
+
+    svg {
+      transform: scale(0.8, 0.8);
+
+      rect {
+        fill: $selectionColor;
+      }
+    }
+  }
+
+
+
   .slides {
     z-index: 12;
 

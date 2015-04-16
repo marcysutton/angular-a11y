@@ -41,6 +41,39 @@
     display: none;
     visibility: hidden; }
   .reveal .slides > section.present > .accessibilityWrapper {
+.reveal {
+  /* Material */ }
+  .reveal .md-whiteframe-z1 {
+    max-width: 800px;
+    min-height: 500px;
+    margin: 0 auto 1em; }
+  .reveal md-content {
+    min-height: 400px; }
+  .reveal .md-button, .reveal md-checkbox, .reveal md-switch, .reveal md-radio-button {
+    font-size: 2em; }
+  .reveal .md-center-wrapper {
+    margin: 1em 0;
+    text-align: center; }
+    .reveal .md-center-wrapper div, .reveal .md-center-wrapper md-radio-button {
+      display: inline-block;
+      vertical-align: middle; }
+  .reveal md-toolbar h2 {
+    color: #fff;
+    font-size: 1.25em;
+    line-height: inherit;
+    margin: 0; }
+  .reveal md-toolbar .md-button {
+    margin: 0 16px 0 8px !important;
+    min-width: 0; }
+    .reveal md-toolbar .md-button .icon {
+      display: inline-block;
+      margin: 0;
+      height: 48px;
+      width: 48px; }
+    .reveal md-toolbar .md-button svg {
+      transform: scale(0.8, 0.8); }
+      .reveal md-toolbar .md-button svg rect {
+        fill: #fff; }
     display: block;
     visibility: visible;
     outline: none; }
@@ -99,7 +132,7 @@
  * GLOBAL STYLES
  *********************************************/
 .reveal {
-  font-size: 36px;
+  font-size: 3.5rem;
   font-weight: 200;
   color: #212121; }
   .reveal iframe {
