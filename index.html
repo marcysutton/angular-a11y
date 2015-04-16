@@ -96,7 +96,8 @@
         <section data-state="material-controls" ng-app="SlidesApp">
           <h2 class="foreground">
             Interactivity
-            <img src="img/taco-denotation.png" alt="Important Topic" class="denotation">
+            <img src="img/taco-denotation.png" alt="Important Topic" 
+                 class="denotation">
           </h2>
           <div class="md-whiteframe-z1 background" style="font-size: 12px;">
             <md-toolbar>
@@ -135,6 +136,26 @@
               </div>
             </md-content>
           </div>
+        </section>
+
+        <section>
+          <h2 class="foreground">
+            Semantics
+            <img src="img/taco-denotation.png" alt="Important Topic" 
+                 class="denotation">
+          </h2>
+          <pre><code class="html">
+        <md-button>Button</md-button>
+        
+        // becomes:
+        <button class="md-button">Button</button>
+          </code></pre>
+
+          <pre><code class="html">
+        <md-checkbox role="checkbox" tabindex="0" aria-checked="true">
+            Checkbox
+        </md-checkbox>
+          </code></pre>
         </section>
 
         <section>
