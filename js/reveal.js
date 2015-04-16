@@ -33,6 +33,8 @@
 		// Configurations defaults, can be overridden at initialization time
 		config = {
 
+			elementIgnoreRegex: /input|textarea|button|md-switch|md-checkbox|md-radio-group/i,
+
 			// The "normal" size of the presentation, aspect ratio will be preserved
 			// when the presentation is scaled to fit different resolutions
 			width: 960,
@@ -3539,7 +3541,7 @@
 		// Check if there's a focused element that could be using
 		// the keyboard
 		var activeElementIsCE = document.activeElement && document.activeElement.contentEditable !== 'inherit';
-		var activeElementIsInput = document.activeElement && document.activeElement.tagName && /input|textarea/i.test( document.activeElement.tagName );
+		var activeElementIsInput = document.activeElement && document.activeElement.tagName && config.elementIgnoreRegex.test( document.activeElement.tagName );
 
 		// Disregard the event if there's a focused element or a
 		// keyboard modifier key is present
