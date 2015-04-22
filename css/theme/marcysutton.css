@@ -69,7 +69,7 @@
       .reveal md-toolbar .md-button svg rect {
         fill: #fff; }
   .reveal .slides {
-    z-index: 12; }
+    z-index: 11; }
     .reveal .slides > section > .accessibilityWrapper, .reveal .slides > section > section > .accessibilityWrapper {
       display: none;
       visibility: hidden; }
@@ -183,7 +183,7 @@
     padding-bottom: 30px;
     text-align: left;
     width: 100%;
-    z-index: 11; }
+    z-index: 12; }
     .reveal footer .copyright {
       display: inline-block;
       padding: 5px 15px;
