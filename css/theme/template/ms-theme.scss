@@ -568,7 +568,8 @@ body {
  *********************************************/
 
 .reveal {
-  section img {
+  section img,
+  section video {
   	margin: 15px 0px;
   	background: rgba(255,255,255,0.12);
   	border: 4px solid $mainColor;
