@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Accessibility in Angular and Beyond</title>
+		<title>Accessibility in AngularJS and Beyond</title>
 
-		<meta name="description" content="Accessibility in Angular and Beyond">
+		<meta name="description" content="Accessibility in AngularJS and Beyond">
 
 		<meta name="author" content="Marcy Sutton">
 
@@ -44,13 +44,13 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-          <h1 class="offscreen">Accessibility in Angular and Beyond</h1>
+          <h1 class="offscreen">Accessibility in AngularJS and Beyond</h1>
 					<h2>Accessibility == People</h2>
 					<img src="img/tandem-biking.jpg" alt="Tandem bicycling at CSUN 2015" style="max-height: 600px;">
 				</section>
 
 				<section>
-          <h2 aria-hidden="true">Accessibility in Angular<br>and Beyond</h2>
+          <h2 aria-hidden="true">Accessibility in AngularJS<br>and Beyond</h2>
 					<p>Marcy Sutton, Seattle, WA<br>Developer @Substantial, Angular Core Team Member</p>
 					<p><a href="http://marcysutton.github.io/angular-a11y">http://marcysutton.github.io/angular-a11y</a></p>
 				</section>
@@ -72,15 +72,15 @@
           <ul>
             <li class="foreground">
               Material Design &amp; a11y
-              <img src="img/taco-denotation.png" alt="" 
-                   class="denotation" style="top: -1.5em;">
+              <img src="img/taco-denotation.png" alt="taco" 
+                   class="denotation" style="top: -1.5em;" aria-describedby="legend">
             </li>
             <li>ngAria</li>
             <li>Protractor</li>
             <li>Angular 2</li>
           </ul>
           <br>
-          <p aria-hidden="true"><small><em>Legend: taco denotes a major topic in client-rendered app accessibility</em></small></p>
+          <p id="legend"><small><em>Legend: taco denotes a major topic in client-rendered app accessibility</em></small></p>
         </section>
 
         <section>
@@ -146,7 +146,7 @@
           </h2>
           <pre><code class="html">
         <md-button>Button</md-button>
-        
+
         // becomes:
         <button class="md-button">Button</button>
           </code></pre>
@@ -160,6 +160,7 @@
 
         <section>
           <h2 class="h3-style">Hacking Browser Focus</h2>
+          <figure>
           <pre><code class="javascript">
   // restrict focus styles to the keyboard
   scope.mouseActive = false;
@@ -174,6 +175,8 @@
     })
     .on('blur', function() { element.removeClass('md-focused'); });
           </code></pre>
+          <figcaption>Clicks persist focus styles, I'd love to kill this</figcaption>
+          </figure>
         </section>
         
         <section>
@@ -208,18 +211,30 @@
           <h2>Focus management
             <img src="img/taco-denotation.png" alt="Important Topic" class="denotation">
           </h2>
+          <iframe title="Angular Material Sidenav screencast" width="960" height="720" src="https://www.youtube.com/embed/d3SN9U3wD-s?rel=0" frameborder="0" allowfullscreen></iframe>
+        </section>
+
+        <section>
+          <h2>Focus management</h2>
+          <figure>
           <pre><code class="html">
-  &lt;a ng-href="#/page" ng-click="focusSection()"&gt;Page&lt;/a&gt;
+  &lt;md-sidenav class="md-sidenav-right" md-component-id="right"&gt;
+    &lt;md-content ng-controller="RightCtrl"&gt;
+      &lt;form&gt;
+        &lt;md-input-container&gt;
+          &lt;label for="testInput"&gt;Test input&lt;/label&gt;
+          &lt;input type="text" id="testInput"
+                 ng-model="data" md-sidenav-focus&gt;
+        &lt;/md-input-container&gt;
+      &lt;/form&gt;
+      &lt;md-button ng-click="close()" class="md-primary"&gt;
+        Close
+      &lt;/md-button&gt;
+    &lt;/md-content&gt;
+  &lt;/md-sidenav&gt;
           </code></pre>
-          <pre><code class="javascript">
-  $rootScope.$on('$locationChangeSuccess', openPage);
-  function openPage() {
-    $scope.closeMenu();
-    if( self.autoFocusContent) {
-      mainContentArea.focus();
-      self.autoFocusContent = false;
-    ...
-          </code></pre>
+          <figcaption><a href="https://material.angularjs.org/#/demo/material.components.sidenav" target="_blank" title="Link opens in a new window">Angular Material Sidenav</a> with custom focus</figcaption>
+          </figure>
         </section>
 
         <section>
@@ -228,7 +243,7 @@
           </h2>
           <figure>
             <img src="img/angular-material-autocomplete.png" alt="">
-            <figcaption><a href="https://material.angularjs.org/#/demo/material.components.autocomplete" target="_blank" title="Link opens in a new window">Angular Material Autocomplete with 4 Matches</a></figcaption>
+            <figcaption><a href="https://material.angularjs.org/#/demo/material.components.autocomplete" target="_blank" title="Link opens in a new window">Angular Material Autocomplete</a> with 4 Matches</figcaption>
           </figure>
         </section>
 
@@ -247,7 +262,7 @@
     default: return messages.push('There are '
         + matches.length +' matches.' );
           </code></pre>
-          <figcaption>Angular Material Autocomplete Source</figcaption>
+          <figcaption><a href="https://github.com/angular/material/blob/master/src/components/autocomplete/js/autocompleteController.js#L331">Angular Material Autocomplete Source</a></figcaption>
           </figure>
         </section>
 
@@ -267,7 +282,7 @@
           <pre><code class="javascript">
   angular.module('app', ['ngAria'], function($ariaProvider) {
     $ariaProvider.config({
-      tabindex: false
+      ariaHidden: false
     ...
           </code></pre>
           <pre><code class="html">
@@ -324,17 +339,18 @@
           <figure class="full-screen-code">
 					<pre><code class="javascript" style="max-height: 680px;">
  .directive('ngClick',['$aria', function($aria) {
-  return {
-   compile: function(scope, elem, attr) {
-    var nodeBlackList = ['BUTTON','A','INPUT','TEXTAREA'];
-    if (!elem.attr('role') && !isNodeOneOf(elem, nodeBlackList)) {
-      elem.attr('role', 'button');
-    }
-    if (!isNodeOneOf(elem, nodeBlackList)) {
-      elem.on('keypress', function(event) {
-        if (event.keyCode === 32 || event.keyCode === 13) {
-          scope.$apply(callback);
-        ...
+    return {
+      compile: function(scope, elem, attr) {
+        var nodeBlackList = ['BUTTON','A','INPUT','TEXTAREA','SELECT'];
+        if (!isNodeOneOf(elem, nodeBlackList)) {
+          if (!elem.attr('role') && config.buttonRole) {
+            elem.attr('role', 'button');
+          }
+          if (config.bindKeypress) {
+            elem.on('keypress', function(event) {
+              if (event.keyCode === 32 || event.keyCode === 13) {
+                scope.$apply(callback);
+              ...
 					</code></pre>
 					<figcaption><a href="https://github.com/angular/angular.js/pull/10318" target="_blank" title="Link opens in a new window">https://github.com/angular/angular.js/pull/10318<span class="offscreen"> Opens in a new window</span></a></figcaption>
           </figure>
@@ -391,7 +407,7 @@
   }
           </code></pre>
           <figcaption>
-          <a href="https://github.com/angular/protractor/blob/master/docs/plugins.md#accessibility-plugin" target="_blank" title="Link opens in a new window">https://github.com/angular/protractor/blob/master/docs/plugins/<span class="offscreen"> Link opens in a new window</span></a></figcaption>
+          <a href="https://github.com/angular/protractor/blob/master/docs/plugins.md#accessibility-plugin" target="_blank" title="Link opens in a new window">Plugin Documentation<span class="offscreen"> Link opens in a new window</span></a></figcaption>
           </figure>
         </section>
 
@@ -458,22 +474,22 @@
         </section>
 
         <section>
-          <h2>Binding events</h2>
+          <h2>Event bindings</h2>
           <figure>
           <pre><code class="html">
       &lt;button ng-focus="anticipationEvent()"
-              ng-click="deliverTacos()"&gt;
+              ng-click="deliverTacos()" id="{{item.id}}"&gt;
         Give me tacos &lt;/button&gt;
           </code></pre>
-          <figcaption>Angular 1.x</figcaption>
+          <figcaption>Angular 1: attributes</figcaption>
           </figure>
           <figure>
           <pre><code class="html">
       &lt;button (focus)="anticipationEvent()"
-              (click)="deliverTacos()"&gt;
+              (click)="deliverTacos()" [id]="item.id"&gt;
         Give me tacos &lt;/button&gt;
           </code></pre>
-          <figcaption>Angular 2</figcaption>
+          <figcaption>Angular 2: properties</figcaption>
           </figure>
         </section>
 
@@ -492,14 +508,13 @@
 
         <section>
           <h2>Resources</h2>
-          <p><em>All links open in new windows</em></p>
+          <p class="offscreen"><em>All links open in new windows</em></p>
           <ul>
-            <li><a href="http://angularjs.blogspot.com/2014/11/using-ngaria.html" target="_blank" title="Link opens in a new window">Using ngAria</a></li>
-            <li><a href="https://docs.angularjs.org/guide/accessibility" target="_blank" title="Link opens in a new window">ngAria Developer Guide</a></li>
+            <li><a href="http://substantial.com/blog/2014/07/22/how-i-audit-a-website-for-accessibility/" target="_blank" title="Link opens in a new window">How I Audit a Website for Accessibility</a></li>
+            <li><a href="https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en" target="_blank" title="Link opens in a new window">Chrome Accessibility Developer Tools</a></li>
+            <li><a href="http://angularjs.blogspot.com/2014/11/using-ngaria.html" target="_blank" title="Link opens in a new window">Using ngAria: Official Angular Blog</a></li>
             <li><a href="http://marcysutton.com/angular-protractor-accessibility-plugin" target="_blank" title="Link opens in a new window">Protractor Accessibility Plugin</a></li>
-            <li><a href="https://material.angularjs.org" target="_blank" title="Link opens in a new window">Angular.js Material Design</a></li>
             <li><a href="http://unobfuscated.blogspot.com/2015/02/angularjs-accessibility-knocking-off-my.html" target="_blank" title="Link opens in a new window">Accessible TodoMVC by Dylan Barrell</a></li>
-            <li><a href="https://github.com/dequelabs/ngA11y" target="_blank" title="Link opens in a new window">ngA11y by Deque</a></li>
           </ul>
         </section>
 
@@ -512,7 +527,7 @@
 			</div>
 
 			<footer>
-        <p class="copyright">Accessibility in Angular and Beyond<br>
+        <p class="copyright">Accessibility in AngularJS and Beyond<br>
           <a href="http://twitter.com/marcysutton" target="_blank" title="Link opens in a new window">@marcysutton</a> <span aria-hidden="true">/</span> <a href="http://marcysutton.com" target="_blank" title="Link opens in a new window">MarcySutton.com</a></p>
       </footer>
 		</div>
