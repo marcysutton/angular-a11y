@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Accessibility in AngularJS and Beyond</title>
+		<title>Accessible Angular.js</title>
 
-		<meta name="description" content="Accessibility in AngularJS and Beyond">
+		<meta name="description" content="Accessible Angular.js">
 
 		<meta name="author" content="Marcy Sutton">
 
@@ -44,15 +44,15 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-          <h1 class="offscreen">Accessibility in AngularJS and Beyond</h1>
-					<h2>Accessibility == People</h2>
+          <h1 class="offscreen">Accessible Angular.js</h1>
+					<h2>Accessibility is about people.</h2>
 					<img src="img/tandem-biking.jpg" alt="Tandem bicycling at CSUN 2015" style="max-height: 600px;">
 				</section>
 
 				<section>
-          <h2 aria-hidden="true">Accessibility in AngularJS<br>and Beyond</h2>
-					<p>Marcy Sutton, Seattle, WA<br>Developer @Substantial, Angular Core Team Member</p>
-					<p><a href="http://marcysutton.com/fluent2015">http://marcysutton.com/fluent2015</a></p>
+          <h2 aria-hidden="true">Accessible Angular.js</h2>
+					<p>Marcy Sutton, Seattle, USA<br>Accessibility Engineer, Angular Core Team Member</p>
+					<p><a href="http://marcysutton.com/gotocon">http://marcysutton.com/gotocon</a></p>
 				</section>
 
         <section>
@@ -72,7 +72,7 @@
           <ul>
             <li class="foreground">
               Material Design &amp; a11y
-              <img src="img/taco-denotation.png" alt="taco" 
+              <img src="img/waffle.png" alt="waffle with happy cartoon cat" 
                    class="denotation" style="top: -1.5em;" aria-describedby="legend">
             </li>
             <li>ngAria</li>
@@ -80,7 +80,7 @@
             <li>Angular 2</li>
           </ul>
           <br>
-          <p id="legend"><small><em>Legend: taco denotes a major topic in client-rendered app accessibility</em></small></p>
+          <p id="legend"><small><em>Legend: waffle denotes a major topic in client-rendered app accessibility</em></small></p>
         </section>
 
         <section>
@@ -96,7 +96,7 @@
         <section data-state="material-controls" ng-app="SlidesApp">
           <h2 class="foreground">
             Interactivity
-            <img src="img/taco-denotation.png" alt="Important Topic" 
+            <img src="img/waffle.png" alt="Happy waffle: Important Topic" 
                  class="denotation">
           </h2>
           <div class="md-whiteframe-z1 background" style="font-size: 12px;">
@@ -129,9 +129,9 @@
               </div>
               <div class="md-center-wrapper">
                 <md-radio-group ng-model="data.group1" class="tabbable">
-                  <md-radio-button value="Apple">Radio</md-radio-button>
-                  <md-radio-button value="Banana"> Radio </md-radio-button>
-                  <md-radio-button value="Mango">Radio</md-radio-button>
+                  <md-radio-button value="Dogs">Dogs</md-radio-button>
+                  <md-radio-button value="Cats">Cats</md-radio-button>
+                  <md-radio-button value="Pigs">Pigs</md-radio-button>
                 </md-radio-group>
               </div>
             </md-content>
@@ -141,59 +141,54 @@
         <section>
           <h2 class="foreground">
             Semantics
-            <img src="img/taco-denotation.png" alt="Important Topic" 
+            <img src="img/waffle.png" alt="Happy waffle: Important Topic" 
                  class="denotation">
-          </h2>
-          <pre><code class="html">
-        <md-button>Button</md-button>
-
-        // becomes:
-        <button class="md-button">Button</button>
-          </code></pre>
-
-          <pre><code class="html">
-        <md-checkbox role="checkbox" tabindex="0" aria-checked="true">
-            Checkbox
-        </md-checkbox>
-          </code></pre>
-        </section>
-
-        <section>
-          <h2 class="h3-style">Hacking Browser Focus</h2>
-          <figure>
-          <pre><code class="javascript">
-  // restrict focus styles to the keyboard
-  scope.mouseActive = false;
-  element.on('mousedown', function() {
-      scope.mouseActive = true;
-      $timeout(function(){
-        scope.mouseActive = false;
-      }, 100);
-    })
-    .on('focus', function() {
-      if(scope.mouseActive === false) { element.addClass('md-focused'); }
-    })
-    .on('blur', function() { element.removeClass('md-focused'); });
-          </code></pre>
-          <figcaption>Clicks persist focus styles, I'd love to ditch this</figcaption>
-          </figure>
-        </section>
-        
-        <section>
-          <h2>Text Alternatives
-            <img src="img/taco-denotation.png" alt="Important Topic" class="denotation">
           </h2>
           <div class="large-tag">
           <pre><code class="html">
-   <span class="visually-hidden">Menu</span>
-
-   <label for="taco-input">Tacos!</label>
-
-   <button aria-label="Tacos!"></button>
-
-   <img alt="I don't want to taco bout it">
+        <md-button>Button</md-button>
+          </code></pre>
+          <pre class="fragment"><code class="html">
+        // should be:
+        <button class="md-button">Button</button>
           </code></pre>
           </div>
+        </section>
+
+        <section>
+        <h2 class="foreground">
+            ARIA
+            <img src="img/waffle.png" alt="Happy waffle: Important Topic" 
+                 class="denotation" style="margin-left: 1em;">
+          </h2>
+          <figure style="margin-top: 2em;">
+          <pre><code class="html">
+      &lt;md-checkbox tabindex="0" role="checkbox" aria-checked="true"&gt;
+        Checkbox
+      &lt;/md-checkbox&gt;
+          </code></pre>
+          <figcaption>Roles, states and properties</figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>Text Alternatives
+            <img src="img/waffle.png" alt="Happy waffle: Important Topic" class="denotation">
+          </h2>
+          <figure class="large-tag">
+          <pre><code class="html">
+   <span class="visually-hidden">Menu</span>
+          </code></pre>
+          <pre class="fragment"><code class="html">
+   <label for="waffle-radio">Waffles!</label>
+          </code></pre>
+          <pre class="fragment"><code class="html">
+   <button aria-label="Waffles!"></button>
+          </code></pre>
+          <pre class="fragment"><code class="html">
+   <img alt="Stop waffling and get on with it">
+          </code></pre>
+          </figure>
         </section>
 
         <section>
@@ -209,10 +204,10 @@
 
         <section>
           <h2>Focus management
-            <img src="img/taco-denotation.png" alt="Important Topic" class="denotation">
+            <img src="img/waffle.png" alt="Happy waffle: Important Topic" class="denotation">
           </h2>
-          <!--<div><video width="960" src="video/material-sidenav.mp4" controls></video></div>-->
-          <iframe title="Angular Material Sidenav screencast" width="1050" height="680" src="https://www.youtube.com/embed/d3SN9U3wD-s?rel=0" frameborder="0" allowfullscreen></iframe>
+          <div><video width="960" src="video/material-sidenav.mp4" controls></video></div>
+          <!--<iframe title="Angular Material Sidenav screencast" width="1050" height="680" src="https://www.youtube.com/embed/d3SN9U3wD-s?rel=0" frameborder="0" allowfullscreen></iframe>-->
         </section>
 
         <section>
@@ -240,7 +235,7 @@
 
         <section>
           <h2>Notifying the User
-            <img src="img/taco-denotation.png" alt="Important Topic" class="denotation">
+            <img src="img/waffle.png" alt="Happy waffle: Important Topic" class="denotation">
           </h2>
           <figure>
             <img src="img/angular-material-autocomplete.png" alt="">
@@ -252,16 +247,16 @@
           <h2 class="h3-style">Notifying the User (code)</h2>
           <figure>
           <pre><code class="html">
-  &lt;aria-status role="status"&gt;
+  &lt;aria-status role="status" aria-live="assertive"&gt;
     &lt;p ng-repeat="message in messages"&gt;{{message}}&lt;/p&gt;
   &lt;/aria-status&gt;
           </code></pre>
           <pre><code class="javascript">
-  switch (matches.length) {
-    case 0:  return messages.splice(0);
-    case 1:  return messages.push('There is 1 match.');
-    default: return messages.push('There are '
-        + matches.length +' matches.' );
+  switch (self.matches.length) {
+    case 0:  return 'There are no matches available.';
+    case 1:  return 'There is 1 match available.';
+    default: return 'There are ' + self.matches.length + ' matches available.';
+  }
           </code></pre>
           <figcaption><a href="https://github.com/angular/material/blob/master/src/components/autocomplete/js/autocompleteController.js#L331">Angular Material Autocomplete Source</a></figcaption>
           </figure>
@@ -328,7 +323,7 @@
 
         <section>
           <h2>ngClick</h2>
-          <div class="large-tag full-screen-code">
+          <div class="larger-tag full-screen-code">
             <pre><code class="html">
       &lt;div ng-click="ohNoYouDidnt()"&gt;&lt;/div&gt;
             </code></pre>
@@ -362,7 +357,7 @@
             <h2 class="h3-style">That's a lot of effort...</h2>
             <h3 class="h1-style">Just use buttons!</h3>
 
-            <img src="img/taco-denotation.png" alt="Important Topic" 
+            <img src="img/waffle.png" alt="Happy waffle: Important Topic" 
                  class="denotation side">
           </div>
         </section>
@@ -479,16 +474,16 @@
           <figure>
           <pre><code class="html">
       &lt;button ng-focus="anticipationEvent()"
-              ng-click="deliverTacos()" id="{{item.id}}"&gt;
-        Give me tacos &lt;/button&gt;
+              ng-click="deliverWaffles()" id="{{item.id}}"&gt;
+        Give me waffles &lt;/button&gt;
           </code></pre>
           <figcaption>Angular 1: attributes</figcaption>
           </figure>
           <figure>
           <pre><code class="html">
       &lt;button (focus)="anticipationEvent()"
-              (click)="deliverTacos()" [id]="item.id"&gt;
-        Give me tacos &lt;/button&gt;
+              (click)="deliverWaffles()" [id]="item.id"&gt;
+        Give me waffles &lt;/button&gt;
           </code></pre>
           <figcaption>Angular 2: properties</figcaption>
           </figure>
@@ -521,15 +516,15 @@
 
         <section>
           <h2 class="foreground">The End.
-            <img src="img/taco-denotation.png" alt="Taco" 
+            <img src="img/waffle.png" alt="waffle" 
                  class="denotation" style="margin-left: 1em;">
           </h2>
         </section>
 			</div>
 
 			<footer>
-        <p class="copyright">Accessibility in AngularJS and Beyond<br>
-          <a href="http://twitter.com/marcysutton" target="_blank" title="Link opens in a new window">@marcysutton</a> <span aria-hidden="true">/</span> <a href="http://marcysutton.com/fluent2015" target="_blank" title="Link opens in a new window">marcysutton.com/fluent2015</a></p>
+        <p class="copyright">Accessible Angular.js<br>
+          <a href="http://twitter.com/marcysutton" target="_blank" title="Link opens in a new window">@marcysutton</a> <span aria-hidden="true">/</span> <a href="http://marcysutton.com/gotocon" target="_blank" title="Link opens in a new window">marcysutton.com/gotocon</a></p>
       </footer>
 		</div>
 

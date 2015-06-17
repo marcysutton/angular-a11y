@@ -470,12 +470,16 @@ body {
   .large-tag {
     color: $tertiaryColor;
     font-family: $codeFont;
-    font-size: 2.25em;
+    font-size: 1.75em;
     margin-top: 0.5em;
 
     pre code {
       font-size: 1.25em;
     }
+  }
+  .larger-tag {
+    @extend .large-tag;
+    font-size: 2.25em;
   }
   .muted {
     color: $mutedColor;
@@ -772,7 +776,8 @@ body {
     max-width: 200px;
     position: absolute;
     margin-left: 0.25em;
-    top: -0.5em;
+    top: -0.25em;
+    z-index: 1;
 
     &.side {
       top: -2em;
