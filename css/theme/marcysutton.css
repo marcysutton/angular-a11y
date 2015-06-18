@@ -357,7 +357,7 @@
 .reveal .large-tag, .reveal .larger-tag {
   color: #ccc;
   font-family: Menlo, monospace;
-  font-size: 1.75em;
+  font-size: 1.5em;
   margin-top: 0.5em; }
   .reveal .large-tag pre code, .reveal .larger-tag pre code {
     font-size: 1.25em; }
@@ -571,6 +571,17 @@
 .reveal .foreground {
   position: relative;
   z-index: 1; }
+.reveal .layeredFragments {
+  min-height: 400px;
+  position: relative; }
+  .reveal .layeredFragments > div {
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%; }
+  .reveal .layeredFragments img {
+    min-height: 400px; }
 .reveal .denotation {
   max-width: 200px;
   position: absolute;
@@ -677,7 +688,7 @@
     display: inline-block;
     padding: 0 0.25em; }
   .reveal #hamburgerTextDiv.initialized h2 {
-    color: #000;
+    color: #fff;
     text-shadow: none; }
 .reveal #hamburgerImgDiv {
   background-repeat: repeat;
@@ -703,16 +714,16 @@
   -webkit-transition: 0.5s;
   transition: 0.5s; }
   .reveal .themed-button:hover, .reveal button.reset:hover, .reveal .themed-button:focus, .reveal button.reset:focus {
-    background-color: #000;
+    background-color: #fff;
     color: #fff; }
 .reveal button.reset {
   background-color: #fff;
-  color: #000;
+  color: #fff;
   display: inline-block;
   font-size: 0.65em;
   margin-top: 0; }
   .reveal button.reset:hover, .reveal button.reset:focus {
-    background-color: #000;
+    background-color: #fff;
     color: #fff; }
   .reveal button.reset.disabled {
     display: none; }

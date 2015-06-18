@@ -181,6 +181,7 @@
           </code></pre>
           <pre class="fragment"><code class="html">
    <label for="waffle-radio">Waffles!</label>
+   <input id="waffle-radio" type="radio">
           </code></pre>
           <pre class="fragment"><code class="html">
    <button aria-label="Waffles!"></button>
@@ -203,11 +204,42 @@
         </section>
 
         <section>
+          <h2 class="h3-style">Fixing ARIA warnings</h2>
+          <figure class="layeredFragments">
+            <div>
+              <pre><code class="html">
+  &lt;md-radio-group ng-model="data.group3"&gt;
+    &lt;md-radio-button ng-repeat="it in avatarData"
+                     ng-value="it.value"&gt;
+        &lt;md-icon md-svg-icon="{{it.id}}"&gt;&lt;/md-icon&gt;
+    &lt;/md-radio-button&gt;
+  &lt;/md-radio-group&gt;
+
+              </code></pre>
+              <p><em><code>aria-label</code> is missing.</em></p>
+            </div>
+            <div class="fragment">
+              <pre><code class="html">
+  &lt;md-radio-group ng-model="data.group3"&gt;
+    &lt;md-radio-button ng-repeat="it in avatarData"
+                     ng-value="it.value"
+                     aria-label="{{it.title}}"&gt;
+        &lt;md-icon md-svg-icon="{{it.id}}"&gt;&lt;/md-icon&gt;
+    &lt;/md-radio-button&gt;
+  &lt;/md-radio-group&gt;
+
+              </code></pre>
+              <p><em>Boom! Labeled radio buttons.</em></p>
+            </div>
+          </figure>
+        </section>
+
+        <section>
           <h2>Focus management
             <img src="img/waffle.png" alt="Happy waffle: Important Topic" class="denotation">
           </h2>
-          <div><video width="960" src="video/material-sidenav.mp4" controls></video></div>
-          <!--<iframe title="Angular Material Sidenav screencast" width="1050" height="680" src="https://www.youtube.com/embed/d3SN9U3wD-s?rel=0" frameborder="0" allowfullscreen></iframe>-->
+          <!--<div><video width="960" src="video/material-sidenav.mp4" controls></video></div>-->
+          <iframe title="Angular Material Sidenav screencast" width="1050" height="680" src="https://www.youtube.com/embed/d3SN9U3wD-s?rel=0" frameborder="0" allowfullscreen></iframe>
         </section>
 
         <section>
@@ -482,7 +514,7 @@
           <figure>
           <pre><code class="html">
       &lt;button (focus)="anticipationEvent()"
-              (click)="deliverWaffles()" [id]="item.id"&gt;
+              (click)="deliverWaffles()" [waffle-id]="item.id"&gt;
         Give me waffles &lt;/button&gt;
           </code></pre>
           <figcaption>Angular 2: properties</figcaption>

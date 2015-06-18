@@ -470,7 +470,7 @@ body {
   .large-tag {
     color: $tertiaryColor;
     font-family: $codeFont;
-    font-size: 1.75em;
+    font-size: 1.5em;
     margin-top: 0.5em;
 
     pre code {
@@ -770,6 +770,21 @@ body {
   .foreground {
     position: relative;
     z-index: 1;
+  }
+  .layeredFragments {
+    min-height: 400px;
+    position: relative;
+
+    &> div {
+      background-color: $backgroundColor;
+      position: absolute; 
+      top: 0; 
+      text-align: center; 
+      width: 100%;
+    }
+    img {
+      min-height: 400px;
+    }
   }
   .denotation {
     @extend .plain;
