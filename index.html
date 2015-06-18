@@ -112,7 +112,6 @@
                 </h2>
               </div>
             </md-toolbar>
-            <!-- TODO: disable Reveal space bar and arrow keys inside app -->
             <md-content layout="column" layout-align="center center">
               <div class="md-center-wrapper">
                 <div>
@@ -139,18 +138,44 @@
         </section>
 
         <section>
+          <h2>Reachable Controls</h2>
+          <figure>
+            <div class="larger-tag">
+              <pre><code class="html">
+      &lt;md-checkbox tabindex="0" ...
+
+              </code></pre>
+            </div>
+          <figcaption><a href="http://www.paciellogroup.com/blog/2014/08/using-the-tabindex-attribute/" title="Using the tabindex attribute">Add tabindex</a></figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>Operable Controls</h2>
+          <figure>
+            <div class="larger-tag">
+              <pre><code class="html">
+      &lt;md-checkbox tabindex="0" 
+                   ng-keypress="doStuff()" ...
+              </code></pre>
+            </div>
+          <figcaption>Enable keyboard events</figcaption>
+          </figure>
+        </section>
+
+        <section>
           <h2 class="foreground">
             Semantics
             <img src="img/waffle.png" alt="Happy waffle: Important Topic" 
                  class="denotation">
           </h2>
-          <div class="large-tag">
+          <div class="larger-tag">
           <pre><code class="html">
-        <md-button>Button</md-button>
+    <md-button>Button</md-button>
           </code></pre>
           <pre class="fragment"><code class="html">
         // should be:
-        <button class="md-button">Button</button>
+    <button class="md-button">Button</button>
           </code></pre>
           </div>
         </section>
